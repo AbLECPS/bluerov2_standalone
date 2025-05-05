@@ -1,4 +1,4 @@
-# BlueROV2 Standalone Insaller
+# BlueROV2 Standalone Install
 
 This script will install BlueROV2 standalone code only with LECs and BehaviorTree. Disable these nodes to create customized controllers pipe-tracking, obstacle-avoidance and autonomy.
 
