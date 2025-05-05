@@ -1,0 +1,11 @@
+lec2lite/nodes/lec2lite_am.py:34:#forcing to use the alc_utils in the cpu_test folder
+lec2lite/nodes/lec2lite_am.py:38:import alc_utils.assurance_monitor
+lec2lite/nodes/lec2lite_am.py:65:        _ams = alc_utils.assurance_monitor.load_assurance_monitor("multi")
+lec3lite/nodes/readme.md:7:- this code needs alc_utils either in the path, or in this folder
+lec3lite/nodes/lec3_lite_am.py:21:#forcing to use the alc_utils in the cpu_test folder
+lec3lite/nodes/lec3_lite_am.py:25:import alc_utils.assurance_monitor
+lec3lite/nodes/lec3_lite_am.py:50:        _ams = alc_utils.assurance_monitor.load_assurance_monitor("multi")
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:37:import alc_utils.common
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:38:import alc_utils.assurance_monitor
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:39:from alc_utils import config as alc_config
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:79:        _ams = alc_utils.assurance_monitor.load_assurance_monitor("multi")

@@ -1,0 +1,471 @@
+uuv_thruster_manager/config/iver0/thruster_manager.yaml:2:  tf_prefix: uuv0
+rtreach/src/visualize_reachset_blue_rov.cpp:199:    sub = n.subscribe("uuv0/hsd_command", 1000, hsd_callback);
+rtreach/src/visualize_reachset_blue_rov.cpp:200:    sub2 = n.subscribe("uuv0/pose_gt", 1000, callback);
+rtreach/src/visualize_reachset_blue_rov_bicycle.cpp:290:    sub = n.subscribe("uuv0/hsd_command", 1000, hsd_callback);
+rtreach/src/visualize_reachset_blue_rov_bicycle.cpp:291:    sub2 = n.subscribe("uuv0/pose_gt_ned", 1000, callback);
+rtreach/src/visualize_reachset_blue_rov_bicycle.cpp:292:    sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/src/reach_node_blue_rov_bicycle.cpp:333:    ros::Subscriber sub = n.subscribe("uuv0/hsd_command", 100, hsd_callback);
+rtreach/src/reach_node_blue_rov_bicycle.cpp:345:    message_filters::Subscriber<rtreach::reach_tube> obs7(n,"uuv0/bounding_box_interval",10);
+rtreach/src/reach_node_blue_rov_bicycle.cpp:349:    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_ned", 10);
+rtreach/src/reach_node_blue_rov_bicycle.cpp:350:    sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/src/reach_node_uncertain_rov.cpp:469:    // ros::Subscriber sub = n.subscribe("uuv0/delta_hsd", 1, hsd_callback);
+rtreach/src/reach_node_uncertain_rov.cpp:470:    ros::Subscriber sub = n.subscribe("uuv0/hsd_command", 1, hsd_callback);
+rtreach/src/reach_node_uncertain_rov.cpp:486:    message_filters::Subscriber<rtreach::reach_tube> obs7(n,"uuv0/bounding_box_interval",10);
+rtreach/src/reach_node_uncertain_rov.cpp:490:    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_noisy_ned", 10);
+rtreach/src/reach_node_uncertain_rov.cpp:491:    sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/src/visualize_reachset.cpp:175:    sub = n.subscribe("uuv0/delta_hsd", 1000, hsd_callback);
+rtreach/src/visualize_reachset.cpp:176:    sub2 = n.subscribe("uuv0/pose_gt_ned", 1000, callback);
+rtreach/src/reach_node_blue_rov.cpp:223:    ros::Subscriber sub = n.subscribe("uuv0/hsd_command", 100, hsd_callback);
+rtreach/src/reach_node_blue_rov.cpp:235:    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt", 10);
+rtreach/src/reach_node_uncertain.cpp:468:    ros::Subscriber sub = n.subscribe("uuv0/delta_hsd", 1, hsd_callback);
+rtreach/src/reach_node_uncertain.cpp:483:    message_filters::Subscriber<rtreach::reach_tube> obs7(n,"uuv0/bounding_box_interval",10);
+rtreach/src/reach_node_uncertain.cpp:487:    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_ned", 10);
+rtreach/src/reach_node_uncertain.cpp:488:    sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/src/plot_reachability_results.py:17:        self.reachability_result=rospy.Subscriber('/uuv0/fls_output',FloatStamped,self.fls_callback)
+rtreach/src/geofencing_bounding_box.py:69:        self.vis_pub = rospy.Publisher('uuv0/bounding_box', MarkerArray,queue_size=1)
+rtreach/src/geofencing_bounding_box.py:70:        self.reach_pub = rospy.Publisher('uuv0/bounding_box_interval', reach_tube,queue_size=1)
+rtreach/src/reach_node_iver.cpp:343:    ros::Subscriber sub = n.subscribe("uuv0/delta_hsd", 100, hsd_callback);
+rtreach/src/reach_node_iver.cpp:355:    message_filters::Subscriber<rtreach::reach_tube> obs7(n,"uuv0/bounding_box_interval",10);
+rtreach/src/reach_node_iver.cpp:359:    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_ned", 10);
+rtreach/src/reach_node_iver.cpp:360:    sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/src/visualize_reachset_iver_bicycle.cpp:291:    sub = n.subscribe("uuv0/delta_hsd", 1000, hsd_callback);
+rtreach/src/visualize_reachset_iver_bicycle.cpp:292:    sub2 = n.subscribe("uuv0/pose_gt_ned", 1000, callback);
+rtreach/src/visualize_reachset_iver_bicycle.cpp:293:    sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/src/vandy_sys_id.py:32:        self.odometry_sub=rospy.Subscriber("uuv0/pose_gt_ned", Odometry,self.odom_callback,queue_size = 20)
+rtreach/src/vandy_sys_id.py:33:        self.hsd =rospy.Subscriber("uuv0/delta_hsd",HSDCommand,self.master_callback,queue_size = 20)
+rtreach/src/vandy_sys_id_higher_hz.py:32:        self.odometry_sub=rospy.Subscriber("uuv0/pose_gt_ned", Odometry,self.master_callback,queue_size = 20)
+rtreach/src/vandy_sys_id_higher_hz.py:33:        self.hsd =rospy.Subscriber("uuv0/delta_hsd",HSDCommand,self.hsd_callback,queue_size = 20)
+rtreach/src/publish_obstacles.py:37:            rospy.Subscriber('/uuv0/obstacle_map_local', OccupancyGrid, self.execute, queue_size=1)
+rtreach/src/publish_obstacles.py:43:            rospy.Subscriber('/uuv0/obstacle_map', OccupancyGrid, self.execute, queue_size=1)
+rtreach/config_file_format:10:sub = n.subscribe("uuv0/hsd_command", 1000, hsd_callback);
+rtreach/config_file_format:11:sub2 = n.subscribe("uuv0/pose_gt_ned", 1000, callback);
+rtreach/config_file_format:12:sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+rtreach/config_file_format:17:ros::Subscriber sub = n.subscribe("uuv0/hsd_command", 100, hsd_callback);
+rtreach/config_file_format:24:message_filters::Subscriber<rtreach::reach_tube> obs7(n,"uuv0/bounding_box_interval",10);
+rtreach/config_file_format:28:message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_ned", 10);
+rtreach/config_file_format:29:sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
+resonate/datafile.py:16:UUV_POSE_TOPIC = "/uuv0/pose_gt"
+resonate/datafile.py:18:OBSTACLE_POSE_TOPIC = "/uuv0/box_position"
+resonate/datafile.py:19:THRUSTER_DEGRADATION_TOPIC = "/uuv0/degradation_gt"
+resonate/datafile.py:82:                if topic == "/uuv0/box_position":
+resonate/rosbag_speed_test.py:10:ROS_TOPIC = "/uuv0/pose_gt"
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:72:            "/uuv0/altimeter_echosunder", Range, self.callback_range)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:95:        #     '/uuv0/cm_use_lec2', Bool, self.callback_cm_use_lec2)   
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:115:            "/uuv0/pipeline_map", OccupancyGrid, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:119:            "/uuv0/pipeline_heading_from_mapping", FloatStamped, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:124:            "/uuv0/pipeline_distance_from_mapping", FloatStamped, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:129:            "/uuv0/pipeline_in_view", Header, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:134:            "/uuv0/pipeline_in_view_gt", Header, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:139:            "/uuv0/pipeline_in_sls", FloatStamped, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:144:            "/uuv0/pipeline_in_gt", FloatStamped, queue_size = 1)        
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:31:            "/uuv0/altimeter_echosunder", Range, self.callback_range)
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:35:            "/uuv0/pipeline_heading_from_mapping", FloatStamped, self.callback_heading)
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:39:            "/uuv0/pipeline_distance_from_mapping", FloatStamped, self.callback_distance)
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:42:            "/uuv0/pose_gt_noisy_ned", Odometry, self.callback_pose)
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:48:            "/uuv0/pipeline_in_sls", FloatStamped, self.callback_pipeline_in_sls)
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:55:            "/uuv0/hsd_pipeline_mapping", HSDCommand, queue_size = 1)
+vandy_bluerov/nodes/pipe_tracking/map_based_pipe_tracking.py:71:                (trans,rot)  = tf_transform.lookupTransform("/world", "/uuv0/base_link", rospy.Time(secs=0))			
+vandy_bluerov/nodes/mavlink_interface.py:46:        self.thruster_0_sub = Subscriber('uuv0/thrusters/0/input', FloatStamped)
+vandy_bluerov/nodes/mavlink_interface.py:47:        self.thruster_1_sub = Subscriber('uuv0/thrusters/1/input', FloatStamped)
+vandy_bluerov/nodes/mavlink_interface.py:48:        self.thruster_2_sub = Subscriber('uuv0/thrusters/2/input', FloatStamped)
+vandy_bluerov/nodes/mavlink_interface.py:49:        self.thruster_3_sub = Subscriber('uuv0/thrusters/3/input', FloatStamped)
+vandy_bluerov/nodes/mavlink_interface.py:50:        self.thruster_4_sub = Subscriber('uuv0/thrusters/4/input', FloatStamped)
+vandy_bluerov/nodes/mavlink_interface.py:51:        self.thruster_5_sub = Subscriber('uuv0/thrusters/5/input', FloatStamped)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:35:        obstacle_map_msg.header.frame_id = 'uuv0/obstacle_map'        
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:55:            '/uuv0/target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:60:            '/uuv0/target_waypoint_id', Int32, self.callback_target_waypoint_id, queue_size=1) 
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:75:                "/uuv0/fls_echosunder", Range, self.callback_range)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:85:            "/uuv0/doppler_velocity", Float32, queue_size = 1)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:88:            "/uuv0/obstacle_in_view", Header, queue_size = 1)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:98:            "/uuv0/obstacle_near_wp", Int32, queue_size = 1)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:102:            "/uuv0/obstacle_map", OccupancyGrid, queue_size = 1)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:105:            "/uuv0/obstacle_map_occupied", Float32MultiArray, queue_size = 1)
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:108:            '/uuv0/obstacle_map_update', Bool, queue_size=1)   
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:122:            '/uuv0/obstacle_on_waypoint', Bool, queue_size=1) 
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:130:                '/uuv0/ais_distance', Float32MultiArray, queue_size=1) 
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:32:        #     '/uuv0/fls_obstacle', Obstacle, self.callback_laser_range)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:36:            "/uuv0/fls_echosunder", Range, self.callback_range)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:39:            "/uuv0/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:45:            "/uuv0/hsd_pipeline_mapping", HSDCommand, self.callback_hsd_pipe_tracking)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:48:            "/uuv0/hsd_to_rth", HSDCommand, self.callback_hsd_rth)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:51:            "/uuv0/hsd_to_waypoint", HSDCommand, self.callback_hsd_waypoint)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:55:            "/uuv0/cm_hsd_input", String, self.callback_cm_hsd_input)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:64:            "/uuv0/pose_gt_noisy", Odometry, self.callback_pose)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:70:            "/uuv0/pipeline_distance_from_mapping", FloatStamped, self.callback_distance)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:73:            '/uuv0/obstacle_avoidance_direction', Float64, self.callback_obstacle_avoidance_direction)
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:83:            '/uuv0/hsd_obstacle_avoidance', HSDCommand, queue_size=1)   
+vandy_bluerov/nodes/obstacle_avoidance/map_based_obstacle_avoidance.py:91:            '/uuv0/fls_obstacle_avoidance_score', Float64, queue_size=1)   
+vandy_bluerov/nodes/obstacle_avoidance/local_map.py:52:            "/uuv0/" + map_name, OccupancyGrid, queue_size = 1)      
+vandy_bluerov/nodes/obstacle_avoidance/publish_obstacles_local.py:28:        self.odom_sub = rospy.Subscriber("uuv0/pose_gt", Odometry, self.pose_callback, queue_size=1)
+vandy_bluerov/nodes/obstacle_avoidance/publish_obstacles_local.py:109:    rospy.Subscriber('/uuv0/obstacle_map_local', OccupancyGrid, po.execute, queue_size=10)
+vandy_bluerov/nodes/obstacle_avoidance/publish_obstacles.py:61:    rospy.Subscriber('/uuv0/obstacle_map', OccupancyGrid, po.execute, queue_size=10)
+vandy_bluerov/nodes/resonate.py:19:        self._thruster_degradation_topic = rospy.get_param('~degradation_topic', "/uuv0/degradation_detector")
+vandy_bluerov/nodes/resonate.py:20:        self._thruster_reallocation_topic = rospy.get_param('~reallocation_topic', "/uuv0/thruster_reallocation")
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:83:            sonar_0_sub = Subscriber('/uuv0/fls_sonar_0', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:84:            sonar_1_sub = Subscriber('/uuv0/fls_sonar_1', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:85:            sonar_2_sub = Subscriber('/uuv0/fls_sonar_2', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:86:            sonar_3_sub = Subscriber('/uuv0/fls_sonar_3', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:87:            sonar_4_sub = Subscriber('/uuv0/fls_sonar_4', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:88:            sonar_5_sub = Subscriber('/uuv0/fls_sonar_5', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:89:            sonar_6_sub = Subscriber('/uuv0/fls_sonar_6', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:90:            sonar_7_sub = Subscriber('/uuv0/fls_sonar_7', Range)
+vandy_bluerov/nodes/sonars/forward_looking_sonar.py:91:            sonar_8_sub = Subscriber('/uuv0/fls_sonar_8', Range)
+vandy_bluerov/nodes/sonars/side_scan_sonar_vu.py:71:             '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+vandy_bluerov/nodes/sonars/forward_imaging_sonar.py:70:             '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+vandy_bluerov/nodes/sonars/fls_midas_fusion.py:54:        #     '/uuv0/camera/camera_info', CameraInfo, self.callback_camera_info, queue_size=1)    
+vandy_bluerov/nodes/sonars/fls_midas_fusion.py:57:             '/uuv0/camera/image_raw', Image, self.callback_camera, queue_size=1)    
+vandy_bluerov/nodes/sonars/fls_midas_fusion.py:60:            "/uuv0/fls_echosunder", Range, self.callback_range)       
+vandy_bluerov/nodes/sonars/fls_midas_fusion.py:63:            '/uuv0/midas_absolute', Image, queue_size=1)   
+vandy_bluerov/nodes/sonars/fls_midas_fusion.py:138:                header.frame_id = 'uuv0/camera_link_depth'
+vandy_bluerov/nodes/nav_control/task_rth.py:33:            '/uuv0/home_position', LatLonDepth, self.callback_home_position, queue_size=1)    
+vandy_bluerov/nodes/nav_control/task_rth.py:37:            '/uuv0/hsd_to_rth', HSDCommand, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_surface.py:36:        self.hsd_pub = rospy.Publisher('/uuv0/hsd_to_surface', HSDCommand, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_waypoint.py:31:            "/uuv0/cm_hsd_input", String, self.callback_cm_hsd_input)
+vandy_bluerov/nodes/nav_control/task_waypoint.py:36:            '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_pose, queue_size=1)    
+vandy_bluerov/nodes/nav_control/task_waypoint.py:39:            '/uuv0/waypoints', Float64MultiArray, self.callback_waypoint, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_waypoint.py:44:        #     "/uuv0/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+vandy_bluerov/nodes/nav_control/task_waypoint.py:52:            '/uuv0/hsd_obstacle_avoidance', HSDCommand, self.obstacle_avoidance_callback)
+vandy_bluerov/nodes/nav_control/task_waypoint.py:56:        #     "/uuv0/obstacle_near_wp", Bool, self.callback_next_wp, queue_size = 1)
+vandy_bluerov/nodes/nav_control/task_waypoint.py:59:            "/uuv0/next_wp", Bool, self.callback_next_wp, queue_size = 1)
+vandy_bluerov/nodes/nav_control/task_waypoint.py:62:            '/uuv0/waypoints_completed', Bool, queue_size=1)
+vandy_bluerov/nodes/nav_control/task_waypoint.py:65:            '/uuv0/new_waypoint', Point, queue_size=1)    
+vandy_bluerov/nodes/nav_control/task_waypoint.py:68:            '/uuv0/target_waypoint', Point, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_waypoint.py:70:            '/uuv0/target_waypoint_id', Int32, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_waypoint.py:72:            '/uuv0/hsd_to_waypoint', HSDCommand, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_waypoint.py:74:            '/uuv0/distance_to_waypoint', Float64, queue_size=1)   
+vandy_bluerov/nodes/nav_control/task_waypoint.py:76:            '/uuv0/obstacle_avoidance_direction', Float64, queue_size=1)    
+vandy_bluerov/nodes/nav_control/task_waypoint.py:79:            '/uuv0/xtrack_error', Float64, queue_size=1)   
+vandy_bluerov/nodes/nav_control/nav_mapping.py:53:            "/uuv0/hsd_to_waypoint", HSDCommand, self.callback_heading)
+vandy_bluerov/nodes/nav_control/nav_mapping.py:55:            '/uuv0/distance_to_waypoint', Float64, self.callback_wp_distance) 
+vandy_bluerov/nodes/nav_control/nav_mapping.py:64:            "/uuv0/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+vandy_bluerov/nodes/nav_control/nav_mapping.py:67:            '/uuv0/hsd_ais_avoidance', HSDCommand, queue_size=1)   
+vandy_bluerov/nodes/nav_control/nav_mapping.py:72:            "/uuv0/local_map", OccupancyGrid, queue_size = 1)
+vandy_bluerov/nodes/obstacle_generation/obstacle_distance_publisher.py:16:             'uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+vandy_bluerov/nodes/obstacle_generation/spawn_boxes.py:63:        self.robot_namespace  = 'uuv0'
+vandy_bluerov/nodes/obstacle_generation/spawn_boxes.py:187:        marker.ns = "/uuv0/collision_objects"
+vandy_bluerov/nodes/obstacle_generation/spawn_dynamic_obstacles.py:110:            self.odom_sub = rospy.Subscriber('/uuv0/pose_gt_ned', Odometry, self.odom_cb, queue_size=1)
+vandy_bluerov/nodes/obstacle_generation/spawn_dynamic_obstacles.py:112:            rospy.wait_for_message('/uuv0/pose_gt_ned', Odometry, timeout=100)
+vandy_bluerov/nodes/obstacle_generation/spawn_dynamic_obstacles.py:290:        Get the transform from uuv0/base_link to world to get the
+vandy_bluerov/nodes/obstacle_generation/spawn_dynamic_obstacles.py:293:        Assumes the transform from uuv0/base_link to world is being published
+vandy_bluerov/nodes/obstacle_generation/spawn_dynamic_obstacles.py:312:            "world", "uuv0/base_link", rospy.Time(0), rospy.Duration(10)
+vandy_bluerov/nodes/obstacle_generation/spawn_dynamic_obstacles.py:352:        self.reference_frame = "uuv0/base_link"
+vandy_bluerov/nodes/rrt_planner/rrt_planner.py:627:            '/uuv0/target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
+vandy_bluerov/nodes/rrt_planner/rrt_planner.py:631:            '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+vandy_bluerov/nodes/rrt_planner/rrt_planner.py:635:            "/uuv0/obstacle_map", OccupancyGrid, self.callback_obstacle_map, queue_size=1)
+vandy_bluerov/nodes/rrt_planner/rrt_planner.py:639:            self.rrt_points_pub = rospy.Publisher( '/uuv0/rrt_points', PoseArray, queue_size=1)
+vandy_bluerov/nodes/rrt_planner/rrt_planner.py:644:        self.rrt_path_pub = rospy.Publisher( '/uuv0/rrt_path', Path, queue_size=1)
+vandy_bluerov/nodes/rrt_planner/rrt_planner.py:649:        self.publish_rrt_hsd_pub = rospy.Publisher( '/uuv0/publish_rrt_hsd', Bool, queue_size=1)
+vandy_bluerov/nodes/rrt_planner/rrt_hsd_publisher.py:81:            '/uuv0/publish_rrt_hsd', Bool, self.publish_rrt_hsd_callback, queue_size=1) 
+vandy_bluerov/nodes/rrt_planner/rrt_hsd_publisher.py:85:        self.rrt_path_subscriber = rospy.Subscriber('/uuv0/rrt_path', Path, self.rrt_path_callback, queue_size = 1)
+vandy_bluerov/nodes/rrt_planner/rrt_hsd_publisher.py:90:            '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+vandy_bluerov/nodes/rrt_planner/rrt_hsd_publisher.py:94:        #self.hsd_pub = rospy.Publisher( '/uuv0/hsd_to_waypoint_rrt', HSDCommand, queue_size=1)
+vandy_bluerov/nodes/rrt_planner/rrt_hsd_publisher.py:95:        self.hsd_pub = rospy.Publisher( '/uuv0/hsd_to_waypoint_rrt', HSDCommand, queue_size=1)
+vandy_bluerov/nodes/rrt_planner/readme.md:56:rostopic echo /uuv0/hsd_command
+vandy_bluerov/nodes/rrt_planner/readme.md:57:rostopic echo /uuv0/target_waypoint
+vandy_bluerov/nodes/rrt_planner/readme.md:58:rostopic echo /uuv0/pose_gt_noisy_ned
+vandy_bluerov/nodes/rrt_planner/readme.md:59:rostopic echo /uuv0/obstacle_map
+vandy_bluerov/nodes/rrt_planner/readme.md:60:rostopic echo /uuv0/rrt_path
+vandy_bluerov/nodes/rrt_planner/readme.md:61:rostopic echo /uuv0/rrt_points
+vandy_bluerov/nodes/bluerov_eval.py:19:            '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_pose, queue_size=1)  
+vandy_bluerov/nodes/bluerov_eval.py:23:            "/uuv0/pipeline_distance_from_mapping", FloatStamped, self.callback_pipeline_distance_sub)
+vandy_bluerov/nodes/bluerov_eval.py:28:            "/uuv0/pipeline_in_view", Header, self.callback_pipeline_in_view_sub)
+vandy_bluerov/nodes/bluerov_eval.py:33:            "/uuv0/pipeline_in_view_gt", Header,  self.callback_pipeline_in_view_gt_sub)
+vandy_bluerov/nodes/bluerov_eval.py:38:            "/uuv0/pipeline_in_sls", FloatStamped, self.callback_pipeline_in_sls_sub)
+vandy_bluerov/nodes/bluerov_eval.py:43:            "/uuv0/pipeline_in_gt", FloatStamped, self.callback_pipeline_in_gt_sub)
+vandy_bluerov/nodes/bluerov_eval.py:48:            '/uuv0/hsd_obstacle_avoidance', HSDCommand, self.callback_obstacle_avoidance)
+vandy_bluerov/nodes/bluerov_eval.py:52:            '/uuv0/degradation_gt', Float32MultiArray, self.callback_degradation_gt) 
+vandy_bluerov/nodes/bluerov_eval.py:57:            '/uuv0/thruster_reallocation', Float32MultiArray, self.callback_thruster_reallocation)
+vandy_bluerov/nodes/bluerov_eval.py:62:            '/uuv0/hsd_command', HSDCommand, self.callback_hsd_cmd)
+vandy_bluerov/nodes/bluerov_eval.py:65:            "/uuv0/cm_am/left", Float32MultiArray, self.callback_lec2_am_left)
+vandy_bluerov/nodes/bluerov_eval.py:67:            "/uuv0/cm_am/right", Float32MultiArray, self.callback_lec2_am_right)
+vandy_bluerov/nodes/bluerov_eval.py:73:            '/uuv0/xtrack_error', Float64, self.callback_xtrack_error) 
+vandy_bluerov/nodes/bluerov_eval.py:76:            '/uuv0/waypoints_completed', Bool, self.callback_waypoints_completed)       
+vandy_bluerov/nodes/plot_reachability_results.py:17:        self.reachability_result=rospy.Subscriber('/uuv0/fls_output',FloatStamped,self.fls_callback)
+vandy_bluerov/nodes/degradation_announcement.py:25:        self.pub = rospy.Publisher('/uuv0/uuv_degradation_mode', String, queue_size=1)   
+vandy_bluerov/nodes/fligh_data_recorder/fdr_tx.py:31:            '/uuv0/waypoints', Float64MultiArray, self.callback_waypoint, queue_size=1)   
+vandy_bluerov/nodes/fligh_data_recorder/fdr_locator.py:27:            '/uuv0/waypoints_completed', Bool, self.callback_waypoints_completed)
+vandy_bluerov/nodes/fligh_data_recorder/fdr_locator.py:30:            '/uuv0/fdr_pos_est', Point, queue_size=1)  
+vandy_bluerov/nodes/fligh_data_recorder/fdr_rx.py:24:             '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1)            
+vandy_bluerov/nodes/thruster_functions.py:28:            '/uuv0/thrusters/0' + self.topic_suffix_default, FloatStamped, queue_size=1)
+vandy_bluerov/nodes/thruster_functions.py:30:            '/uuv0/thrusters/1' + self.topic_suffix_default, FloatStamped, queue_size=1)
+vandy_bluerov/nodes/thruster_functions.py:32:            '/uuv0/thrusters/2' + self.topic_suffix_default, FloatStamped, queue_size=1)
+vandy_bluerov/nodes/thruster_functions.py:34:            '/uuv0/thrusters/3' + self.topic_suffix_default, FloatStamped, queue_size=1)
+vandy_bluerov/nodes/thruster_functions.py:36:            '/uuv0/thrusters/4' + self.topic_suffix_default, FloatStamped, queue_size=1)
+vandy_bluerov/nodes/thruster_functions.py:38:            '/uuv0/thrusters/5' + self.topic_suffix_default, FloatStamped, queue_size=1)
+vandy_bluerov/nodes/thruster_functions.py:135:            rospy.wait_for_service('uuv0/thruster_manager/get_config', timeout=5)
+vandy_bluerov/nodes/thruster_functions.py:141:                'uuv0/thruster_manager/get_config',
+vandy_bluerov/nodes/thruster_functions.py:157:            rospy.wait_for_service('uuv0/thruster_manager/set_config', timeout=5)
+vandy_bluerov/nodes/thruster_functions.py:164:                'uuv0/thruster_manager/set_config',
+vandy_bluerov/nodes/thruster_functions.py:178:            rospy.wait_for_service('uuv0/reset_controller', timeout=5)
+vandy_bluerov/nodes/thruster_functions.py:185:                'uuv0/reset_controller',
+vandy_bluerov/nodes/thruster_functions.py:197:            rospy.wait_for_service('uuv0/thruster_manager/get_thrusters_info', timeout=5)
+vandy_bluerov/nodes/thruster_functions.py:203:                'uuv0/thruster_manager/get_thrusters_info',
+vandy_bluerov/nodes/thruster_functions.py:216:            rospy.wait_for_service('uuv0/thruster_manager/set_tam', timeout=5)
+vandy_bluerov/nodes/thruster_functions.py:222:                'uuv0/thruster_manager/set_tam',
+vandy_bluerov/nodes/thruster_functions.py:234:            rospy.wait_for_service('uuv0/hold_vehicle', timeout=5)
+vandy_bluerov/nodes/thruster_functions.py:240:                'uuv0/hold_vehicle',
+vandy_bluerov/nodes/vandy_sys_id.py:32:        self.odometry_sub=rospy.Subscriber("uuv0/pose_gt", Odometry,self.odom_callback,queue_size = 20)
+vandy_bluerov/nodes/vandy_sys_id.py:33:        self.hsd =rospy.Subscriber("uuv0/hsd_command",HSDCommand,self.master_callback,queue_size = 20)
+vandy_bluerov/behaviour_tree_gen/task_obstacle_avoidance.py:44:        self.hsd_obstacle_avoidance__sub = rospy.Subscriber( '/uuv0/hsd_obstacle_avoidance',
+vandy_bluerov/behaviour_tree_gen/task_obstacle_avoidance.py:49:        self.hsd_pipeline_mapping__sub = rospy.Subscriber( '/uuv0/hsd_pipeline_mapping',
+vandy_bluerov/behaviour_tree_gen/task_obstacle_avoidance.py:54:        self.hsd_waypoint__sub = rospy.Subscriber( '/uuv0/hsd_to_waypoint',
+vandy_bluerov/behaviour_tree_gen/task_obstacle_avoidance.py:59:        self.hsd_waypoint_rrt__sub = rospy.Subscriber( '/uuv0/hsd_to_waypoint_rrt',
+vandy_bluerov/behaviour_tree_gen/task_obstacle_avoidance.py:64:        self.hsd_pub_pub = rospy.Publisher( '/uuv0/hsd_command',
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:64:        self.lec_input__sub = rospy.Subscriber( '/uuv0/thruster_cmd_logging',
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:69:        self.degradation_detector__pub = rospy.Publisher( '/uuv0/degradation_detector',
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:73:        self.degradation_detector_am__pub = rospy.Publisher( '/uuv0/degradation_detector_am/p_value',
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:136:            INPUT_TOPIC = "/uuv0/thruster_cmd_logging"
+vandy_bluerov/behaviour_tree_gen/bb_hsd_surface2bb.py:42:        * hsd_to_surface: the raw message from topic /uuv0/hsd_to_surface
+vandy_bluerov/behaviour_tree_gen/task_loiter_task.py:40:        self.hsd_pipeline_mapping__sub = rospy.Subscriber( '/uuv0/hsd_pipeline_mapping',
+vandy_bluerov/behaviour_tree_gen/task_loiter_task.py:45:        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+vandy_bluerov/behaviour_tree_gen/bb_hsd_rth2bb.py:42:        * hsd_to_rth: the raw message from topic /uuv0/hsd_to_rth
+vandy_bluerov/behaviour_tree_gen/task_surface_task.py:40:        self.hsd_to_surface__sub = rospy.Subscriber( '/uuv0/hsd_to_surface',
+vandy_bluerov/behaviour_tree_gen/task_surface_task.py:45:        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+vandy_bluerov/behaviour_tree_gen/bb_fls2bb.py:42:        * fls_range: the raw message from topic /uuv0/fls_echosunder
+vandy_bluerov/behaviour_tree_gen/bb_ddlec2bb.py:43:        * dd_output: the raw message from topic /uuv0/degradation_detector
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:65:        self.bb_mission_pub = rospy.Publisher( '/uuv0/bb_mission',
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:100:            '/uuv0/home_position', LatLonDepth, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:104:            '/uuv0/waypoints', Float64MultiArray, queue_size=1)   
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:107:            '/uuv0/waypoint_markers', MarkerArray, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:110:            '/uuv0/fdr_pos_est', Point, self.callback_fdr)
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:113:            "/uuv0/next_wp", Bool, queue_size = 1)
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:116:            '/uuv0/new_waypoint', Point, self.callback_new_wp)  
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:119:            "/uuv0/obstacle_near_wp", Int32, self.callback_obstacle_near_wp, queue_size = 1)
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:122:            '/uuv0/target_waypoint_id', Int32, self.callback_target_wp_id, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/task_mission_server.py:126:             '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/task_tracking_task.py:40:        self.hsd_pipeline_mapping__sub = rospy.Subscriber( '/uuv0/hsd_pipeline_mapping',
+vandy_bluerov/behaviour_tree_gen/task_tracking_task.py:45:        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+vandy_bluerov/behaviour_tree_gen/bb_rth2bb.py:42:        * bb_rth: the raw message from topic /uuv0/bb_rth
+vandy_bluerov/behaviour_tree_gen/bb_battery2bb.py:42:        * battery: the raw message from topic /uuv0/pixhawk_hw
+vandy_bluerov/behaviour_tree_gen/bb_hsd_wp_rrt2bb.py:42:        * hsd_to_waypoint_rrt: the raw message from topic /uuv0/hsd_to_waypoint_rrt
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:50:            '/uuv0/thruster_reallocation', Float32MultiArray, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:132:            rospy.wait_for_service('/uuv0/thruster_manager/get_thrusters_info', timeout=5)
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:134:            raise rospy.ROSException('/uuv0/thruster_manager/get_thrusters_info Service not available!')
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:138:                '/uuv0/thruster_manager/get_thrusters_info',
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:151:            rospy.wait_for_service('/uuv0/thruster_manager/set_tam', timeout=5)
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:153:            raise rospy.ROSException('/uuv0/thruster_manager/set_tam Service not available!')
+vandy_bluerov/behaviour_tree_gen/task_reallocate_task.py:157:                '/uuv0/thruster_manager/set_tam',
+vandy_bluerov/behaviour_tree_gen/task_next_mission.py:39:        self.bb_mission_sub = rospy.Subscriber( '/uuv0/bb_mission',
+vandy_bluerov/behaviour_tree_gen/task_next_mission.py:44:        self.next_wp__pub = rospy.Publisher( '/uuv0/next_wp',
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:87:topic PixhawkHW pixhawk_hw /uuv0/pixhawk_hw;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:88:topic Bool bb_geofence /uuv0/bb_geofence;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:89:topic Bool bb_pipelost /uuv0/bb_pipe_lost;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:90:topic Float32 bb_home_dist /uuv0/bb_home_dist;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:93:topic String bb_mission /uuv0/bb_mission;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:94:topic Bool bb_rth /uuv0/bb_rth;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:95:topic Bool bb_sensor_failure /uuv0/sensor_failure_rpm;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:96:topic Bool bb_waypoints_completed /uuv0/waypoints_completed;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:97:topic HSDCommand hsd_pipeline_mapping /uuv0/hsd_pipeline_mapping;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:98:topic HSDCommand hsd_to_surface /uuv0/hsd_to_surface;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:99:topic HSDCommand hsd_to_rth /uuv0/hsd_to_rth;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:100:topic HSDCommand hsd_to_waypoint /uuv0/hsd_to_waypoint;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:101:topic HSDCommand hsd_to_waypoint_rrt /uuv0/hsd_to_waypoint_rrt;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:102:topic HSDCommand hsd_obstacle_avoidance /uuv0/hsd_obstacle_avoidance;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:103:topic HSDCommand hsd_command /uuv0/hsd_command;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:104:topic String cm_hsd_input /uuv0/cm_hsd_input;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:105:topic Float32MultiArray degradation_detector_am /uuv0/degradation_detector_am/p_value;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:106:topic Float32MultiArray lec_input /uuv0/thruster_cmd_logging;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:107:topic Bool next_wp /uuv0/next_wp;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:108:topic Odometry odom /uuv0/pose_gt_noisy_ned;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:109:topic Range fls_range /uuv0/fls_echosunder;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:112:topic Float32MultiArray         degradation_detector    /uuv0/degradation_detector;
+vandy_bluerov/behaviour_tree_gen/textx_model/bluerov.bt:113:topic Header                    obstacle_in_view        /uuv0/obstacle_in_view;
+vandy_bluerov/behaviour_tree_gen/bb_hsd_pipe2bb.py:42:        * hsd_pipeline_mapping: the raw message from topic /uuv0/hsd_pipeline_mapping
+vandy_bluerov/behaviour_tree_gen/bb_fls_warning2bb.py:44:        * obstacle_in_view: the raw message from topic /uuv0/obstacle_in_view
+vandy_bluerov/behaviour_tree_gen/bb_waypoints_completed2bb.py:42:        * bb_waypoints_completed: the raw message from topic /uuv0/waypoints_completed
+vandy_bluerov/behaviour_tree_gen/bb_rtreach2bb.py:83:        self.rtreach_long_term_pub = rospy.Publisher( '/uuv0/rtreach_long_term',
+vandy_bluerov/behaviour_tree_gen/task_rth_task.py:40:        self.hsd_to_rth__sub = rospy.Subscriber( '/uuv0/hsd_to_rth',
+vandy_bluerov/behaviour_tree_gen/task_rth_task.py:45:        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+vandy_bluerov/behaviour_tree_gen/task_waypoint_task.py:41:        self.hsd_waypoint__sub = rospy.Subscriber( '/uuv0/hsd_to_waypoint',
+vandy_bluerov/behaviour_tree_gen/task_waypoint_task.py:46:        self.hsd_waypoint_completed__sub = rospy.Subscriber( '/uuv0/waypoints_completed',
+vandy_bluerov/behaviour_tree_gen/task_waypoint_task.py:51:        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+vandy_bluerov/behaviour_tree_gen/task_waypoint_task.py:55:        self.next_wp__pub = rospy.Publisher( '/uuv0/next_wp',
+vandy_bluerov/behaviour_tree_gen/bb_geofence2bb.py:42:        * bb_geofence: the raw message from topic /uuv0/bb_geofence
+vandy_bluerov/behaviour_tree_gen/bb_home2bb.py:42:        * bb_home_dist: the raw message from topic /uuv0/bb_home_dist
+vandy_bluerov/behaviour_tree_gen/bb_sensor_failure2bb.py:42:        * bb_sensor_failure: the raw message from topic /uuv0/sensor_failure_rpm
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:153:            topic_name="/uuv0/hsd_pipeline_mapping" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:157:            topic_name="/uuv0/hsd_to_surface" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:161:            topic_name="/uuv0/hsd_to_rth" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:165:            topic_name="/uuv0/hsd_to_waypoint" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:169:            topic_name="/uuv0/hsd_to_waypoint_rrt" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:173:            topic_name="/uuv0/fls_echosunder" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:177:            topic_name="/uuv0/obstacle_in_view", 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:183:            topic_name="/uuv0/pixhawk_hw", 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:192:            topic_name="/uuv0/bb_rth", 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:197:            topic_name="/uuv0/bb_geofence" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:213:            topic_name="/uuv0/bb_pipe_lost" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:217:            topic_name="/uuv0/sensor_failure_rpm" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:221:            topic_name="/uuv0/waypoints_completed" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:225:            topic_name="/uuv0/bb_home_dist", 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:230:            topic_name="/uuv0/bb_mission" 
+vandy_bluerov/behaviour_tree_gen/BlueROV_tree.py:234:            topic_name="/uuv0/degradation_detector", 
+vandy_bluerov/behaviour_tree_gen/bt_input.py:75:            '/uuv0/waypoints_completed', Bool, self.waypoint_completed_callback, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:79:             '/uuv0/pose_gt_noisy_ned', Odometry, self.odometry_callback, queue_size=1)    
+vandy_bluerov/behaviour_tree_gen/bt_input.py:83:            "/uuv0/pipeline_in_view", Header, self.pipeline_in_view_callback)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:89:            "/uuv0/pixhawk_hw", PixhawkHW, self.pixhawk_data_callback)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:95:            '/uuv0/home_position', LatLonDepth, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/bt_input.py:100:            '/uuv0/hsd_command', HSDCommand, self.HSD_command_callback, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:104:        #     '/uuv0/am_values', Float32MultiArray, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/bt_input.py:107:            '/uuv0/thruster_cmd_logging', Float32MultiArray, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/bt_input.py:110:            '/uuv0/degradation_gt', Float32MultiArray, queue_size=1) 
+vandy_bluerov/behaviour_tree_gen/bt_input.py:113:            '/uuv0/sensor_failure_rpm', Bool, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:118:            '/uuv0/is_submerged', Bool, self.is_submerged_callback, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:127:            '/uuv0/bb_rth', Bool, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:130:            '/uuv0/bb_pipe_lost', Bool, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:133:            '/uuv0/bb_geofence', Bool, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bt_input.py:136:            '/uuv0/bb_home_dist', Float32, queue_size=1)
+vandy_bluerov/behaviour_tree_gen/bb_mission2bb.py:42:        * bb_mission: the raw message from topic /uuv0/bb_mission
+vandy_bluerov/behaviour_tree_gen/bb_hsd_wp2bb.py:42:        * hsd_to_waypoint: the raw message from topic /uuv0/hsd_to_waypoint
+vandy_bluerov/behaviour_tree_gen/bb_pipe_lost2bb.py:42:        * bb_pipelost: the raw message from topic /uuv0/bb_pipe_lost
+vandy_bluerov/config/thruster_manager.yaml:2:  tf_prefix: uuv0
+vandy_bluerov/urdf/base.xacro:135:    <parent link="uuv0/base_link"/>
+vandy_bluerov/urdf/base.xacro:136:    <child link="uuv0/base_sonar_front"/>
+vandy_bluerov/urdf/base.xacro:139:<link name="uuv0/base_sonar_front">
+vandy_bluerov/urdf/base.xacro:163:    <parent link="uuv0/base_link"/>
+vandy_bluerov/urdf/base.xacro:164:    <child link="uuv0/base_sonar_bottom"/>
+vandy_bluerov/urdf/base.xacro:167:<link name="uuv0/base_sonar_bottom">
+vandy_bluerov/urdf/base.xacro:191:    <parent link="uuv0/base_link"/>
+vandy_bluerov/urdf/base.xacro:192:    <child link="uuv0/camera_link"/>
+vandy_bluerov/urdf/base.xacro:196:  <link name="uuv0/camera_link">
+vandy_bluerov/urdf/base.xacro:218:    <parent link="uuv0/camera_link"/>
+vandy_bluerov/urdf/base.xacro:219:    <child link="uuv0/camera_link_optical"/>
+vandy_bluerov/urdf/base.xacro:221:  <link name="uuv0/camera_link_optical">
+vandy_bluerov/urdf/base.xacro:228:    <parent link="uuv0/camera_link"/>
+vandy_bluerov/urdf/base.xacro:229:    <child link="uuv0/camera_link_depth"/>
+vandy_bluerov/urdf/base.xacro:231:  <link name="uuv0/camera_link_depth">
+vandy_bluerov/urdf/base.xacro:240:    <parent link="uuv0/base_link"/>
+vandy_bluerov/urdf/base.xacro:241:    <child link="uuv0/base_sss"/>
+vandy_bluerov/urdf/base.xacro:244:<link name="uuv0/base_sss">
+vandy_bluerov/urdf/base.xacro:251:    <parent link="uuv0/base_link"/>
+vandy_bluerov/urdf/base.xacro:252:    <child link="uuv0/base_fis"/>
+vandy_bluerov/urdf/base.xacro:255:<link name="uuv0/base_fis">
+vandy_bluerov/urdf/gazebo.xacro:94:  <gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:124:         <topicName>/uuv0/fls_echosunder</topicName>
+vandy_bluerov/urdf/gazebo.xacro:125:         <frameName>uuv0/base_sonar_front</frameName>
+vandy_bluerov/urdf/gazebo.xacro:134:  <gazebo reference="uuv0/base_sonar_bottom">        
+vandy_bluerov/urdf/gazebo.xacro:164:         <topicName>/uuv0/altimeter_echosunder</topicName>
+vandy_bluerov/urdf/gazebo.xacro:165:         <frameName>uuv0/base_sonar_bottom</frameName>
+vandy_bluerov/urdf/gazebo.xacro:172: <gazebo reference="uuv0/camera_link_optical">
+vandy_bluerov/urdf/gazebo.xacro:203:        <frameName>uuv0/camera_link_optical</frameName>
+vandy_bluerov/urdf/gazebo.xacro:215:<gazebo reference="uuv0/camera_link_depth">
+vandy_bluerov/urdf/gazebo.xacro:216:  <sensor name="uuv0/camera_link_depth_camera" type="depth">
+vandy_bluerov/urdf/gazebo.xacro:230:    <plugin name="uuv0/camera_link_depth_controller" filename="libgazebo_ros_openni_kinect.so">
+vandy_bluerov/urdf/gazebo.xacro:240:      <frameName>uuv0/camera_link_depth</frameName>
+vandy_bluerov/urdf/gazebo.xacro:257:<gazebo reference="uuv0/base_sss">
+vandy_bluerov/urdf/gazebo.xacro:259:      <sensor name="uuv0/base_sss" type="ray">
+vandy_bluerov/urdf/gazebo.xacro:283:        <plugin name="uuv0/base_sss_plugin" filename="libgazebo_ros_laser.so">
+vandy_bluerov/urdf/gazebo.xacro:284:          <topicName>/uuv0/vu_sss</topicName>
+vandy_bluerov/urdf/gazebo.xacro:294:<gazebo reference="uuv0/base_fis">
+vandy_bluerov/urdf/gazebo.xacro:296:      <sensor name="uuv0/base_fis" type="ray">
+vandy_bluerov/urdf/gazebo.xacro:317:        <plugin name="uuv0/base_fis_plugin" filename="libgazebo_ros_laser.so">
+vandy_bluerov/urdf/gazebo.xacro:318:          <topicName>/uuv0/vu_fis</topicName>
+vandy_bluerov/urdf/gazebo.xacro:328:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:360:         <topicName>/uuv0/fls_sonar_0</topicName>
+vandy_bluerov/urdf/gazebo.xacro:361:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:368:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:400:         <topicName>/uuv0/fls_sonar_1</topicName>
+vandy_bluerov/urdf/gazebo.xacro:401:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:408:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:440:         <topicName>/uuv0/fls_sonar_2</topicName>
+vandy_bluerov/urdf/gazebo.xacro:441:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:448:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:480:         <topicName>/uuv0/fls_sonar_3</topicName>
+vandy_bluerov/urdf/gazebo.xacro:481:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:488:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:520:         <topicName>/uuv0/fls_sonar_4</topicName>
+vandy_bluerov/urdf/gazebo.xacro:521:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:528:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:560:         <topicName>/uuv0/fls_sonar_5</topicName>
+vandy_bluerov/urdf/gazebo.xacro:561:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:568:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:600:         <topicName>/uuv0/fls_sonar_6</topicName>
+vandy_bluerov/urdf/gazebo.xacro:601:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:608:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:640:         <topicName>/uuv0/fls_sonar_7</topicName>
+vandy_bluerov/urdf/gazebo.xacro:641:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/urdf/gazebo.xacro:648:<gazebo reference="uuv0/base_sonar_front">        
+vandy_bluerov/urdf/gazebo.xacro:680:         <topicName>/uuv0/fls_sonar_8</topicName>
+vandy_bluerov/urdf/gazebo.xacro:681:         <frameName>uuv0/base_fls_sonar</frameName>
+vandy_bluerov/rviz/bluerov2_control.rviz:75:        uuv0/base_fis:
+vandy_bluerov/rviz/bluerov2_control.rviz:79:        uuv0/base_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:84:        uuv0/base_sonar_bottom:
+vandy_bluerov/rviz/bluerov2_control.rviz:89:        uuv0/base_sonar_front:
+vandy_bluerov/rviz/bluerov2_control.rviz:94:        uuv0/base_sss:
+vandy_bluerov/rviz/bluerov2_control.rviz:98:        uuv0/battery_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:102:        uuv0/camera_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:107:        uuv0/camera_link_depth:
+vandy_bluerov/rviz/bluerov2_control.rviz:111:        uuv0/camera_link_optical:
+vandy_bluerov/rviz/bluerov2_control.rviz:115:        uuv0/dvl_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:120:        uuv0/dvl_sonar0_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:125:        uuv0/dvl_sonar1_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:130:        uuv0/dvl_sonar2_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:135:        uuv0/dvl_sonar3_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:140:        uuv0/gps_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:144:        uuv0/pose_sensor_link_default:
+vandy_bluerov/rviz/bluerov2_control.rviz:148:        uuv0/pose_sensor_link_noisy:
+vandy_bluerov/rviz/bluerov2_control.rviz:152:        uuv0/pressure_link:
+vandy_bluerov/rviz/bluerov2_control.rviz:157:        uuv0/thruster_0:
+vandy_bluerov/rviz/bluerov2_control.rviz:162:        uuv0/thruster_1:
+vandy_bluerov/rviz/bluerov2_control.rviz:167:        uuv0/thruster_2:
+vandy_bluerov/rviz/bluerov2_control.rviz:172:        uuv0/thruster_3:
+vandy_bluerov/rviz/bluerov2_control.rviz:177:        uuv0/thruster_4:
+vandy_bluerov/rviz/bluerov2_control.rviz:182:        uuv0/thruster_5:
+vandy_bluerov/rviz/bluerov2_control.rviz:188:      Robot Description: uuv0/robot_description
+vandy_bluerov/rviz/bluerov2_control.rviz:246:      Topic: /uuv0/pose_gt_noisy_ned
+vandy_bluerov/rviz/bluerov2_control.rviz:258:      Topic: /uuv0/thrusters/0/thrust_wrench
+vandy_bluerov/rviz/bluerov2_control.rviz:272:      Topic: /uuv0/thrusters/1/thrust_wrench
+vandy_bluerov/rviz/bluerov2_control.rviz:286:      Topic: /uuv0/thrusters/2/thrust_wrench
+vandy_bluerov/rviz/bluerov2_control.rviz:300:      Topic: /uuv0/thrusters/3/thrust_wrench
+vandy_bluerov/rviz/bluerov2_control.rviz:314:      Topic: /uuv0/thrusters/4/thrust_wrench
+vandy_bluerov/rviz/bluerov2_control.rviz:328:      Topic: /uuv0/thrusters/5/thrust_wrench
+vandy_bluerov/rviz/bluerov2_control.rviz:335:      Marker Topic: /uuv0/waypoint_markers
+vandy_bluerov/rviz/bluerov2_control.rviz:355:      Topic: /uuv0/obstacle_map
+vandy_bluerov/rviz/bluerov2_control.rviz:365:      Topic: /uuv0/pipeline_map
+vandy_bluerov/rviz/bluerov2_control.rviz:375:      Topic: /uuv0/ais_map
+vandy_bluerov/rviz/bluerov2_control.rviz:385:      Topic: /uuv0/local_map
+vandy_bluerov/rviz/bluerov2_control.rviz:396:      Topic: /uuv0/fls_echosunder
+vandy_bluerov/rviz/bluerov2_control.rviz:406:      Topic: /uuv0/altimeter_echosunder
+vandy_bluerov/rviz/bluerov2_control.rviz:993:      Topic: /uuv0/obstacle_map_local
+vandy_bluerov/rviz/bluerov2_control.rviz:1015:      Image Topic: /uuv0/camera/image_raw
+vandy_bluerov/rviz/bluerov2_control.rviz:1039:      Image Topic: /uuv0/midas_absolute
+vandy_bluerov/rviz/bluerov2_control.rviz:1104:      Topic: /uuv0/vu_sss
+vandy_bluerov/rviz/bluerov2_control.rviz:1134:      Topic: /uuv0/vu_fis
+vandy_bluerov/rviz/bluerov2_control.rviz:1245:      Target Frame: uuv0/base_link
+vandy_bluerov/rviz/bluerov2_control.rviz:1261:        Target Frame: uuv0/base_link
+vandy_bluerov/rviz/bluerov2_control.rviz:1276:        Target Frame: uuv0/base_link
+vandy_bluerov/launch/thruster_failure.launch:7:        <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/bluerov_bt.launch:2:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/resonate.launch:2:  <arg name="degradation_topic" default="/uuv0/degradation_detector"/>
+vandy_bluerov/launch/resonate.launch:3:  <arg name="reallocation_topic" default="/uuv0/thruster_reallocation"/>
+vandy_bluerov/launch/map_based_pipe_tracking.launch:6:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/task_surface.launch:6:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/nav_mapping.launch:4:	<arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/map_based_obstacle_avoidance.launch:6:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/mavlink_interface.launch:5:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/obstacle_mapping.launch:4:	<arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/obstacle_mapping.launch:31:		<node pkg="tf" type="static_transform_publisher" name="fixed_map" args="0 0 0 0 0 0   /uuv0/obstacle_map /world 100" />
+vandy_bluerov/launch/rrt_planner.launch:4:	<arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/speed_publisher.launch:3:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/send_hsd.launch:6:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/upload_bluerov2.launch:31:  <arg name="namespace" default="uuv0"/>
+vandy_bluerov/launch/task_rth.launch:6:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/start_bluerov_uuv.launch:11:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/bluerov2_record.launch:7:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/bluerov2_record.launch:42:        /uuv0/fls_echosunder 
+vandy_bluerov/launch/bluerov2_record.launch:44:        /uuv0/fls_lec 
+vandy_bluerov/launch/bluerov2_record.launch:45:        /uuv0/fls_output 
+vandy_bluerov/launch/bluerov2_record.launch:46:        /uuv0/fls_output_gt 
+vandy_bluerov/launch/bluerov2_record.launch:47:        /uuv0/fls_lec_uuv_state_gt
+vandy_bluerov/launch/bluerov2_record.launch:48:        /uuv0/imu 
+vandy_bluerov/launch/bluerov2_record.launch:49:        /uuv0/thruster_cmd_logging 
+vandy_bluerov/launch/bluerov2_record.launch:50:        /uuv0/hsd_command 
+vandy_bluerov/launch/bluerov2_record.launch:51:        /uuv0/pose_gt_noisy_ned'
+vandy_bluerov/launch/task_waypoint.launch:2:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/start_bluerov_simulation.launch:11:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/unpause_timeout.launch:12:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/anomaly_detector.launch:5:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/pixhawk_hw_emulation.launch:6:  <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/start_bluerov_sim.launch:11:    <arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/pipeline_mapping.launch:18:	<arg name="uuv_name" default="uuv0"/>
+vandy_bluerov/launch/pipeline_mapping.launch:20:		<node pkg="tf" type="static_transform_publisher" name="fixed_pipeline_map" args="0 0 0 0 0 0   /uuv0/pipeline_map /uuv0/obstacle_map 100" />
+vandy_bluerov/launch/degradation_tester.launch:7:  <arg name="uuv_name" default="uuv0"/>

@@ -1,0 +1,39 @@
+lec2lite/nodes/lec2lite_am.py:28:# ALC TOOLCHAIN - VAE AM
+lec2lite/nodes/lec2lite_am.py:49:        assert self.am_type in ['vae', 'svdd'], "Not supported AM type"
+lec2lite/nodes/lec2lite_am.py:57:        ###### ALC VAE AM
+lec2lite/nodes/lec2lite_am.py:58:        #use the am in the current folder
+lec2lite/nodes/lec2lite_am.py:62:        print("AM Path:")
+lec2lite/nodes/lec2lite_am.py:67:        self.am = _ams.assurance_monitors[0]
+lec2lite/nodes/lec2lite_am.py:82:        return self.am.evaluate(x, None)
+lec2lite/nodes/lec2lite_am.py:96:        rospy.loginfo(" >> LEC2 {}-{}-AM \tlog(m): {}, det: {} Time elapsed (hh:mm:ss.ms) {}".format(self.am_type, self.side, am_output[-2], am_output[-1], time_elapsed))
+lec3lite/nodes/lec3_lite_am.py:15:# ALC TOOLCHAIN - VAE AM
+lec3lite/nodes/lec3_lite_am.py:35:        assert self.am_type in ['vae', 'svdd'], "Not supported AM type"
+lec3lite/nodes/lec3_lite_am.py:42:        ###### ALC VAE AM
+lec3lite/nodes/lec3_lite_am.py:43:        #use the am in the current folder
+lec3lite/nodes/lec3_lite_am.py:47:        print("AM Path:")
+lec3lite/nodes/lec3_lite_am.py:52:        self.am = _ams.assurance_monitors[0]
+lec3lite/nodes/lec3_lite_am.py:61:        return self.am.evaluate(x, None)
+lec3lite/nodes/lec3_lite_am.py:72:        rospy.loginfo(" >> LEC3 {}-AM \tlog(m): {}, det: {} Time elapsed (hh:mm:ss.ms) {}".format(self.am_type, am_output[-2], am_output[-1], time_elapsed))
+resonate/analyze_datafiles.py:18:    # "monitor_result": "AM Log Martingale",
+resonate/analyze_datafiles.py:47:    # ax1.plot(times, datafile.am_moving_avg, label="AM LM Moving Avg.")
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:210:        # and CM approves LEC2 AM
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:415:                # If AM is good - BT controlled:
+vandy_bluerov/nodes/pipe_tracking/pipe_mapping.py:428:                # If AM is good - BT controlled:
+vandy_bluerov/nodes/obstacle_avoidance/obstacle_mapping.py:67:            # AM
+vandy_bluerov/nodes/resonate.py:72:        #when AM confident and LEC output is degraded
+vandy_bluerov/nodes/resonate.py:103:        # # Similarly for AM value, multiply total probability by P(B1 | AM) / P(B1)
+vandy_bluerov/nodes/bluerov_eval.py:117:            # Check if UUV heading change triggered LEC2 AM or not
+vandy_bluerov/nodes/bluerov_eval.py:132:                        # print('Heading change DOES NOT triggered LEC2 AM')
+vandy_bluerov/nodes/bluerov_eval.py:135:                        # print('Heading change triggered LEC2 AM')
+vandy_bluerov/nodes/bluerov_eval.py:174:    * LEC2 AM not triggered     : %s [sec]
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:85:            self.am = _ams.assurance_monitors[0]
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:87:            self.am = None
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:122:        if (not self.am):
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:126:        if (self.am and len(self.lec_input__msg.data[0:self.ann_input_len]) == self.ann_input_len):
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:133:            # Run LEC/AM prediction
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:142:            [computed_p_values, prediction, credibility, confidence, decisions, am_output, softmax, combined_am_output] = self.am.evaluate(model_input, None, **params) 
+vandy_bluerov/launch/obstacle_mapping.launch:48:		<!-- AM for LEC3LITE input (FLS Scan) -->
+vandy_bluerov/launch/bluerov2_record.launch:35:      <!-- For FLS AM test -->
+vandy_bluerov/launch/start_bluerov_simulation.launch:14:    <!-- CUDA acceleration for AM/pytorch -->
+vandy_bluerov/launch/pipeline_mapping.launch:3:	<!-- LEC2 AM paths -->
+vandy_bluerov/launch/pipeline_mapping.launch:59:	<!-- AM for LEC2LITE input (SSS Scan) -->

@@ -1,0 +1,11 @@
+lec2lite/nodes/lec2lite_am.py:28:# ALC TOOLCHAIN - VAE AM
+lec2lite/nodes/lec2lite_am.py:57:        ###### ALC VAE AM
+lec3lite/nodes/lec3_lite_am.py:15:# ALC TOOLCHAIN - VAE AM
+lec3lite/nodes/lec3_lite_am.py:42:        ###### ALC VAE AM
+resonate/datafile.py:179:    BAGFILE_PATH = "/home/charlie/alc/bluerov2/resonate/estimation_data/No-Faults/static/run3/task0/recording.bag"
+vandy_bluerov/nodes/pixhawk_hw_emulation.py:3:# Description:  Emulation pixhawk (BlueROV2) sensor data for ALC simulation
+vandy_bluerov/nodes/pixhawk_hw_emulation.py:118:    print('Starting Pixhawk (BlueROV2) sensor data emulation for ALC simulation')
+vandy_bluerov/behaviour_tree_gen/task_dd_lec_task.py:33:########## Addition for compatability with ALC Toolchain ##########
+vandy_bluerov/launch/start_bluerov_uuv.launch:261:    <!--ROS Timeout for ALC -->
+vandy_bluerov/launch/ros_timeout.launch:3:Description:  ROS Timeout for ALC
+vandy_bluerov/launch/pixhawk_hw_emulation.launch:3:Description:  Emulation pixhawk (BlueROV2) sensor data for ALC simulation
