@@ -38,12 +38,13 @@ This script will install BlueROV2 standalone code only with LECs and BehaviorTre
 source install.sh
 ```
 
-The install
-         
+
+- The install
+
     creates folders alc_workspace and sets up the envrionment variables alc_home, alc_working_dir.
-        
+    
     pulls dockers alc:latest, alc_data:latest and  roskinetic-core.
-        
+    
     copies data into alc_workspace from the alc_data docker
 
 
