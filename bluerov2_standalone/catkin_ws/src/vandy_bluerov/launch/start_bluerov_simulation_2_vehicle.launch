@@ -8,7 +8,9 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     <!--            UUV ARGS             -->
     <!-- ############################### -->
 
-    <arg name="uuv_name" default="uuv1"/>
+    <arg name="uuv_name" default="uuv0"/>
+    <arg name="uuv_name1" default="uuv1"/>
+
     <arg name="standard_output" default="screen"/>
 
     <!-- CUDA acceleration for AM/pytorch -->
@@ -268,7 +270,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     <!-- ############################### -->
 
 
-    <include file="$(find vandy_bluerov)/launch/start_bluerov_sim_2.launch">
+    <include file="$(find vandy_bluerov)/launch/start_bluerov_sim.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
 
         <!--Output parameters-->
@@ -395,7 +397,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <!-- Pencilbeam FLS params -->
         <arg name="max_range" value="$(arg max_range)"/>
     </include>
-  
+    
     <include file="$(find vandy_bluerov)/launch/start_bluerov_uuv.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
         <arg name="unpause_timeout" value="$(arg unpause_timeout)"/>
@@ -552,6 +554,296 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="sss_sonar_noise" value="$(arg sss_sonar_noise)"/>
         <arg name="fis_sonar_noise" value="$(arg fis_sonar_noise)"/>    
     </include>
-   
+
+    <!-- ############################### -->
+    <!--          Second Vehicle         -->
+    <!-- ############################### -->
+
+
+    <include file="$(find vandy_bluerov)/launch/start_bluerov_sim.launch">
+        <arg name="uuv_name" value="$(arg uuv_name1)"/>
+
+        <!--Output parameters-->
+        <arg name="standard_output" value="$(arg standard_output)"/>
+
+        <!-- Logging -->
+        <arg name="results_directory" value="$(arg results_directory)"/>
+
+        <!-- Fishing net generation -->
+        <arg name="enable_fishnet" value="$(arg enable_fishnet)"/>
+
+        <!-- FDR -->
+        <arg name="generate_fdr" value="$(arg generate_fdr)"/>
+
+        <arg name="uuv_max_speed" value="$(arg uuv_max_speed)"/>
+        <arg name="batt_charge" value="$(arg batt_charge)"/>
+
+        <!-- Pipeline generator -->
+        <arg name="pipe_posx" value="$(arg pipe_posx)"/> <!--30-->
+        <arg name="pipe_posy" value="$(arg pipe_posy)"/> 
+        <arg name="pipe_scale" value="$(arg pipe_scale)"/>
+        <arg name="length_min" value="$(arg length_min)"/>
+        <arg name="length_max" value="$(arg length_max)"/>
+        <arg name="angle_min" value="$(arg angle_min)"/>
+        <arg name="angle_max" value="$(arg angle_max)"/>
+        <arg name="num_segments" value="$(arg num_segments)"/>
+
+        <!-- Degradation Detector LEC enable -->
+        <arg name="enable_fault_detection" value="$(arg enable_fault_detection)"/>
+        
+        <!-- Thruster motor failure for thrust loss and amper drop in thruster power -->
+        <arg name="thruster_motor_failure" value="$(arg thruster_motor_failure)"/>
+        <arg name="thruster_id" value="$(arg thruster_id)"/>  <!-- 0..5 -->
+        <arg name="thruster_thrust_force_efficiency" value="$(arg thruster_thrust_force_efficiency)"/>
+        <arg name="thruster_motor_fail_duration" value="$(arg thruster_motor_fail_duration)"/>
+        <arg name="thruster_motor_fail_starting_time" value="$(arg thruster_motor_fail_starting_time)"/>
+        <!-- Secondaty thruster failure -->
+        <arg name="dual_thruster_failure" value="$(arg dual_thruster_failure)"/>
+        <arg name="second_thruster_id" value="$(arg second_thruster_id)"/>  <!-- 0..5 -->
+        <arg name="second_thruster_thrust_force_efficiency" value="$(arg second_thruster_thrust_force_efficiency)"/>
+        <arg name="second_thruster_motor_fail_duration" value="$(arg second_thruster_motor_fail_duration)"/>
+        <arg name="second_thruster_motor_fail_starting_time" value="$(arg second_thruster_motor_fail_starting_time)"/>
+    
+        <arg name="enable_fault_detection_tester" value="$(arg enable_fault_detection_tester)"/>
+
+        <!-- RPM sensor failure -->
+        <arg name="failed_rpm_sensor" value="$(arg failed_rpm_sensor)"/>
+        <arg name="failed_rpm_sensor_enable" value="$(arg failed_rpm_sensor_enable)"/>
+        <arg name="failed_rpm_sensor_start" value="$(arg failed_rpm_sensor_start)"/>
+        
+        <!--Argument for number of obstacles-->
+        <!-- <arg name="num_obstacles" value="$(arg )"/>"100"/>
+        <arg name="obs_distance" value="$(arg )"/> -->
+
+        <!-- static and dynamic obstacles-->
+        <arg name="enable_obstacles" value="$(arg enable_obstacles)"/>
+        <arg name="enable_debris" value="$(arg enable_debris)"/>
+        <arg name="enable_dynamic_obstacles" value="$(arg enable_dynamic_obstacles)"/>
+        <arg name="lambda_low" value="$(arg lambda_low)"/>
+        <arg name="lambda_high" value="$(arg lambda_high)"/>
+        <arg name="lambda_low_static" value="$(arg lambda_low_static)"/>
+        <arg name="lambda_high_static" value="$(arg lambda_high_static)"/>
+        <arg name="avg_uuv_speed" value="$(arg avg_uuv_speed)"/>
+        <arg name="box_distance_variance" value="$(arg box_distance_variance)"/>
+        <arg name="box_distance_static" value="$(arg box_distance_static)"/>
+        <arg name="box_distance_x" value="$(arg box_distance_x)"/>
+        <arg name="box_distance_y" value="$(arg box_distance_y)"/>
+        <arg name="box_velocity_x" value="$(arg box_velocity_x)"/>
+        <arg name="box_velocity_y" value="$(arg box_velocity_y)"/>
+        <arg name="box_max_cnt" value="$(arg box_max_cnt)"/>
+        <arg name="box_size_x" value="$(arg box_size_x)"/>
+        <arg name="box_size_y" value="$(arg box_size_y)"/>
+        <arg name="box_size_z" value="$(arg box_size_z)"/>
+        <arg name="enable_wall" value="$(arg enable_wall)"/>
+        <arg name="enable_random" value="$(arg enable_random)"/>
+        <arg name="obstacle_filename_static" value="$(arg obstacle_filename_static)"/>
+        <arg name="obstacle_filename_dynamic" value="$(arg obstacle_filename_dynamic)"/>
+        <arg name="random_box_density" value="$(arg random_box_density)"/>
+
+        <!-- Less often modified params: -->    
+
+        <!--Thruster blade failure for IMU noise-->
+        <arg name="thruster_blade_failure" value="$(arg thruster_blade_failure)"/>
+
+        <!-- BlueROV2 launch params-->
+        <arg name="mode" value="$(arg mode)"/>
+
+        <!-- Use NED -->
+        <arg name="use_ned" value="$(arg use_ned)"/>
+
+        <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
+        <arg name="random_seed" value="$(arg random_seed)"/>
+
+        <!-- Gazebo World Parameters-->
+        <arg name="ocean_depth" value="$(arg ocean_depth)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <!-- <arg name="headless" value="$(arg )"/> -->
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="timeout" value="$(arg timeout)"/>
+        <arg name="gz_debug" value="$(arg gz_debug)"/>
+
+        <!-- Vehicle's initial position -->
+        <!-- appx 2km south of world origin-->
+        <!--<arg name="vehicle_latitude" value="$(arg )"/>"38.95320298"/>
+        <arg name="vehicle_longitude" value="$(arg )"/>"-76.398000"/>-->
+
+        <arg name="vehicle_latitude" value="$(arg vehicle_latitude)"/>
+        <arg name="vehicle_longitude" value="$(arg vehicle_longitude)"/>
+        <arg name="vehicle_altitude" value="$(arg vehicle_altitude)"/>
+        <!-- NED Orientation -->
+        <arg name="vehicle_roll" value="$(arg vehicle_roll)"/>
+        <arg name="vehicle_pitch" value="$(arg vehicle_pitch)"/>
+        <arg name="vehicle_yaw" value="$(arg vehicle_yaw)"/>
+
+        <!-- World Origin in lat long -->
+        <arg name="origin_latitude" value="$(arg origin_latitude)"/> <!-- 38.971203 -->
+        <arg name="origin_longitude" value="$(arg origin_longitude)"/> <!-- -76.398464 -->
+        <arg name="origin_altitude" value="$(arg origin_altitude)"/>
+    
+        <arg name="upenn_sysid" value="$(arg upenn_sysid)"/>
+        <arg name="rviz" value="$(arg rviz)"/>
+
+        <!-- Pencilbeam FLS params -->
+        <arg name="max_range" value="$(arg max_range)"/>
+    </include>
+    
+    <include file="$(find vandy_bluerov)/launch/start_bluerov_uuv.launch">
+        <arg name="uuv_name" value="$(arg uuv_name1)"/>
+        <arg name="unpause_timeout" value="$(arg unpause_timeout)"/>
+        <arg name="timeout" value="$(arg timeout)"/>
+        
+        <!--rtreach parameters-->
+        <arg name="use_rtreach" value="$(arg use_rtreach)"/>
+        <arg name="box_sim_time" value="$(arg box_sim_time)"/>
+        <arg name="uuv_sim_time" value= "$(arg uuv_sim_time)"/>
+        <arg name="box_wall_time" value="$(arg box_wall_time)"/>
+        <arg name="uuv_wall_time" value="$(arg uuv_wall_time)"/>
+        <arg name="box_display_max" value="$(arg box_display_max)"/>
+        <arg name="box_size_x" value="$(arg box_size_x)"/>
+        <arg name="rtreach_output" value="$(arg rtreach_output)"/>
+        <!--rtreach disturbance parameters-->
+        <arg name="xd_l" value="$(arg xd_l)" />
+        <arg name="xd_u" value="$(arg xd_u)" />
+        <arg name="yd_l" value="$(arg yd_l)" />
+        <arg name="yd_u" value="$(arg yd_u)" />
+        <arg name="vd_l" value="$(arg vd_l)" />
+        <arg name="vd_u" value="$(arg vd_u)" />
+        <arg name="thd_l" value="$(arg thd_l)" />
+        <arg name="thd_u" value="$(arg thd_u)" />
+        <arg name="parameter_uncertainty" value="$(arg parameter_uncertainty)"/>
+        <arg name="x_unc" value="$(arg x_unc)" />
+        <arg name="y_unc" value="$(arg y_unc)" />
+        <arg name="speed_unc" value="$(arg speed_unc)" />
+        <arg name="theta_unc" value="$(arg theta_unc)" />
+        
+
+        <!-- Rosbag -->
+        <arg name="record" value="$(arg record)"/> 
+        <arg name="results_directory" value="$(arg results_directory)"/>
+        <arg name="bag_filename" value="$(arg bag_filename)"/>
+        <arg name="small_bagfile" value="$(arg small_bagfile)"/>
+
+        <!-- Often modified params: -->
+
+        <!-- No go zones -->
+        <arg name="no_go_zone_list" value="$(arg no_go_zone_list)"/>
+
+        <!-- Anomaly Detector for Fishing Nets -->
+        <arg name="enable_anomaly_detector" value="$(arg enable_anomaly_detector)"/>
+
+        <!-- Behaviour Tree CM -->
+        <arg name="enable_emergency_stop" value="$(arg enable_emergency_stop)"/> 
+        <arg name="thruster_motor_failure" value="$(arg thruster_motor_failure)"/> 
+
+
+        <!-- FDR Log -->
+        <arg name="fdr_log_filename" value="$(arg fdr_log_filename)"/>
+        <arg name="generate_fdr" value="$(arg generate_fdr)"/>
+        
+        <!-- Runtime evaluation -->
+        <arg name="bluerov_eval" value="$(arg bluerov_eval)"/>
+
+        <!-- Obstacle avoidance -->
+        <arg name="use_obstacle_avoidance" value="$(arg use_obstacle_avoidance)"/>
+
+        <!-- FLS LEC3 OR BlueROV Ping Sonar -->
+        <arg name="obstacle_avoidance_source" value="$(arg obstacle_avoidance_source)"/>
+
+
+        <!-- Waypoints: -->
+        <arg name="random_waypoints" value="$(arg random_waypoints)"/>
+        <arg name="waypoint_filename" value="$(arg waypoint_filename)"/>
+        <arg name="num_waypoints" value="$(arg num_waypoints)"/>
+        <arg name="min_distance" value="$(arg min_distance)"/>
+        <arg name="max_distance" value="$(arg max_distance)"/>
+        <arg name="min_heading" value="$(arg min_heading)"/>
+        <arg name="max_heading" value="$(arg max_heading)"/>
+        <arg name="x_track_error" value="$(arg x_track_error)"/>
+
+        <!-- AIS -->
+        <!-- VU: -->
+        <arg name="generate_ais_data" value="$(arg generate_ais_data)"/>
+        <arg name="predict_ais_data"  value="$(arg predict_ais_data)"/>
+        <arg name="dynamic_obstacles_count" value="$(arg dynamic_obstacles_count)"/>
+
+        <!-- CM params -->
+        <arg name="travel_cost" value="$(arg travel_cost)"/>
+        <arg name="failsafe_battery_low_threshold" value="$(arg failsafe_battery_low_threshold)"/>
+        <arg name="failsafe_rth_enable" value="$(arg failsafe_rth_enable)"/>
+        <arg name="failsafe_signal_lost_threshold" value="$(arg failsafe_signal_lost_threshold)"/>
+        <arg name="failsafe_tracking_lost_threshold" value="$(arg failsafe_tracking_lost_threshold)"/>
+        <arg name="geofence_threshold" value="$(arg geofence_threshold)"/>
+        <arg name="home_radius" value="$(arg home_radius)"/>
+        <arg name="pipe_estimation_good_log_val" value="$(arg pipe_estimation_good_log_val)"/>
+        <arg name="speed_good_log_val" value="$(arg speed_good_log_val)"/>
+        <arg name="uuv_max_speed" value="$(arg uuv_max_speed)"/>
+        <arg name="uuv_min_speed" value="$(arg uuv_min_speed)"/>
+        <arg name="batt_charge" value="$(arg batt_charge)"/>
+        <arg name="enable_rpm_sensor_check" value="$(arg enable_rpm_sensor_check)"/>
+        <arg name="enable_training_data_collection" value="$(arg enable_training_data_collection)"/> 
+
+        <!-- Degradation Detector LEC enable -->
+        <arg name="enable_fault_detection" value="$(arg enable_fault_detection)"/>
+        <arg name="decision_source" value="$(arg decision_source)"/>
+        <arg name="fls_in_view_window" value="$(arg fls_in_view_window)"/>
+        <arg name="fls_in_view_limit" value="$(arg fls_in_view_limit)"/>
+        <arg name="classification_threshold" value="$(arg classification_threshold)"/>
+        <arg name="sum_thrust_loss_threshold" value="$(arg sum_thrust_loss_threshold)"/>
+        <arg name="total_degradation_threshold" value="$(arg total_degradation_threshold)"/>
+        
+        <arg name="mission_file" value="$(arg mission_file)"/>
+        <arg name="fdir_path" value="$(arg fdir_path)"/>
+        <arg name="fdir_params" value="$(arg fdir_params)"/>
+
+        <!-- Note: Possible control reallocation with TAM -->
+        <arg name="tam_file" value="$(arg tam_file)"/>
+
+        <!-- BlueROV2 PID controller launch params-->
+        <arg name="teleop" value="$(arg teleop)"/>
+        <arg name="mode" value="$(arg mode)"/>
+        <arg name="joy_id" value="$(arg joy_id)"/>
+        <!-- Use NED -->
+        <arg name="use_ned" value="$(arg use_ned)"/>
+
+        <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
+        <arg name="random_seed" value="$(arg random_seed)"/>
+
+        <!-- Init params from world model -->
+        <arg name="vehicle_latitude" value="$(arg vehicle_latitude)"/>
+        <arg name="vehicle_longitude" value="$(arg vehicle_longitude)"/>
+        <arg name="vehicle_altitude" value="$(arg vehicle_altitude)"/>
+
+        <arg name="vehicle_roll" value="$(arg vehicle_roll)"/>
+        <arg name="vehicle_pitch" value="$(arg vehicle_pitch)"/>
+        <arg name="vehicle_yaw" value="$(arg vehicle_yaw)"/>
+
+        <!-- Vehicle's Initial HSD Command -->
+        <arg name="init_heading" value="$(arg init_heading)"/>
+        <arg name="init_speed" value="$(arg init_speed)"/>
+        <arg name="init_depth" value="$(arg init_depth)"/>
+
+        <!-- For testing PID Controller -->
+        <arg name="heading" value="$(arg heading)"/>
+        <arg name="speed" value="$(arg speed)"/>
+        <arg name="depth" value="$(arg depth)"/>
+        <arg name="enable_send_hsd_single" value="$(arg enable_send_hsd_single)"/>
+        <arg name="hsd_debug_mode" value="$(arg hsd_debug_mode)"/>
+
+        <!-- LEC3 params -->
+        <arg name="max_range" value="$(arg max_range)"/>
+        <arg name="num_range_bins" value="$(arg num_range_bins)"/>
+        <arg name="lec3_vae_path" value="$(arg lec3_vae_path)"/>
+        <arg name="lec3_filename" value="$(arg lec3_filename)"/>
+
+
+        <!-- VU LEC2 params -->
+        <arg name="lec2_vae_path" value="$(arg lec2_vae_path)"/>
+	    <arg name="lec2_svdd_path" value="$(arg lec2_svdd_path)"/>
+        <arg name="lec2_filename" value="$(arg lec2_filename)"/>
+        <arg name="sss_sonar_noise" value="$(arg sss_sonar_noise)"/>
+        <arg name="fis_sonar_noise" value="$(arg fis_sonar_noise)"/>    
+    </include>
+    <!-- Second Vehicle Complete -->
 </launch>
 
