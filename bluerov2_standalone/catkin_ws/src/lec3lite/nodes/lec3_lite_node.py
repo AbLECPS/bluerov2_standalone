@@ -23,17 +23,19 @@ os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 class LEC3Lite(object):
     def __init__(self):
+        self.namespace = rospy.get_namespace().replace('/', '')
+
         self.lec3lite_pub_bins = rospy.Publisher(
-            '/lec3lite/bins', Float32MultiArray, queue_size=1)    
+            f'{self.namespace}/lec3lite/bins', Float32MultiArray, queue_size=1)    
         
         self.lec3lite_pub_ranges = rospy.Publisher(
-            '/lec3lite/ranges', Float32MultiArray, queue_size=1)
+            f'/{self.namespace}/lec3lite/ranges', Float32MultiArray, queue_size=1)
         
         self.lec3lite_pub_waterfall = rospy.Publisher(
-            '/lec3lite/waterfall', Image, queue_size=1)    
+            f'{self.namespace}/lec3lite/waterfall', Image, queue_size=1)    
         
         self.fls_bins_sub = rospy.Subscriber(
-            '/vu_fls/bins', Float32MultiArray, self.callback_fls, queue_size=1)
+            f'{self.namespace}/vu_fls/bins', Float32MultiArray, self.callback_fls, queue_size=1)
         
                 # Load TFLite model and allocate tensors.
         rp = rospkg.RosPack()

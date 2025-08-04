@@ -30,38 +30,40 @@ from std_msgs.msg import String
 class TaskHandler(py_trees.behaviour.Behaviour):
     
     def __init__(self, 
-                 name ,  
+                 name ,
+                 namespace,  
                  enable_obstacle_avoidance=True
                 ):                 
         super(TaskHandler, self).__init__(name=name)
         self.task = name
+        self.namespace=namespace
         self.blackboard = py_trees.blackboard.Blackboard()
         self.blackboard.HSD_out = HSDCommand()
         self.blackboard.bb_obstacle_warning = False
         self.blackboard.cm_hsd_input = String()
         
         self.enable_obstacle_avoidance=enable_obstacle_avoidance     
-        self.hsd_obstacle_avoidance__sub = rospy.Subscriber( '/uuv0/hsd_obstacle_avoidance',
+        self.hsd_obstacle_avoidance__sub = rospy.Subscriber( f'/{self.namespace}/hsd_obstacle_avoidance',
                                             HSDCommand,
                                             self.hsd_obstacle_avoidance__callback,
                                             queue_size =1)
         self.hsd_obstacle_avoidance__msg =  HSDCommand()                   
-        self.hsd_pipeline_mapping__sub = rospy.Subscriber( '/uuv0/hsd_pipeline_mapping',
+        self.hsd_pipeline_mapping__sub = rospy.Subscriber( f'/{self.namespace}/hsd_pipeline_mapping',
                                             HSDCommand,
                                             self.hsd_pipeline_mapping__callback,
                                             queue_size =1)
         self.hsd_pipeline_mapping__msg =  HSDCommand()                   
-        self.hsd_waypoint__sub = rospy.Subscriber( '/uuv0/hsd_to_waypoint',
+        self.hsd_waypoint__sub = rospy.Subscriber( f'/{self.namespace}/hsd_to_waypoint',
                                             HSDCommand,
                                             self.hsd_waypoint__callback,
                                             queue_size =1)
         self.hsd_waypoint__msg =  HSDCommand()                   
-        self.hsd_waypoint_rrt__sub = rospy.Subscriber( '/uuv0/hsd_to_waypoint_rrt',
+        self.hsd_waypoint_rrt__sub = rospy.Subscriber( f'/{self.namespace}/hsd_to_waypoint_rrt',
                                             HSDCommand,
                                             self.hsd_waypoint_rrt__callback,
                                             queue_size =1)
         self.hsd_waypoint_rrt__msg =  HSDCommand()                   
-        self.hsd_pub_pub = rospy.Publisher( '/uuv0/hsd_command',
+        self.hsd_pub_pub = rospy.Publisher( f'/{self.namespace}/hsd_command',
                                             HSDCommand,
                                             queue_size=1)
         self.hsd_pub_msg =  HSDCommand()                   

@@ -16,8 +16,10 @@ class Resonate(object):
     """
     def __init__(self):
         # Get any necessary parameters
-        self._thruster_degradation_topic = rospy.get_param('~degradation_topic', "/uuv0/degradation_detector")
-        self._thruster_reallocation_topic = rospy.get_param('~reallocation_topic', "/uuv0/thruster_reallocation")
+        self.namespace = rospy.get_namespace().replace('/', '')
+
+        self._thruster_degradation_topic = rospy.get_param('~degradation_topic', f"/{self.namespace}/degradation_detector")
+        self._thruster_reallocation_topic = rospy.get_param('~reallocation_topic', f"/{self.namespace}/thruster_reallocation")
         self._hazard_rate_topic = rospy.get_param('~hazard_rate_topic', "hazard_rate")
 
         # Init BTD class

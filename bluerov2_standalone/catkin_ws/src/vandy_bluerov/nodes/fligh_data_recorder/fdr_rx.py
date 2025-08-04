@@ -15,13 +15,15 @@ class FDRReceiver(object):
     '''
     def __init__(self):
         np.random.seed(rospy.get_param('~random_seed'))
+        self.namespace = rospy.get_namespace().replace('/', '')
+
         self.log_filename = rospy.get_param('~log_filename', 'fdr_rx_map.csv')
         self.fdr_pub = rospy.Subscriber(
-            '/fdr0/ping', Point, self.callback_fdr, queue_size=1)  
+            f'{self.namespace}/fdr0/ping', Point, self.callback_fdr, queue_size=1)  
         self.uuv_position = [0,0,0]
 
         self.odometry_sub = rospy.Subscriber(
-             '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1)            
+             f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1)            
 
         self.noise_threshold = 1
 

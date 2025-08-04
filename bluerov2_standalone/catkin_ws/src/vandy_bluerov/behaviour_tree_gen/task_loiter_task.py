@@ -29,20 +29,22 @@ from std_msgs.msg import String
 class TaskHandler(py_trees.behaviour.Behaviour):
     
     def __init__(self, 
-                 name  
+                 name,
+                 namespace  
                 ):                 
         super(TaskHandler, self).__init__(name=name)
         self.task = name
+        self.namespace = namespace
         self.blackboard = py_trees.blackboard.Blackboard()
         self.blackboard.HSD_out = HSDCommand()
         self.blackboard.cm_hsd_input = String()
      
-        self.hsd_pipeline_mapping__sub = rospy.Subscriber( '/uuv0/hsd_pipeline_mapping',
+        self.hsd_pipeline_mapping__sub = rospy.Subscriber( f'/{self.namespace}/hsd_pipeline_mapping',
                                             HSDCommand,
                                             self.hsd_pipeline_mapping__callback,
                                             queue_size =1)
         self.hsd_pipeline_mapping__msg =  HSDCommand()                   
-        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+        self.cm_hsd_input__pub = rospy.Publisher( f'/{self.namespace}/cm_hsd_input',
                                             String,
                                             queue_size=1)
         self.cm_hsd_input__msg =  String()                   

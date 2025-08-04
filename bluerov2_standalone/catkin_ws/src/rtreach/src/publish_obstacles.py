@@ -23,6 +23,7 @@ class PublishObstacles:
               0: Free
               100: Occupied """
     def __init__(self,threshold=0.65,generate_freespace=False):
+        self.namespace = rospy.get_namespace().replace('/', '')   
         self.threshold = threshold
         self.intervals = []
         self.generate_freespace = generate_freespace
@@ -34,13 +35,13 @@ class PublishObstacles:
             self.publisher = rospy.Publisher("local_obstacle_list", MarkerArray, queue_size="1")
 
         if(self.local):
-            rospy.Subscriber('/uuv0/obstacle_map_local', OccupancyGrid, self.execute, queue_size=1)
+            rospy.Subscriber(f'/{self.namespace}/obstacle_map_local', OccupancyGrid, self.execute, queue_size=1)
 
             # needed to convert from local to global frame
             self.tf_buffer = tf2_ros.Buffer()
             self.listener = tf2_ros.TransformListener(self.tf_buffer)
         else:
-            rospy.Subscriber('/uuv0/obstacle_map', OccupancyGrid, self.execute, queue_size=1)
+            rospy.Subscriber(f'/{self.namespace}/obstacle_map', OccupancyGrid, self.execute, queue_size=1)
 
         rospy.Timer(rospy.Duration(0.05), self.publish_reach_tube)
 

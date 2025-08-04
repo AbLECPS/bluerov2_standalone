@@ -19,14 +19,16 @@ os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 class LEC2Lite(object):
     def __init__(self):
+        self.namespace = rospy.get_namespace().replace('/', '')
+
         self.revmfunc = np.vectorize(self.label_to_image)
         self.lock = Lock()
         self.side = rospy.get_param('~side', 'r')
         self.lec2lite_pub = rospy.Publisher(
-            '/vu_sss/lec2lite_' + self.side, Image, queue_size=1)    
+             f'{self.namespace}/vu_sss/lec2lite_' + self.side, Image, queue_size=1)    
         
         self.sss_waterfall_sub = rospy.Subscriber(
-            '/vu_sss/waterfall_' + self.side, Image, self.callback_sss, queue_size=1)
+             f'{self.namespace}/vu_sss/waterfall_' + self.side, Image, self.callback_sss, queue_size=1)
         
         physical_devices = tf.config.list_physical_devices('GPU')
         try:

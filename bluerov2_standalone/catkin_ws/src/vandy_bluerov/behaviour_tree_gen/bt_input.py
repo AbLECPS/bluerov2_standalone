@@ -72,50 +72,50 @@ class BB_input(object):
                
         # Subscribe to Waypoint Completed msg
         self.hsd_waypoint_completed_sub = rospy.Subscriber(
-            '/uuv0/waypoints_completed', Bool, self.waypoint_completed_callback, queue_size=1)
+            f'/{self.namespace}/waypoints_completed', Bool, self.waypoint_completed_callback, queue_size=1)
         self.waypoint_completed = False
 
         self.odometry_sub = rospy.Subscriber(
-             '/uuv0/pose_gt_noisy_ned', Odometry, self.odometry_callback, queue_size=1)    
+             f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.odometry_callback, queue_size=1)    
 
         # Subscribe to Pipeline in view    
         self.pipeline_in_view_sub = rospy.Subscriber(
-            "/uuv0/pipeline_in_view", Header, self.pipeline_in_view_callback)
+            f"/{self.namespace}/pipeline_in_view", Header, self.pipeline_in_view_callback)
         self.pipeline_in_view_msg = Header()
         #self.pipeline_last_seen_limit = 120 #sec
 
         #  # Subscribe to PixhawkHW battery/power data
         self.pixhawk_data_sub = rospy.Subscriber(
-            "/uuv0/pixhawk_hw", PixhawkHW, self.pixhawk_data_callback)
+            f"/{self.namespace}/pixhawk_hw", PixhawkHW, self.pixhawk_data_callback)
         self.pixhawk_data = PixhawkHW()
 
         
         # HOME position msg
         self.home_position_pub = rospy.Publisher(
-            '/uuv0/home_position', LatLonDepth, queue_size=1) 
+            f'/{self.namespace}/home_position', LatLonDepth, queue_size=1) 
         self.home_position_msg = LatLonDepth()   
 
         # Subscribe to HSD
         self.hsd_sub = rospy.Subscriber(
-            '/uuv0/hsd_command', HSDCommand, self.HSD_command_callback, queue_size=1)
+            f'/{self.namespace}/hsd_command', HSDCommand, self.HSD_command_callback, queue_size=1)
         self.hsd_output_msg = HSDCommand()
 
         # self.am_pub = rospy.Publisher(
         #     '/uuv0/am_values', Float32MultiArray, queue_size=1) 
 
         self.thruster_cmd_logging = rospy.Publisher(
-            '/uuv0/thruster_cmd_logging', Float32MultiArray, queue_size=1) 
+            f'/{self.namespace}/thruster_cmd_logging', Float32MultiArray, queue_size=1) 
 
         self.degradation_gt_pub = rospy.Publisher(
-            '/uuv0/degradation_gt', Float32MultiArray, queue_size=1) 
+            f'/{self.namespace}/degradation_gt', Float32MultiArray, queue_size=1) 
 
         self.sensor_failure_rpm_pub = rospy.Publisher(
-            '/uuv0/sensor_failure_rpm', Bool, queue_size=1)
+            f'/{self.namespace}/sensor_failure_rpm', Bool, queue_size=1)
         self.sensor_failure_rpm = False
 
         # Subscribe to Is Submerged msg
         self.is_submerged_sub = rospy.Subscriber(
-            '/uuv0/is_submerged', Bool, self.is_submerged_callback, queue_size=1)
+            f'/{self.namespace}/is_submerged', Bool, self.is_submerged_callback, queue_size=1)
         self.is_submerged = True
 
         self.uuv_yaw = 0
@@ -124,16 +124,16 @@ class BB_input(object):
         self.home_position = [-1,-1,-1]
 
         self.bb_rth_pub = rospy.Publisher(
-            '/uuv0/bb_rth', Bool, queue_size=1)
+            f'/{self.namespace}/bb_rth', Bool, queue_size=1)
         
         self.bb_pipe_lost_pub = rospy.Publisher(
-            '/uuv0/bb_pipe_lost', Bool, queue_size=1)
+            f'/{self.namespace}/bb_pipe_lost', Bool, queue_size=1)
 
         self.bb_geofence_pub = rospy.Publisher(
-            '/uuv0/bb_geofence', Bool, queue_size=1)
+            f'/{self.namespace}/bb_geofence', Bool, queue_size=1)
 
         self.bb_home_dist_pub = rospy.Publisher(
-            '/uuv0/bb_home_dist', Float32, queue_size=1)
+            f'/{self.namespace}/bb_home_dist', Float32, queue_size=1)
 
         # Estimated esc power difference, indicating possible RPM sensor issue
         self.power_sum_input = collections.deque(maxlen = 100)

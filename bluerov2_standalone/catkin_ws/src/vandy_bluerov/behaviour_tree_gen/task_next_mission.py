@@ -29,19 +29,21 @@ from std_msgs.msg import Bool
 class TaskHandler(py_trees.behaviour.Behaviour):
     
     def __init__(self, 
-                 name  
+                 name,
+                 namespace  
                 ):                 
         super(TaskHandler, self).__init__(name=name)
         self.task = name
+        self.namespace = namespace
         self.blackboard = py_trees.blackboard.Blackboard()
         self.blackboard.next_mission = False
      
-        self.bb_mission_sub = rospy.Subscriber( '/uuv0/bb_mission',
+        self.bb_mission_sub = rospy.Subscriber( f'/{self.namespace}/bb_mission',
                                             String,
                                             self.bb_mission_callback,
                                             queue_size =1)
         self.bb_mission_msg =  String()                   
-        self.next_wp__pub = rospy.Publisher( '/uuv0/next_wp',
+        self.next_wp__pub = rospy.Publisher( f'/{self.namespace}/next_wp',
                                             Bool,
                                             queue_size=1)
         self.next_wp__msg =  Bool()                   

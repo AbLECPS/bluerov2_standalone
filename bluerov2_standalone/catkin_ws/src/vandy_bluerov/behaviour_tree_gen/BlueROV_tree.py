@@ -60,8 +60,8 @@ import task_reallocate_task
 ##############################################################################
 
 class BlueROV_BT(object):
-    def __init__(self):            
-   
+    def __init__(self):     
+        self.namespace = rospy.get_namespace().replace('/', '')
         self.failsafe_battery_low_threshold = rospy.get_param('~failsafe_battery_low_threshold', 0.1)   
         self.failsafe_rth_enable = rospy.get_param('~failsafe_rth_enable', True)   
         self.pipe_estimation_good_log_val = rospy.get_param('~pipe_estimation_good_log_val', 7.5)   
@@ -150,88 +150,88 @@ class BlueROV_BT(object):
 
         hsd_pipe2bb = bb_hsd_pipe2bb.ToBlackboard(
             name="hsd_pipe2bb",
-            topic_name="/uuv0/hsd_pipeline_mapping" 
+            topic_name=f"/{self.namespace}/hsd_pipeline_mapping" 
         )
         hsd_surface2bb = bb_hsd_surface2bb.ToBlackboard(
             name="hsd_surface2bb",
-            topic_name="/uuv0/hsd_to_surface" 
+            topic_name=f"/{self.namespace}/hsd_to_surface" 
         )
         hsd_rth2bb = bb_hsd_rth2bb.ToBlackboard(
             name="hsd_rth2bb",
-            topic_name="/uuv0/hsd_to_rth" 
+            topic_name=f"/{self.namespace}/hsd_to_rth" 
         )
         hsd_wp2bb = bb_hsd_wp2bb.ToBlackboard(
             name="hsd_wp2bb",
-            topic_name="/uuv0/hsd_to_waypoint" 
+            topic_name=f"/{self.namespace}/hsd_to_waypoint" 
         )
         hsd_wp_rrt2bb = bb_hsd_wp_rrt2bb.ToBlackboard(
             name="hsd_wp_rrt2bb",
-            topic_name="/uuv0/hsd_to_waypoint_rrt" 
+            topic_name=f"/{self.namespace}/hsd_to_waypoint_rrt" 
         )
         fls2bb = bb_fls2bb.ToBlackboard(
             name="fls2bb",
-            topic_name="/uuv0/fls_echosunder" 
+            topic_name=f"/{self.namespace}/fls_echosunder" 
         )
         fls_warning2bb = bb_fls_warning2bb.ToBlackboard(
             name="fls_warning2bb",
-            topic_name="/uuv0/obstacle_in_view", 
+            topic_name=f"/{self.namespace}/obstacle_in_view", 
             fls_in_view_window = self.fls_in_view_window,  
             fls_in_view_limit = self.fls_in_view_limit 
         )
         battery2bb = bb_battery2bb.ToBlackboard(
             name="battery2bb",
-            topic_name="/uuv0/pixhawk_hw", 
+            topic_name=f"/{self.namespace}/pixhawk_hw", 
             failsafe_battery_low_threshold = self.failsafe_battery_low_threshold 
         )
         ddlecam2bb = bb_ddlecam2bb.ToBlackboard(
             name="ddlecam2bb",
-            topic_name="/lec_dd_am/p_value" 
+            topic_name=f"/{self.namespace}/p_value" 
         )
         rth2bb = bb_rth2bb.ToBlackboard(
             name="rth2bb",
-            topic_name="/uuv0/bb_rth", 
+            topic_name=f"/{self.namespace}/bb_rth", 
             failsafe_rth_enable = self.failsafe_rth_enable 
         )
         geofence2bb = bb_geofence2bb.ToBlackboard(
             name="geofence2bb",
-            topic_name="/uuv0/bb_geofence" 
+            topic_name=f"/{self.namespace}/bb_geofence" 
         )
         lec2_am_l_2bb = bb_lec2_am_l_2bb.ToBlackboard(
             name="lec2_am_l_2bb",
-            topic_name="/vu_sss/am_vae_lec2lite_l", 
+            topic_name=f"/{self.namespace}/vu_sss/am_vae_lec2lite_l", 
             pipe_estimation_good_log_val = self.pipe_estimation_good_log_val,  
             speed_good_log_val = self.speed_good_log_val 
         )
         lec2_am_r_2bb = bb_lec2_am_r_2bb.ToBlackboard(
             name="lec2_am_r_2bb",
-            topic_name="/vu_sss/am_vae_lec2lite_r", 
+            topic_name=f"/{self.namespace}/vu_sss/am_vae_lec2lite_r", 
             pipe_estimation_good_log_val = self.pipe_estimation_good_log_val,  
             speed_good_log_val = self.speed_good_log_val 
         )
         pipe_lost2bb = bb_pipe_lost2bb.ToBlackboard(
             name="pipe_lost2bb",
-            topic_name="/uuv0/bb_pipe_lost" 
+            topic_name=f"/{self.namespace}/bb_pipe_lost" 
         )
         sensor_failure2bb = bb_sensor_failure2bb.ToBlackboard(
             name="sensor_failure2bb",
-            topic_name="/uuv0/sensor_failure_rpm" 
+            topic_name=f"/{self.namespace}/sensor_failure_rpm" 
         )
         waypoints_completed2bb = bb_waypoints_completed2bb.ToBlackboard(
             name="waypoints_completed2bb",
-            topic_name="/uuv0/waypoints_completed" 
+            topic_name=f"/{self.namespace}/waypoints_completed" 
         )
         home2bb = bb_home2bb.ToBlackboard(
             name="home2bb",
-            topic_name="/uuv0/bb_home_dist", 
+            topic_name=f"/{self.namespace}/bb_home_dist", 
             home_reached_threshold = self.home_reached_threshold 
         )
         mission2bb = bb_mission2bb.ToBlackboard(
             name="mission2bb",
-            topic_name="/uuv0/bb_mission" 
+            topic_name=f"/{self.namespace}/bb_mission" 
         )
         ddlec2bb = bb_ddlec2bb.ToBlackboard(
             name="ddlec2bb",
-            topic_name="/uuv0/degradation_detector", 
+            topic_name=f"/{self.namespace}/degradation_detector", 
             total_degradation_threshold = self.total_degradation_threshold,  
             num_classes = self.num_classes,  
             enable_fault_detection = self.enable_fault_detection,  
@@ -243,7 +243,8 @@ class BlueROV_BT(object):
         )
         rtreach2bb = bb_rtreach2bb.ToBlackboard(
             name="rtreach2bb",
-            topic_name="/reachability_result", 
+            topic_name="/reachability_result",
+            namespace = self.namespace,
             enable_emergency_stop = self.enable_emergency_stop,  
             rtreach_window_size = self.rtreach_window_size,  
             rtreach_window_threshold = self.rtreach_window_threshold 
@@ -368,25 +369,31 @@ class BlueROV_BT(object):
             name="emergency_stop_task") 
             
         surface_task =task_surface_task.TaskHandler(
-            name="surface_task") 
+            name="surface_task",
+            namespace=self.namespace) 
             
         rth_task =task_rth_task.TaskHandler(
-            name="rth_task") 
+            name="rth_task",
+            namespace=self.namespace) 
             
         loiter_task =task_loiter_task.TaskHandler(
-            name="loiter_task") 
+            name="loiter_task",
+            namespace=self.namespace) 
             
         obstacle_avoidance =task_obstacle_avoidance.TaskHandler(
-            name="obstacle_avoidance", 
+            name="obstacle_avoidance",
+            namespace=self.namespace, 
             enable_obstacle_avoidance = self.enable_obstacle_avoidance) 
             
         mission_server =task_mission_server.TaskHandler(
-            name="mission_server", 
+            name="mission_server",
+            namespace=self.namespace, 
             uuv_max_speed = self.uuv_max_speed,  
             mission_file = self.mission_file) 
             
         next_mission =task_next_mission.TaskHandler(
-            name="next_mission") 
+            name="next_mission",
+            namespace=self.namespace) 
             
         speed_max_task =task_speed_max_task.TaskHandler(
             name="speed_max_task", 
@@ -403,10 +410,13 @@ class BlueROV_BT(object):
             name="pipe_mapping_disable_task") 
             
         tracking_task =task_tracking_task.TaskHandler(
-            name="tracking_task") 
+            name="tracking_task",
+            namespace=self.namespace) 
             
         waypoint_task =task_waypoint_task.TaskHandler(
-            name="waypoint_task") 
+            name="waypoint_task",
+            namespace=self.namespace
+            ) 
             
         #reallocate_task =task_reallocate_task.TaskHandler(
         #    name="reallocate_task") 

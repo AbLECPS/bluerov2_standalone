@@ -22,6 +22,8 @@ from vandy_bluerov.msg import HSDCommand
 
 class LocalMap(object):
     def __init__(self, global_map_size, local_map_size, map_name, map_north_fixed=False):
+        self.namespace = rospy.get_namespace().replace('/', '')
+
         self.map_name = map_name
         print("Starting Local Mapping(" + map_name + ") node")
 
@@ -49,7 +51,7 @@ class LocalMap(object):
         self.uuv_yaw = 0
 
         self.pub = rospy.Publisher(
-            "/uuv0/" + map_name, OccupancyGrid, queue_size = 1)      
+            f"/{self.namespace}/" + map_name, OccupancyGrid, queue_size = 1)      
         self.obstacle_map_local = np.array([], dtype=np.int)
 
        

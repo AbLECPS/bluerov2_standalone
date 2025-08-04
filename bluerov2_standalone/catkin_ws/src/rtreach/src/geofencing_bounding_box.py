@@ -28,6 +28,7 @@ except Exception as ex:
 
 class GeoFencing:
     def __init__(self,initial_lat_lon_alt,width=350):
+        self.namespace = rospy.get_namespace().replace('/', '')   
         self.initial_xyz = [0,0,0]
         self.initial_rpy = [0,0,0]
         self.initial_geo = [initial_lat_lon_alt[0],initial_lat_lon_alt[1],initial_lat_lon_alt[2]]
@@ -66,8 +67,8 @@ class GeoFencing:
         
         self.lines = [line1,line2,line3,line4]
 
-        self.vis_pub = rospy.Publisher('uuv0/bounding_box', MarkerArray,queue_size=1)
-        self.reach_pub = rospy.Publisher('uuv0/bounding_box_interval', reach_tube,queue_size=1)
+        self.vis_pub = rospy.Publisher(f'{self.namespace}/bounding_box', MarkerArray,queue_size=1)
+        self.reach_pub = rospy.Publisher(f'{self.namespace}/bounding_box_interval', reach_tube,queue_size=1)
 
     
     # generates an interval based on a line

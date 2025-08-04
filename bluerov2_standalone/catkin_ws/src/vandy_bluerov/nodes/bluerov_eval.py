@@ -13,67 +13,69 @@ from nav_msgs.msg import Odometry
 class BluerovEval(object):
     def __init__(self):
         rospy.loginfo('\n\033[1;32mStarting BlueROV evaulation \033[0m \n')
+        self.namespace = rospy.get_namespace().replace('/', '')   
+
         
         # Subscribe to odometry
         self.odometry_sub = rospy.Subscriber(
-            '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_pose, queue_size=1)  
+            f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_pose, queue_size=1)  
 
         # Pipe distance    
         self.pipeline_distance_sub = rospy.Subscriber(
-            "/uuv0/pipeline_distance_from_mapping", FloatStamped, self.callback_pipeline_distance_sub)
+            f"/{self.namespace}/pipeline_distance_from_mapping", FloatStamped, self.callback_pipeline_distance_sub)
         pipeline_distance_msg = FloatStamped()
 
         # Pipe in view    
         self.pipeline_in_view_sub = rospy.Subscriber(
-            "/uuv0/pipeline_in_view", Header, self.callback_pipeline_in_view_sub)
+           f"/{self.namespace}/pipeline_in_view", Header, self.callback_pipeline_in_view_sub)
         self.pipeline_in_view_msg = Header()
 
         # Pipe in view GT
         self.pipeline_in_view_gt_pub = rospy.Subscriber(
-            "/uuv0/pipeline_in_view_gt", Header,  self.callback_pipeline_in_view_gt_sub)
+            f"/{self.namespace}/pipeline_in_view_gt", Header,  self.callback_pipeline_in_view_gt_sub)
         self.pipeline_in_view_gt_msg = Header()
             
         # Pipe pos in SLS    
         self.pipeline_in_sls_sub = rospy.Subscriber(
-            "/uuv0/pipeline_in_sls", FloatStamped, self.callback_pipeline_in_sls_sub)
+            f"/{self.namespace}/pipeline_in_sls", FloatStamped, self.callback_pipeline_in_sls_sub)
         self.pipeline_in_sls = 0.0
 
         # Pipe pos in GT   
         self.pipeline_in_gt_sub = rospy.Subscriber(
-            "/uuv0/pipeline_in_gt", FloatStamped, self.callback_pipeline_in_gt_sub)
+            f"/{self.namespace}/pipeline_in_gt", FloatStamped, self.callback_pipeline_in_gt_sub)
         self.pipeline_in_gt = 0.0
 
         # Subscribe to collision avoidance
         self.hsd_obstacle_avoidance_sub = rospy.Subscriber(
-            '/uuv0/hsd_obstacle_avoidance', HSDCommand, self.callback_obstacle_avoidance)
+            f'/{self.namespace}/hsd_obstacle_avoidance', HSDCommand, self.callback_obstacle_avoidance)
 
         # Subscribe to degradation GT
         self.degradation_gt_sub = rospy.Subscriber(
-            '/uuv0/degradation_gt', Float32MultiArray, self.callback_degradation_gt) 
+            f'/{self.namespace}/degradation_gt', Float32MultiArray, self.callback_degradation_gt) 
         #Starting Time, Thruster or Nominal, Efficiency
         self.degradation_gt = [-1 , 6 , 1.0] 
 
         self.thruster_reallocation_sub = rospy.Subscriber(
-            '/uuv0/thruster_reallocation', Float32MultiArray, self.callback_thruster_reallocation)
+            f'/{self.namespace}/thruster_reallocation', Float32MultiArray, self.callback_thruster_reallocation)
         self.thruster_reallocation = []
 
         # Subscribe to UUV HSD
         self.hsd_sub = rospy.Subscriber(
-            '/uuv0/hsd_command', HSDCommand, self.callback_hsd_cmd)
+            f'/{self.namespace}/hsd_command', HSDCommand, self.callback_hsd_cmd)
 
         self.lec2_am_left_sub= rospy.Subscriber(
-            "/uuv0/cm_am/left", Float32MultiArray, self.callback_lec2_am_left)
+            f"/{self.namespace}/cm_am/left", Float32MultiArray, self.callback_lec2_am_left)
         self.lec2_am_right_sub= rospy.Subscriber(
-            "/uuv0/cm_am/right", Float32MultiArray, self.callback_lec2_am_right)
+            f"/{self.namespace}/cm_am/right", Float32MultiArray, self.callback_lec2_am_right)
         
         # self.lec_dd_am_sub= rospy.Subscriber(
         #     "/lec_dd_am/p_value", Float32MultiArray, self.callback_lec_dd_am)
 
         self.xtrack_error_sub = rospy.Subscriber(
-            '/uuv0/xtrack_error', Float64, self.callback_xtrack_error) 
+            f'/{self.namespace}/xtrack_error', Float64, self.callback_xtrack_error) 
 
         self.waypoints_completed_sub = rospy.Subscriber(
-            '/uuv0/waypoints_completed', Bool, self.callback_waypoints_completed)       
+            f'/{self.namespace}/waypoints_completed', Bool, self.callback_waypoints_completed)       
 
         self.counts = {
             "total" :               0,

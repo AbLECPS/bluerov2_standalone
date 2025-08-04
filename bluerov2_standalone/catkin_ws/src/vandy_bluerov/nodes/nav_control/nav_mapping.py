@@ -25,6 +25,8 @@ from vandy_bluerov.msg import HSDCommand
 class NavOccupancyGrid(object):
     def __init__(self):
         # Setup the default grid parameters
+        self.namespace = rospy.get_namespace().replace('/', '')
+
         self.resolution = 1
         self.length = rospy.get_param("~grid_length", 1000)
         # random_seed = rospy.get_param('~seed', 0)
@@ -50,9 +52,9 @@ class NavOccupancyGrid(object):
         # Setup the pubs and subs
         # For normal use - CP3:
         self.hsd_pipeline_sub = rospy.Subscriber(
-            "/uuv0/hsd_to_waypoint", HSDCommand, self.callback_heading)
+            f"/{self.namespace}/hsd_to_waypoint", HSDCommand, self.callback_heading)
         self.waypoint_distance_pub = rospy.Subscriber(
-            '/uuv0/distance_to_waypoint', Float64, self.callback_wp_distance) 
+            f'/{self.namespace}/distance_to_waypoint', Float64, self.callback_wp_distance) 
         self.waypoint_distance = -1
 
         self.odometry_sub = rospy.Subscriber(
@@ -61,15 +63,15 @@ class NavOccupancyGrid(object):
         self.uuv_rpy = [0,0,0]
 
         self.obstacle_map_pub = rospy.Subscriber(
-            "/uuv0/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+            f"/{self.namespace}/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
 
         self.hsd_pub = rospy.Publisher(
-            '/uuv0/hsd_ais_avoidance', HSDCommand, queue_size=1)   
+            f'/{self.namespace}/hsd_ais_avoidance', HSDCommand, queue_size=1)   
         self.hsd_cmd = HSDCommand()
         self.hsd_cmd.heading = 0
 
         self.pub = rospy.Publisher(
-            "/uuv0/local_map", OccupancyGrid, queue_size = 1)
+            f"/{self.namespace}/local_map", OccupancyGrid, queue_size = 1)
         # self.pub_latlon = rospy.Publisher(
         #     "/map/latlon", LatLonDepth, queue_size = 1)
         # self.pub_transform = rospy.Publisher(

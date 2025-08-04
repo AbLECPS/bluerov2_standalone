@@ -13,8 +13,9 @@ sns.set(style='white', rc = {'legend.labelspacing': 1.2})
 
 class PlotReachability:
     def __init__(self):
+        self.namespace = rospy.get_namespace().replace('/', '')   
         self.reachability_result=rospy.Subscriber('reachability_result',Float32,self.callback)
-        self.reachability_result=rospy.Subscriber('/uuv0/fls_output',FloatStamped,self.fls_callback)
+        self.reachability_result=rospy.Subscriber(f'/{self.namespace}/fls_output',FloatStamped,self.fls_callback)
 
         self.results=[]
         self.times=[]

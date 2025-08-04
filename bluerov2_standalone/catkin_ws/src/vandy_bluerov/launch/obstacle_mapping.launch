@@ -29,7 +29,7 @@
 
 		<!-- <node pkg="vandy_bluerov" type="fls_midas_fusion.py" name="fls_midas_fusion" output="screen" /> -->
 
-		<node pkg="tf" type="static_transform_publisher" name="fixed_map" args="0 0 0 0 0 0   /uuv0/obstacle_map /world 100" />
+		<node pkg="tf" type="static_transform_publisher" name="fixed_map" args="0 0 0 0 0 0   /$(arg uuv_name)/obstacle_map /world 100" />
 		<node pkg="vandy_bluerov" type="obstacle_mapping.py" name="obstacle_map_publisher" output="screen" >
            <rosparam subst_value="true">
                 generate_ais_data: $(arg generate_ais_data)

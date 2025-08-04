@@ -10,10 +10,12 @@ from nav_msgs.msg import Odometry
 
 class ObstacleDistancePublisher(object):
     def __init__(self):
+        self.namespace = rospy.get_namespace().replace('/', '')
+
 
         # Odom/Pose message
         self.odometry_sub = rospy.Subscriber(
-             'uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             f'{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
         self.uuv_position = None
 
         self.obstacle_sub = rospy.Subscriber(

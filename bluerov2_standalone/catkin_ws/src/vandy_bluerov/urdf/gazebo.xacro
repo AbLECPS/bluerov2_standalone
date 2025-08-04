@@ -90,7 +90,7 @@
          </hydrodynamic_model>
       </link>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>true</visualize>
@@ -120,8 +120,8 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_echosunder</topicName>
-               <frameName>uuv0/base_sonar_front</frameName>
+               <topicName>/${namespace}/fls_echosunder</topicName>
+               <frameName>${namespace}/base_sonar_front</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.52</fov>
             </plugin>
@@ -130,7 +130,7 @@
 
 
 
-      <gazebo reference="uuv0/base_sonar_bottom">        
+      <gazebo reference="${namespace}/base_sonar_bottom">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>true</visualize>
@@ -160,15 +160,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/altimeter_echosunder</topicName>
-               <frameName>uuv0/base_sonar_bottom</frameName>
+               <topicName>/${namespace}/altimeter_echosunder</topicName>
+               <frameName>${namespace}/base_sonar_bottom</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.52</fov>
             </plugin>
          </sensor>  
          </gazebo>
 
-      <gazebo reference="uuv0/camera_link_optical">
+      <gazebo reference="${namespace}/camera_link_optical">
          <sensor type="camera" name="camera_camera_sensor">
             <update_rate>30.0</update_rate>
             <camera>
@@ -199,7 +199,7 @@
             <cameraName>camera</cameraName>
             <imageTopicName>image_raw</imageTopicName>
             <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-            <frameName>uuv0/camera_link_optical</frameName>
+            <frameName>${namespace}/camera_link_optical</frameName>
             <hackBaseline>0.07</hackBaseline>
             <distortionK1>0.0</distortionK1>
             <distortionK2>0.0</distortionK2>
@@ -211,8 +211,8 @@
          </sensor>
       </gazebo>
 
-      <gazebo reference="uuv0/camera_link_depth">
-      <sensor name="uuv0/camera_link_depth_camera" type="depth">
+      <gazebo reference="${namespace}/camera_link_depth">
+      <sensor name="${namespace}/camera_link_depth_camera" type="depth">
          <update_rate>20</update_rate>
          <camera>
             <horizontal_fov>1.047198</horizontal_fov>
@@ -226,7 +226,7 @@
             <far>100</far>
             </clip>
          </camera>
-         <plugin name="uuv0/camera_link_depth_controller" filename="libgazebo_ros_openni_kinect.so">
+         <plugin name="${namespace}/camera_link_depth_controller" filename="libgazebo_ros_openni_kinect.so">
             <baseline>0.2</baseline>
             <alwaysOn>true</alwaysOn>
             <updateRate>1.0</updateRate>
@@ -236,7 +236,7 @@
             <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
             <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
             <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
-            <frameName>uuv0/camera_link_depth</frameName>
+            <frameName>${namespace}/camera_link_depth</frameName>
             <pointCloudCutoff>0.5</pointCloudCutoff>
             <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
             <distortionK1>0.00000001</distortionK1>
@@ -253,9 +253,9 @@
       </sensor>
       </gazebo>
 
-      <gazebo reference="uuv0/base_sss">
+      <gazebo reference="${namespace}/base_sss">
             <gravity>false</gravity>
-            <sensor name="uuv0/base_sss" type="ray">
+            <sensor name="${namespace}/base_sss" type="ray">
             <ray>
                <scan>
                   <horizontal>
@@ -279,8 +279,8 @@
                   <stddev>0.05</stddev>
                </noise>
             </ray>
-            <plugin name="uuv0/base_sss_plugin" filename="libgazebo_ros_laser.so">
-               <topicName>/uuv0/vu_sss</topicName>
+            <plugin name="${namespace}/base_sss_plugin" filename="libgazebo_ros_laser.so">
+               <topicName>/${namespace}/vu_sss</topicName>
                <frameName>base_sss</frameName>
             </plugin>        
             <always_on>1</always_on>
@@ -290,9 +290,9 @@
       </gazebo>
 
 
-      <gazebo reference="uuv0/base_fis">
+      <gazebo reference="${namespace}/base_fis">
             <gravity>false</gravity>
-            <sensor name="uuv0/base_fis" type="ray">
+            <sensor name="${namespace}/base_fis" type="ray">
             <ray>
                <scan>
                   <horizontal>
@@ -313,8 +313,8 @@
                   <stddev>0.05</stddev>
                </noise>
             </ray>
-            <plugin name="uuv0/base_fis_plugin" filename="libgazebo_ros_laser.so">
-               <topicName>/uuv0/vu_fis</topicName>
+            <plugin name="${namespace}/base_fis_plugin" filename="libgazebo_ros_laser.so">
+               <topicName>/${namespace}/vu_fis</topicName>
                <frameName>base_fis</frameName>
             </plugin>        
             <always_on>1</always_on>
@@ -324,7 +324,7 @@
       </gazebo>
 
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -356,15 +356,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_0</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_0</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -396,15 +396,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_1</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_1</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -436,15 +436,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_2</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_2</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -476,15 +476,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_3</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_3</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -516,15 +516,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_4</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_4</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -556,15 +556,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_5</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_5</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -596,15 +596,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_6</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_6</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -636,15 +636,15 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_7</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_7</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>
          </sensor>  
       </gazebo>
 
-      <gazebo reference="uuv0/base_sonar_front">        
+      <gazebo reference="${namespace}/base_sonar_front">        
          <sensor type="ray" name="TeraRanger">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
@@ -676,8 +676,8 @@
                <gaussianNoise>0.005</gaussianNoise>
                <alwaysOn>true</alwaysOn>
                <updateRate>50</updateRate>
-               <topicName>/uuv0/fls_sonar_8</topicName>
-               <frameName>uuv0/base_fls_sonar</frameName>
+               <topicName>/${namespace}/fls_sonar_8</topicName>
+               <frameName>${namespace}/base_fls_sonar</frameName>
                <radiation>ULTRASOUND</radiation>
                <fov>0.0524</fov>
             </plugin>

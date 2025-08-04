@@ -51,24 +51,24 @@ class SideScanSonar(object):
 
         # Initialize subscribers/publishers
         self.sss_waterfall_pub = rospy.Publisher(
-            '/vu_sss/waterfall', Image, queue_size=1)
+             f'{self.namespace}/vu_sss/waterfall', Image, queue_size=1)
         
         self.sss_waterfall_gt_pub = rospy.Publisher(
-            '/vu_sss/waterfall_gt', Image, queue_size=1)
+             f'{self.namespace}/vu_sss/waterfall_gt', Image, queue_size=1)
 
         self.sss_waterfall_l_pub = rospy.Publisher(
-            '/vu_sss/waterfall_l', Image, queue_size=1)
+             f'{self.namespace}/vu_sss/waterfall_l', Image, queue_size=1)
         self.sss_waterfall_r_pub = rospy.Publisher(
-            '/vu_sss/waterfall_r', Image, queue_size=1)
+             f'{self.namespace}/vu_sss/waterfall_r', Image, queue_size=1)
         
         self.sss_waterfall_gt_l_pub = rospy.Publisher(
-            '/vu_sss/waterfall_gt_l', Image, queue_size=1)    
+             f'{self.namespace}/vu_sss/waterfall_gt_l', Image, queue_size=1)    
         self.sss_waterfall_gt_r_pub = rospy.Publisher(
-            '/vu_sss/waterfall_gt_r', Image, queue_size=1)    
+             f'{self.namespace}/vu_sss/waterfall_gt_r', Image, queue_size=1)    
 
         self.cvbridge = CvBridge()
         self.odometry_sub = rospy.Subscriber(
-             '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
         
         if self.laser_topic == '/scan':
             self.sub = rospy.Subscriber(
@@ -76,7 +76,7 @@ class SideScanSonar(object):
                 
         else:
             self.sub = rospy.Subscriber(
-                "vu_sss", LaserScan, self.laser_callback, queue_size=1)
+                 f"{self.namespace}/vu_sss", LaserScan, self.laser_callback, queue_size=1)
         
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():

@@ -9,7 +9,7 @@ Description:  Creates simulated world.
     <!-- ############################### -->
 
     <arg name="uuv_name" default="uuv0"/>
-    <!-- <arg name="uuv_name1" default="uuv1"/> -->
+    <!-- <arg name="uuv_name1" default="uuv0"/> -->
 
     <!--Output parameters-->
     <arg name="standard_output" default="screen"/>

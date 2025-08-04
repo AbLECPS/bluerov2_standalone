@@ -60,7 +60,7 @@ class SpawnBoxes():
         self.box_name    = "static_box"
 
         # self.robot_namespace  = rospy.get_namespace().replace('/', '')
-        self.robot_namespace  = 'uuv0'
+        self.robot_namespace = rospy.get_namespace().replace('/', '')
         self.gazebo_namespace = "/gazebo"
 
         self.templ_file = os.path.join(
@@ -184,7 +184,7 @@ class SpawnBoxes():
         marker = Marker()
         
         marker.header.stamp = rospy.Time.now()
-        marker.ns = "/uuv0/collision_objects"
+        marker.ns = f"/{self.namespace}/collision_objects"
         marker.id = len(self.box_markers)
         #marker.type = Marker.MESH_RESOURCE #mesh resource not scalable - why?
         marker.type = Marker.CUBE

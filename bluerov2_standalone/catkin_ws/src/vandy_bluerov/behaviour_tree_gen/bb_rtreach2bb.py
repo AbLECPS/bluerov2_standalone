@@ -55,7 +55,8 @@ class ToBlackboard(subscribers.ToBlackboard):
     """
     def __init__(self, 
                     name, 
-                    topic_name="rtreach_result",         
+                    topic_name="rtreach_result",
+                    namespace = 'uuv0',         
                     enable_emergency_stop=True,         
                     rtreach_window_size=25,         
                     rtreach_window_threshold=0.75        
@@ -75,12 +76,13 @@ class ToBlackboard(subscribers.ToBlackboard):
         self.blackboard.rtreach_warning = False
         self.blackboard.rtreach_long_term_warning = False
         
+        self.namespace = namespace
         self.enable_emergency_stop=enable_emergency_stop        
         self.rtreach_window_size=rtreach_window_size        
         self.rtreach_window_threshold=rtreach_window_threshold        
 ############<<USER INIT CODE BEGINS>>##############################
         self.rtreach_window = deque(maxlen=rtreach_window_size)
-        self.rtreach_long_term_pub = rospy.Publisher( '/uuv0/rtreach_long_term',
+        self.rtreach_long_term_pub = rospy.Publisher( f'/{self.namespace}/rtreach_long_term',
                                             Float32,
                                             queue_size=1)   
 ############<<USER INIT CODE ENDS>>################################

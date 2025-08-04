@@ -46,7 +46,7 @@ Description:  Rosbag recording
         /uuv0/fls_output_gt 
         /uuv0/fls_lec_uuv_state_gt
         /uuv0/imu 
-        /uuv0/thruster_cmd_logging 
+        /puppy/thruster_cmd_logging 
         /uuv0/hsd_command 
         /uuv0/pose_gt_noisy_ned'
       if="$(arg record)"/> -->

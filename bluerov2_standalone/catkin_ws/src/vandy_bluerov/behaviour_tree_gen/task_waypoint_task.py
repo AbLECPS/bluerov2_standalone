@@ -30,29 +30,31 @@ from std_msgs.msg import String
 class TaskHandler(py_trees.behaviour.Behaviour):
     
     def __init__(self, 
-                 name  
+                 name,
+                 namespace  
                 ):                 
         super(TaskHandler, self).__init__(name=name)
         self.task = name
+        self.namespace = namespace
         self.blackboard = py_trees.blackboard.Blackboard()
         self.blackboard.HSD_out = HSDCommand()
         self.blackboard.cm_hsd_input = String()
      
-        self.hsd_waypoint__sub = rospy.Subscriber( '/uuv0/hsd_to_waypoint',
+        self.hsd_waypoint__sub = rospy.Subscriber( f'/{self.namespace}/hsd_to_waypoint',
                                             HSDCommand,
                                             self.hsd_waypoint__callback,
                                             queue_size =1)
         self.hsd_waypoint__msg =  HSDCommand()                   
-        self.hsd_waypoint_completed__sub = rospy.Subscriber( '/uuv0/waypoints_completed',
+        self.hsd_waypoint_completed__sub = rospy.Subscriber( f'/{self.namespace}/waypoints_completed',
                                             Bool,
                                             self.hsd_waypoint_completed__callback,
                                             queue_size =1)
         self.hsd_waypoint_completed__msg =  Bool()                   
-        self.cm_hsd_input__pub = rospy.Publisher( '/uuv0/cm_hsd_input',
+        self.cm_hsd_input__pub = rospy.Publisher( f'/{self.namespace}/cm_hsd_input',
                                             String,
                                             queue_size=1)
         self.cm_hsd_input__msg =  String()                   
-        self.next_wp__pub = rospy.Publisher( '/uuv0/next_wp',
+        self.next_wp__pub = rospy.Publisher( f'/{self.namespace}/next_wp',
                                             Bool,
                                             queue_size=1)
         self.next_wp__msg =  Bool()                   

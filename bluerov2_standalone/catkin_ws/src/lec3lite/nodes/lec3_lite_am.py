@@ -35,7 +35,7 @@ class LEC3LiteAM(object):
         assert self.am_type in ['vae', 'svdd'], "Not supported AM type"
 
         self.am_lec3lite_pub = rospy.Publisher(
-            '/lec3lite/am_' + self.am_type, 
+            f'{self.namespace}/lec3lite/am_' + self.am_type, 
             Float32MultiArray, 
             queue_size=1) 
 
@@ -55,7 +55,7 @@ class LEC3LiteAM(object):
         ])
 
         self.fls_bins_sub = rospy.Subscriber(
-            '/vu_fls/bins', Float32MultiArray, self.callback_fls, queue_size=1)
+            f'{self.namespace}/vu_fls/bins', Float32MultiArray, self.callback_fls, queue_size=1)
 
     def get_am(self, x):
         return self.am.evaluate(x, None)

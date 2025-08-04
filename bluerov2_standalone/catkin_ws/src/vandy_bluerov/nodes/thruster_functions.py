@@ -25,17 +25,17 @@ class ThrusterFunction(object):
         self.topic_suffix_active_diagnostics = "/active_diagnostics_input"
 
         self.thruster_0_pub = rospy.Publisher(
-            '/uuv0/thrusters/0' + self.topic_suffix_default, FloatStamped, queue_size=1)
+            f'/{self.namespace}/thrusters/0' + self.topic_suffix_default, FloatStamped, queue_size=1)
         self.thruster_1_pub = rospy.Publisher(
-            '/uuv0/thrusters/1' + self.topic_suffix_default, FloatStamped, queue_size=1)
+            f'/{self.namespace}/thrusters/1' + self.topic_suffix_default, FloatStamped, queue_size=1)
         self.thruster_2_pub = rospy.Publisher(
-            '/uuv0/thrusters/2' + self.topic_suffix_default, FloatStamped, queue_size=1)
+            f'/{self.namespace}/thrusters/2' + self.topic_suffix_default, FloatStamped, queue_size=1)
         self.thruster_3_pub = rospy.Publisher(
-            '/uuv0/thrusters/3' + self.topic_suffix_default, FloatStamped, queue_size=1)
+            f'/{self.namespace}/thrusters/3' + self.topic_suffix_default, FloatStamped, queue_size=1)
         self.thruster_4_pub = rospy.Publisher(
-            '/uuv0/thrusters/4' + self.topic_suffix_default, FloatStamped, queue_size=1)
+            f'/{self.namespace}/thrusters/4' + self.topic_suffix_default, FloatStamped, queue_size=1)
         self.thruster_5_pub = rospy.Publisher(
-            '/uuv0/thrusters/5' + self.topic_suffix_default, FloatStamped, queue_size=1)
+            f'/{self.namespace}/thrusters/5' + self.topic_suffix_default, FloatStamped, queue_size=1)
 
         # rate = rospy.Rate(1)
         # while not rospy.is_shutdown():
@@ -132,13 +132,13 @@ class ThrusterFunction(object):
 
     def get_thruster_config(self):
         try:
-            rospy.wait_for_service('uuv0/thruster_manager/get_config', timeout=5)
+            rospy.wait_for_service(f'/{self.namespace}/thruster_manager/get_config', timeout=5)
         except rospy.ROSException:
             raise rospy.ROSException('thruster_manager/get_config Service not available!')
 
         try:
             GetConfig_srv = rospy.ServiceProxy(
-                'uuv0/thruster_manager/get_config',
+                f'/{self.namespace}/thruster_manager/get_config',
                 GetThrusterManagerConfig)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)
@@ -154,14 +154,14 @@ class ThrusterFunction(object):
 
         # Set the thruster topics
         try:
-            rospy.wait_for_service('uuv0/thruster_manager/set_config', timeout=5)
+            rospy.wait_for_service(f'/{self.namespace}/thruster_manager/set_config', timeout=5)
         except rospy.ROSException:
             raise rospy.ROSException('thruster_manager/set_config Service not available!')
             return False
 
         try:
             SetConfig_srv = rospy.ServiceProxy(
-                'uuv0/thruster_manager/set_config',
+                f'/{self.namespace}/thruster_manager/set_config',
                 SetThrusterManagerConfig)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)
@@ -175,14 +175,14 @@ class ThrusterFunction(object):
 
         # reset DP Controller
         try:
-            rospy.wait_for_service('uuv0/reset_controller', timeout=5)
+            rospy.wait_for_service(f'/{self.namespace}/reset_controller', timeout=5)
         except rospy.ROSException:
             raise rospy.ROSException('reset_controller Service not available!')
             return False
 
         try:
             ResetController_srv = rospy.ServiceProxy(
-                'uuv0/reset_controller',
+                f'/{self.namespace}/reset_controller',
                 ResetController)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)
@@ -194,13 +194,13 @@ class ThrusterFunction(object):
 
     def get_TAM(self):
         try:
-            rospy.wait_for_service('uuv0/thruster_manager/get_thrusters_info', timeout=5)
+            rospy.wait_for_service(f'/{self.namespace}/thruster_manager/get_thrusters_info', timeout=5)
         except rospy.ROSException:
             raise rospy.ROSException('thruster_manager/get_thrusters_info Service not available!')
 
         try:
             ThrusterManagerInfo_srv = rospy.ServiceProxy(
-                'uuv0/thruster_manager/get_thrusters_info',
+                f'/{self.namespace}/thruster_manager/get_thrusters_info',
                 ThrusterManagerInfo)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)
@@ -213,13 +213,13 @@ class ThrusterFunction(object):
 
     def set_TAM(self, tam):
         try:
-            rospy.wait_for_service('uuv0/thruster_manager/set_tam', timeout=5)
+            rospy.wait_for_service(f'/{self.namespace}/thruster_manager/set_tam', timeout=5)
         except rospy.ROSException:
             raise rospy.ROSException('thruster_manager/set_tam Service not available!')
 
         try:
             TAM_reallocation_srv = rospy.ServiceProxy(
-                'uuv0/thruster_manager/set_tam',
+                f'/{self.namespace}/thruster_manager/set_tam',
                 TAM)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)
@@ -231,13 +231,13 @@ class ThrusterFunction(object):
 
     def hold_vehicle(self):
         try:
-            rospy.wait_for_service('uuv0/hold_vehicle', timeout=5)
+            rospy.wait_for_service(f'/{self.namespace}/hold_vehicle', timeout=5)
         except rospy.ROSException:
             raise rospy.ROSException('Service not available!')
 
         try:
             hold_vehicle_srv = rospy.ServiceProxy(
-                'uuv0/hold_vehicle',
+                f'/{self.namespace}/hold_vehicle',
                 Hold)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)

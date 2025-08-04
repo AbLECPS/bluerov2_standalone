@@ -50,7 +50,7 @@ class LEC2LiteAM(object):
         self.cvbridge = CvBridge()
 
         self.am_lec2lite_pub = rospy.Publisher(
-            '/vu_sss/am_' + self.am_type + '_lec2lite_' + self.side, 
+             f'{self.namespace}/vu_sss/am_' + self.am_type + '_lec2lite_' + self.side, 
             Float32MultiArray, 
             queue_size=1) 
 
@@ -70,7 +70,7 @@ class LEC2LiteAM(object):
         ])
 
         self.sss_waterfall_sub = rospy.Subscriber(
-            '/vu_sss/waterfall_' + self.side, Image, self.callback_am, queue_size=1)
+             f'{self.namespace}/vu_sss/waterfall_' + self.side, Image, self.callback_am, queue_size=1)
 
     def get_am(self, image):
         # image = transforms.Grayscale()(image)

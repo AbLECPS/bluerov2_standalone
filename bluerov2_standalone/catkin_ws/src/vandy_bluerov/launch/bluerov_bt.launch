@@ -34,44 +34,45 @@
 <arg name="fdir_path" default="jupyter/admin_BlueROV/FDIR/selclass"/> 
 <arg name="fdir_params" default="{'user_choice':'override_threshold','am_s_threshold':0.5, 'am_threshold':0.5}"/> 
 
-<node name="BlueROV_tree" 
-      pkg="vandy_bluerov" 
-      type="BlueROV_tree.py"
-      required="true" 
-      output="screen">
-      <rosparam subst_value="true">
-            travel_cost: $(arg travel_cost)
-            failsafe_battery_low_threshold: $(arg failsafe_battery_low_threshold)
-            failsafe_rth_enable: $(arg failsafe_rth_enable)
-            failsafe_signal_lost_threshold: $(arg failsafe_signal_lost_threshold)
-            failsafe_tracking_lost_threshold: $(arg failsafe_tracking_lost_threshold)
-            geofence_threshold: $(arg geofence_threshold)
-            pipe_estimation_good_log_val: $(arg pipe_estimation_good_log_val)
-            speed_good_log_val: $(arg speed_good_log_val)
-            uuv_degradation_mode: $(arg uuv_degradation_mode)
-            sum_thrust_loss_threshold: $(arg sum_thrust_loss_threshold)
-            enable_rpm_sensor_check: $(arg enable_rpm_sensor_check)
-            thruster_thrust_force_efficiency: $(arg thruster_thrust_force_efficiency)
-            enable_training_data_collection: $(arg enable_training_data_collection)
-            thruster_motor_fail_duration: $(arg thruster_motor_fail_duration)
-            thruster_motor_fail_starting_time: $(arg thruster_motor_fail_starting_time)
-            thruster_motor_failure: $(arg thruster_motor_failure)
-            home_reached_threshold: $(arg home_radius)
-            total_degradation_threshold: $(arg total_degradation_threshold)
-            uuv_max_speed: $(arg uuv_max_speed)
-            mission_file: $(arg mission_file)
-            uuv_min_speed: $(arg uuv_min_speed)
-            decision_source: $(arg decision_source)
-            fls_in_view_window: $(arg fls_in_view_window)
-            fls_in_view_limit: $(arg fls_in_view_limit)
-            enable_fault_detection: $(arg enable_fault_detection)
-            enable_obstacle_avoidance: $(arg enable_obstacle_avoidance)
-            enable_emergency_stop: $(arg enable_emergency_stop)
-            fdir_path: $(arg fdir_path)
-            fdir_params: $(arg fdir_params)
-      </rosparam>
-</node>
 <group ns="$(arg uuv_name)">
+      <node name="BlueROV_tree" 
+            pkg="vandy_bluerov" 
+            type="BlueROV_tree.py"
+            required="true" 
+            output="screen">
+            <rosparam subst_value="true">
+                  travel_cost: $(arg travel_cost)
+                  failsafe_battery_low_threshold: $(arg failsafe_battery_low_threshold)
+                  failsafe_rth_enable: $(arg failsafe_rth_enable)
+                  failsafe_signal_lost_threshold: $(arg failsafe_signal_lost_threshold)
+                  failsafe_tracking_lost_threshold: $(arg failsafe_tracking_lost_threshold)
+                  geofence_threshold: $(arg geofence_threshold)
+                  pipe_estimation_good_log_val: $(arg pipe_estimation_good_log_val)
+                  speed_good_log_val: $(arg speed_good_log_val)
+                  uuv_degradation_mode: $(arg uuv_degradation_mode)
+                  sum_thrust_loss_threshold: $(arg sum_thrust_loss_threshold)
+                  enable_rpm_sensor_check: $(arg enable_rpm_sensor_check)
+                  thruster_thrust_force_efficiency: $(arg thruster_thrust_force_efficiency)
+                  enable_training_data_collection: $(arg enable_training_data_collection)
+                  thruster_motor_fail_duration: $(arg thruster_motor_fail_duration)
+                  thruster_motor_fail_starting_time: $(arg thruster_motor_fail_starting_time)
+                  thruster_motor_failure: $(arg thruster_motor_failure)
+                  home_reached_threshold: $(arg home_radius)
+                  total_degradation_threshold: $(arg total_degradation_threshold)
+                  uuv_max_speed: $(arg uuv_max_speed)
+                  mission_file: $(arg mission_file)
+                  uuv_min_speed: $(arg uuv_min_speed)
+                  decision_source: $(arg decision_source)
+                  fls_in_view_window: $(arg fls_in_view_window)
+                  fls_in_view_limit: $(arg fls_in_view_limit)
+                  enable_fault_detection: $(arg enable_fault_detection)
+                  enable_obstacle_avoidance: $(arg enable_obstacle_avoidance)
+                  enable_emergency_stop: $(arg enable_emergency_stop)
+                  fdir_path: $(arg fdir_path)
+                  fdir_params: $(arg fdir_params)
+            </rosparam>
+      </node>
+      
       <node name="bt_input"
             pkg="vandy_bluerov" 
             type="bt_input.py" 

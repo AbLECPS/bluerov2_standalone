@@ -7,8 +7,10 @@ Description:  Flight Data Recorder simulation package
   <arg name="random_seed" default="0"/>
   <arg name="results_directory" default="$(find vandy_bluerov)/results"/>
   <arg name="generate_fdr" default="true"/>
+  <arg name="uuv_name" default="uuv0"/>
 
-    <group if="$(arg generate_fdr)">
+
+    <group if="$(arg generate_fdr)" ns="$(arg uuv_name)">
         <node name="fdr_rx" pkg="vandy_bluerov" type="fdr_rx.py" output="screen">
             <param name="results_directory" type="string" value="$(arg results_directory)" />
             <rosparam subst_value="true">

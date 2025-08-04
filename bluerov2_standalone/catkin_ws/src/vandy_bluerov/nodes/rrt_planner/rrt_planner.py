@@ -613,6 +613,8 @@ class RRTPlanner():
     # Initialize with the given parameters
     def __init__(self, connection_radius, max_num_nodes, world_bounds_inflation, num_nodes_refinement, waypoint_tollerance, debug):  
         # PARAMS
+        self.namespace = rospy.get_namespace().replace('/', '')
+
         self.debug = debug # Whether or not to run in debug mode (debug gives more information but slows performance)
         self.num_nodes_refinement = num_nodes_refinement # The number of nodes to refine the tree with every cycle
         self.waypoint_tollerance = waypoint_tollerance # The tollerance with which we have reached a Node in our path
@@ -624,29 +626,29 @@ class RRTPlanner():
         
         # Subscriber to the currently targeted waypoint
         self.target_point_subscriber = rospy.Subscriber(
-            '/uuv0/target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
+            f'/{self.namespace}/target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
 
         # Subscriber to the robots NED position
         self.robot_position_subscriber = rospy.Subscriber(
-            '/uuv0/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+            f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
         
         # Subscriber to the obstacle map
         self.obstacle_map_subscriber = rospy.Subscriber(
-            "/uuv0/obstacle_map", OccupancyGrid, self.callback_obstacle_map, queue_size=1)
+            f"/{self.namespace}/obstacle_map", OccupancyGrid, self.callback_obstacle_map, queue_size=1)
         
         if self.debug:
             # Publisher for all points in our Tree
-            self.rrt_points_pub = rospy.Publisher( '/uuv0/rrt_points', PoseArray, queue_size=1)
+            self.rrt_points_pub = rospy.Publisher( f'/{self.namespace}/rrt_points', PoseArray, queue_size=1)
             self.rrt_points_msg = PoseArray()
             self.rrt_points_msg.header.frame_id = 'world'
             
         # Path publisher for our planner
-        self.rrt_path_pub = rospy.Publisher( '/uuv0/rrt_path', Path, queue_size=1)
+        self.rrt_path_pub = rospy.Publisher( f'/{self.namespace}/rrt_path', Path, queue_size=1)
         self.rrt_path_msg = Path()
         self.rrt_path_msg.header.frame_id = 'world'
 
         # Publisher stating whether or not to publish an hsd command (whether or not to move the robot)
-        self.publish_rrt_hsd_pub = rospy.Publisher( '/uuv0/publish_rrt_hsd', Bool, queue_size=1)
+        self.publish_rrt_hsd_pub = rospy.Publisher( f'/{self.namespace}/publish_rrt_hsd', Bool, queue_size=1)
         
         self.path = None # Holds the path between our starting point and our goal
         self.path_start = None # Holds the starting position of our path (because it gets instantly cleared from the RRT when reached)

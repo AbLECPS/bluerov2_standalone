@@ -47,7 +47,8 @@ from alc_utils import config as alc_config
 class TaskHandler(py_trees.behaviour.Behaviour):
     
     def __init__(self, 
-                 name ,  
+                 name,
+                 namespace,   
                  num_classes=22, 
                  ann_input_len=13, 
                  fdir_path="jupyter/admin_BlueROV/FDIR/selclass", 
@@ -57,20 +58,21 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.task = name
         self.blackboard = py_trees.blackboard.Blackboard()
         
+        self.namespace = namespace
         self.num_classes=num_classes        
         self.ann_input_len=ann_input_len        
         self.fdir_path=fdir_path        
         self.fdir_params=fdir_params     
-        self.lec_input__sub = rospy.Subscriber( '/uuv0/thruster_cmd_logging',
+        self.lec_input__sub = rospy.Subscriber( '/puppy/thruster_cmd_logging',
                                             Float32MultiArray,
                                             self.lec_input__callback,
                                             queue_size =1)
         self.lec_input__msg =  Float32MultiArray()                   
-        self.degradation_detector__pub = rospy.Publisher( '/uuv0/degradation_detector',
+        self.degradation_detector__pub = rospy.Publisher( f'/{self.namespace}/degradation_detector',
                                             Float32MultiArray,
                                             queue_size=1)
         self.degradation_detector__msg =  Float32MultiArray()                   
-        self.degradation_detector_am__pub = rospy.Publisher( '/uuv0/degradation_detector_am/p_value',
+        self.degradation_detector_am__pub = rospy.Publisher(f'/{self.namespace}/degradation_detector_am/p_value',
                                             Float32MultiArray,
                                             queue_size=1)
         self.degradation_detector_am__msg =  Float32MultiArray()                   
@@ -133,7 +135,7 @@ class TaskHandler(py_trees.behaviour.Behaviour):
             # Run LEC/AM prediction
             msg =  Float32MultiArray()
             msg.data = model_input
-            INPUT_TOPIC = "/uuv0/thruster_cmd_logging"
+            INPUT_TOPIC = "/puppy/thruster_cmd_logging"
             model_input = {INPUT_TOPIC : msg}
             # Params must come from args
             # params = json.loads(self.fdir_params)
