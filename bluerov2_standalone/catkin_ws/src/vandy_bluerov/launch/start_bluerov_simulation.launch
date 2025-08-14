@@ -253,7 +253,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="use_sim_time" default="true"/>
         <arg name="gui" default="false"/>
         <arg name="timeout" default="600"/>
-        <arg name="unpause_timeout" default="15"/>
+        <arg name="unpause_timeout" default="120"/>
         <arg name="gz_debug" default="false"/>
 
         <!-- World Origin in lat long -->
@@ -451,10 +451,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
         <arg name="random_seed_2" default="0"/>
 
-        <!-- World Origin in lat long -->
-        <arg name="origin_latitude_2" default="38.971203"/> <!-- 38.971203 -->
-        <arg name="origin_longitude_2" default="-76.398464"/> <!-- -76.398464 -->
-        <arg name="origin_altitude_2" default="0"/>
+ 
     <!-- ############################### -->
 
 
@@ -607,9 +604,9 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="vehicle_yaw" value="$(arg vehicle_yaw_2)"/>
 
         <!-- World Origin in lat long -->
-        <arg name="origin_latitude" value="$(arg origin_latitude_2)"/> <!-- 38.971203 -->
-        <arg name="origin_longitude" value="$(arg origin_longitude_2)"/> <!-- -76.398464 -->
-        <arg name="origin_altitude" value="$(arg origin_altitude_2)"/>
+        <arg name="origin_latitude" value="$(arg origin_latitude)"/> <!-- 38.971203 -->
+        <arg name="origin_longitude" value="$(arg origin_longitude)"/> <!-- -76.398464 -->
+        <arg name="origin_altitude" value="$(arg origin_altitude)"/>
     
     </include>
 
