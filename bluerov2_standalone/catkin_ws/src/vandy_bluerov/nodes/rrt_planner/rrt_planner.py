@@ -630,7 +630,7 @@ class RRTPlanner():
 
         # Subscriber to the robots NED position
         self.robot_position_subscriber = rospy.Subscriber(
-            f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+            f'{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
         
         # Subscriber to the obstacle map
         self.obstacle_map_subscriber = rospy.Subscriber(

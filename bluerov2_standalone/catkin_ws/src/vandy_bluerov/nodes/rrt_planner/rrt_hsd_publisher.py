@@ -89,7 +89,7 @@ class RRTHSDPublisher():
         
         # Subscriber to the robot position in NED coordinates
         self.robot_position = rospy.Subscriber(
-            f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+            f'{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
         self.robot_position = None # Holds the most recent robot position in ENU coordinates
         
         # Publishes commands to the robot for movement
