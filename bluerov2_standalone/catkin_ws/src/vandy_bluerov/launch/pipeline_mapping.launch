@@ -21,7 +21,7 @@
     <group> <!-- ns="$(arg uuv_name)"> -->
 		<node pkg="tf" type="static_transform_publisher" name="fixed_pipeline_map" args="0 0 0 0 0 0   /$(arg uuv_name)/pipeline_map /$(arg uuv_name)/obstacle_map 100" />
 		<node pkg="vandy_bluerov" type="pipe_mapping.py" name="pipeline_map_publisher" output="screen"/>
-		<arg name="laser_topic" value="$(arg uuv_name/vu_sss"/>
+		<arg name="laser_topic" value="$(arg uuv_name)/vu_sss"/>
 		<arg name="num_range_bins" value="360"/>
 		<arg name="beam_width" value="0.9599"/>
 		<arg name="sss_lines" value="16"/>
