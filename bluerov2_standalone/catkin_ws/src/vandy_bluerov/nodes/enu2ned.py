@@ -12,7 +12,7 @@ class OdometryConverter:
         rospy.loginfo('Initialize enu to ned for vehicle <%s>' % self.namespace)
 
         # Publisher for NED odometry
-        self.odom_ned_pub = rospy.Publisher('pose_gt_ned', Odometry, queue_size=10)
+        self.odom_ned_pub = rospy.Publisher('pose_gt_ned', Odometry, queue_size=1)
 
         # Subscriber to ENU odometry
         rospy.Subscriber('odom', Odometry, self.odom_callback)
@@ -24,7 +24,7 @@ class OdometryConverter:
         odom_ned = Odometry()
         odom_ned.header = msg.header
         odom_ned.header.frame_id = "world_ned" # Set the new frame ID
-
+        odom_ned.child_frame_id = msg.child_frame_id+"_ned" 
         # Convert position from ENU to NED
         # ENU: x_e, y_n, z_u
         # NED: x_n, y_e, z_d
@@ -47,10 +47,9 @@ class OdometryConverter:
         # Define the rotation from ENU to NED as a quaternion
         # This is a rotation of 90 degrees around Z (ENU) then 180 around X (new frame)
         # Equivalent to rotating ENU's X to NED's Y, ENU's Y to NED's X, ENU's Z to NED's -Z
-        q_enu_to_ned = tf.transformations.quaternion_from_euler(np.pi, 0, np.pi/2) # Roll 180, Yaw 90
-
-        # Multiply the quaternions to get the new orientation
-        q_ned = tf.transformations.quaternion_multiply(q_enu_to_ned, q_enu)
+        
+        q_tf_enu_to_ned = tf.transformations.quaternion_from_euler(0, 0, -np.pi/2)
+        q_ned = tf.transformations.quaternion_multiply(q_enu, q_tf_enu_to_ned)
 
         odom_ned.pose.pose.orientation = Quaternion(*q_ned)
 
