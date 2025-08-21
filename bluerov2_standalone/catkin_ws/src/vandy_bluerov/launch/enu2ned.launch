@@ -1,0 +1,12 @@
+<launch>
+  <arg name="uuv_name" default="uuv"/>
+  <group>
+    <node pkg="vandy_bluerov"
+          type="enu2ned.py"
+          name="enu2ned"
+          output="screen"
+          required="true">
+      <remap from="odom" to="pose_gt"/>
+    </node>
+  </group>
+</launch>
