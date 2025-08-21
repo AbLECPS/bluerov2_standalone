@@ -389,6 +389,11 @@ Description:  Creates bluerov vehicle.
         <arg name="max_speed" default="$(arg uuv_max_speed)"/>
     </include>
 
+    <!-- Start the enu2ned-->
+    <include file="$(find vandy_bluerov)/launch/enu2ned.launch">
+        <arg name="uuv_name" value="$(arg uuv_name)"/>
+    </include>
+
     <!-- Start speed publisher -->
     <include file="$(find vandy_bluerov)/launch/speed_publisher.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
