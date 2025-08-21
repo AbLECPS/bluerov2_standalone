@@ -68,11 +68,11 @@ class TaskHandler(py_trees.behaviour.Behaviour):
                                             self.lec_input__callback,
                                             queue_size =1)
         self.lec_input__msg =  Float32MultiArray()                   
-        self.degradation_detector__pub = rospy.Publisher( f'/{self.namespace}/degradation_detector',
+        self.degradation_detector__pub = rospy.Publisher( 'degradation_detector',
                                             Float32MultiArray,
                                             queue_size=1)
         self.degradation_detector__msg =  Float32MultiArray()                   
-        self.degradation_detector_am__pub = rospy.Publisher(f'/{self.namespace}/degradation_detector_am/p_value',
+        self.degradation_detector_am__pub = rospy.Publisher('degradation_detector_am/p_value',
                                             Float32MultiArray,
                                             queue_size=1)
         self.degradation_detector_am__msg =  Float32MultiArray()                   

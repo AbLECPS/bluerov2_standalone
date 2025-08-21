@@ -32,7 +32,7 @@ class ObstacleMapping(object):
         # self.track_val = 1
 
         obstacle_map_msg = OccupancyGrid()
-        obstacle_map_msg.header.frame_id = f'/{self.namespace}/obstacle_map'        
+        obstacle_map_msg.header.frame_id = 'obstacle_map'        
         obstacle_map_msg.info.resolution = 1
         obstacle_map_msg.info.width = self.size
         obstacle_map_msg.info.height = obstacle_map_msg.info.width
@@ -52,18 +52,18 @@ class ObstacleMapping(object):
 
         # Subscriber
         self.target_sub = rospy.Subscriber(
-            f'/{self.namespace}/target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
+            'target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
         self.target_waypoint = Point()
 
         
         self.target_id_sub = rospy.Subscriber(
-            f'/{self.namespace}/target_waypoint_id', Int32, self.callback_target_waypoint_id, queue_size=1) 
+            'target_waypoint_id', Int32, self.callback_target_waypoint_id, queue_size=1) 
         self.target_waypoint_id = -1
 
         if self.obstacle_avoidance_source == "fls_lec3lite":                
             # LEC
             self.range_sub = rospy.Subscriber(
-                f'/{self.namespace}/lec3lite/ranges', Float32MultiArray, self.callback_fls_lec3lite)
+                'lec3lite/ranges', Float32MultiArray, self.callback_fls_lec3lite)
             # AM
             self.am_lec3lite_sub = rospy.Subscriber(
                 '/lec3lite/am_vae', Float32MultiArray, self.callback_am_lec3lite)
@@ -72,7 +72,7 @@ class ObstacleMapping(object):
         else: #elif self.obstacle_avoidance_source == "fls_echosounder":                
             # FLS echosounder
             self.range_sub = rospy.Subscriber(
-                f"/{self.namespace}/fls_echosunder", Range, self.callback_range)
+                "fls_echosunder", Range, self.callback_range)
 
 
 
@@ -82,30 +82,30 @@ class ObstacleMapping(object):
         self.doppler_distances = deque(maxlen=10)
 
         self.doppler_velocity_pub = rospy.Publisher(
-            f"/{self.namespace}/doppler_velocity", Float32, queue_size = 1)
+            "doppler_velocity", Float32, queue_size = 1)
 
         self.obstacle_in_view_pub = rospy.Publisher(
-            f"/{self.namespace}/obstacle_in_view", Header, queue_size = 1)
+            "obstacle_in_view", Header, queue_size = 1)
 
         # Odom/Pose message
         self.odometry_sub = rospy.Subscriber(
-             'pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             'pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         self.uuv_position = [0,0,0]
         self.uuv_rpy = [0,0,0]        
 
         # Publisher
         self.obstacle_near_wp_pub = rospy.Publisher(
-            f"/{self.namespace}/obstacle_near_wp", Int32, queue_size = 1)
+            "obstacle_near_wp", Int32, queue_size = 1)
 
         # Obstacle map
         self.obstacle_map_pub = rospy.Publisher(
-            f"/{self.namespace}/obstacle_map", OccupancyGrid, queue_size = 1)
+            "obstacle_map", OccupancyGrid, queue_size = 1)
         
         self.obstacle_map_occupied_pub = rospy.Publisher(
-            f"/{self.namespace}/obstacle_map_occupied", Float32MultiArray, queue_size = 1)
+            "obstacle_map_occupied", Float32MultiArray, queue_size = 1)
         
         self.obstacle_map_update_pub = rospy.Publisher(
-            f'/{self.namespace}/obstacle_map_update', Bool, queue_size=1)   
+            'obstacle_map_update', Bool, queue_size=1)   
             
         self.uuv_heading = 0
                 
@@ -119,7 +119,7 @@ class ObstacleMapping(object):
 
         # Check for waypoints close to obstacle
         self.obstacle_avoidance_direction_pub = rospy.Publisher(
-            f'/{self.namespace}/obstacle_on_waypoint', Bool, queue_size=1) 
+            'obstacle_on_waypoint', Bool, queue_size=1) 
 
         # Random dynamic obstacle positions for AIS
         dynamic_obstacles_count =  rospy.get_param('~dynamic_obstacles_count', 20)
@@ -127,7 +127,7 @@ class ObstacleMapping(object):
             # Get AIS update
             self.generate_ais(dynamic_obstacles_count)
             self.ais_distance_pub = rospy.Publisher(
-                f'/{self.namespace}/ais_distance', Float32MultiArray, queue_size=1) 
+                'ais_distance', Float32MultiArray, queue_size=1) 
 
         # Define local map:
         # BlueROV FLS range = 30m -> map size: 60x60m

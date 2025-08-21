@@ -49,22 +49,22 @@ class BB_input(object):
 
         # self.pipe_tracking_speed = self.uuv_min_speed # default
 
-        rospy.loginfo('[BT_IN] Params: ')
-        rospy.loginfo('[BT_IN] travel_cost: %0.5f' % self.travel_cost)
-        rospy.loginfo('[BT_IN] failsafe_battery_low_threshold: %0.2f' % self.failsafe_battery_low_threshold)
-        rospy.loginfo('[BT_IN] failsafe_rth_enable: %s' % self.failsafe_rth_enable)
-        rospy.loginfo('[BT_IN] failsafe_signal_lost_threshold: %d' % self.failsafe_signal_lost_threshold)
-        rospy.loginfo('[BT_IN] failsafe_tracking_lost_threshold: %d' % self.failsafe_tracking_lost_threshold)
-        rospy.loginfo('[BT_IN] failsafe_geofence_threshold: %d' % self.failsafe_geofence_threshold)
-        rospy.loginfo('[BT_IN] home_radius: %d' % self.home_radius)
-        rospy.loginfo('[BT_IN] sum_thrust_loss_threshold: %0.2f' % self.sum_thrust_loss_threshold)
-        rospy.loginfo('[BT_IN] uuv_degradation_mode: %s' % self.uuv_degradation_mode) 
-        rospy.loginfo('[BT_IN] enable_rpm_sensor_check: %0.2f' % self.enable_rpm_sensor_check)
-        rospy.loginfo('[BT_IN] enable_training_data_collection: %0.2f' % self.enable_training_data_collection)
-        rospy.loginfo('[BT_IN] thruster_thrust_force_efficiency: %0.2f' % self.thruster_thrust_force_efficiency)
-        rospy.loginfo('[BT_IN] thruster_motor_fail_duration: %0.2f' % self.thruster_motor_fail_duration)
-        rospy.loginfo('[BT_IN] thruster_motor_fail_starting_time: %0.2f' % self.thruster_motor_fail_starting_time)
-        rospy.loginfo('[BT_IN] thruster_motor_failure: %s' % self.thruster_motor_failure)
+        rospy.loginfo(f'{self.namespace} [BT_IN] Params: ')
+        rospy.loginfo(f'{self.namespace} [BT_IN] travel_cost: %0.5f' % self.travel_cost)
+        rospy.loginfo(f'{self.namespace} [BT_IN] failsafe_battery_low_threshold: %0.2f' % self.failsafe_battery_low_threshold)
+        rospy.loginfo(f'{self.namespace} [BT_IN] failsafe_rth_enable: %s' % self.failsafe_rth_enable)
+        rospy.loginfo(f'{self.namespace} [BT_IN] failsafe_signal_lost_threshold: %d' % self.failsafe_signal_lost_threshold)
+        rospy.loginfo(f'{self.namespace} [BT_IN] failsafe_tracking_lost_threshold: %d' % self.failsafe_tracking_lost_threshold)
+        rospy.loginfo(f'{self.namespace} [BT_IN] failsafe_geofence_threshold: %d' % self.failsafe_geofence_threshold)
+        rospy.loginfo(f'{self.namespace} [BT_IN] home_radius: %d' % self.home_radius)
+        rospy.loginfo(f'{self.namespace} [BT_IN] sum_thrust_loss_threshold: %0.2f' % self.sum_thrust_loss_threshold)
+        rospy.loginfo(f'{self.namespace} [BT_IN] uuv_degradation_mode: %s' % self.uuv_degradation_mode) 
+        rospy.loginfo(f'{self.namespace} [BT_IN] enable_rpm_sensor_check: %0.2f' % self.enable_rpm_sensor_check)
+        rospy.loginfo(f'{self.namespace} [BT_IN] enable_training_data_collection: %0.2f' % self.enable_training_data_collection)
+        rospy.loginfo(f'{self.namespace} [BT_IN] thruster_thrust_force_efficiency: %0.2f' % self.thruster_thrust_force_efficiency)
+        rospy.loginfo(f'{self.namespace} [BT_IN] thruster_motor_fail_duration: %0.2f' % self.thruster_motor_fail_duration)
+        rospy.loginfo(f'{self.namespace} [BT_IN] thruster_motor_fail_starting_time: %0.2f' % self.thruster_motor_fail_starting_time)
+        rospy.loginfo(f'{self.namespace} [BT_IN] thruster_motor_failure: %s' % self.thruster_motor_failure)
      
         self.total_distance = 0.0
         self.distance_to_home = 0.0
@@ -72,50 +72,50 @@ class BB_input(object):
                
         # Subscribe to Waypoint Completed msg
         self.hsd_waypoint_completed_sub = rospy.Subscriber(
-            f'/{self.namespace}/waypoints_completed', Bool, self.waypoint_completed_callback, queue_size=1)
+            'waypoints_completed', Bool, self.waypoint_completed_callback, queue_size=1)
         self.waypoint_completed = False
 
         self.odometry_sub = rospy.Subscriber(
-             f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.odometry_callback, queue_size=1)    
+             'pose_gt_ned', Odometry, self.odometry_callback, queue_size=1)    
 
         # Subscribe to Pipeline in view    
         self.pipeline_in_view_sub = rospy.Subscriber(
-            f"/{self.namespace}/pipeline_in_view", Header, self.pipeline_in_view_callback)
+            "pipeline_in_view", Header, self.pipeline_in_view_callback)
         self.pipeline_in_view_msg = Header()
         #self.pipeline_last_seen_limit = 120 #sec
 
         #  # Subscribe to PixhawkHW battery/power data
         self.pixhawk_data_sub = rospy.Subscriber(
-            f"/{self.namespace}/pixhawk_hw", PixhawkHW, self.pixhawk_data_callback)
+            "pixhawk_hw", PixhawkHW, self.pixhawk_data_callback)
         self.pixhawk_data = PixhawkHW()
 
         
         # HOME position msg
         self.home_position_pub = rospy.Publisher(
-            f'/{self.namespace}/home_position', LatLonDepth, queue_size=1) 
+            'home_position', LatLonDepth, queue_size=1) 
         self.home_position_msg = LatLonDepth()   
 
         # Subscribe to HSD
         self.hsd_sub = rospy.Subscriber(
-            f'/{self.namespace}/hsd_command', HSDCommand, self.HSD_command_callback, queue_size=1)
+            'hsd_command', HSDCommand, self.HSD_command_callback, queue_size=1)
         self.hsd_output_msg = HSDCommand()
 
         # self.am_pub = rospy.Publisher(
         #     '/uuv0/am_values', Float32MultiArray, queue_size=1) 
 
         self.thruster_cmd_logging = rospy.Publisher(
-            f'/{self.namespace}/thruster_cmd_logging', Float32MultiArray, queue_size=1) 
+            'thruster_cmd_logging', Float32MultiArray, queue_size=1) 
 
         self.degradation_gt_pub = rospy.Publisher(
-            f'/{self.namespace}/degradation_gt', Float32MultiArray, queue_size=1) 
+            'degradation_gt', Float32MultiArray, queue_size=1) 
 
         self.sensor_failure_rpm_pub = rospy.Publisher(
-            f'/{self.namespace}/sensor_failure_rpm', Bool, queue_size=1)
+            'sensor_failure_rpm', Bool, queue_size=1)
         self.sensor_failure_rpm = False
 
         # Subscribe to Is Submerged msg
         self.is_submerged_sub = rospy.Subscriber(
-            f'/{self.namespace}/is_submerged', Bool, self.is_submerged_callback, queue_size=1)
+            'is_submerged', Bool, self.is_submerged_callback, queue_size=1)
         self.is_submerged = True
 
         self.uuv_yaw = 0
@@ -124,16 +124,16 @@ class BB_input(object):
         self.home_position = [-1,-1,-1]
 
         self.bb_rth_pub = rospy.Publisher(
-            f'/{self.namespace}/bb_rth', Bool, queue_size=1)
+            'bb_rth', Bool, queue_size=1)
         
         self.bb_pipe_lost_pub = rospy.Publisher(
-            f'/{self.namespace}/bb_pipe_lost', Bool, queue_size=1)
+            'bb_pipe_lost', Bool, queue_size=1)
 
         self.bb_geofence_pub = rospy.Publisher(
-            f'/{self.namespace}/bb_geofence', Bool, queue_size=1)
+            'bb_geofence', Bool, queue_size=1)
 
         self.bb_home_dist_pub = rospy.Publisher(
-            f'/{self.namespace}/bb_home_dist', Float32, queue_size=1)
+            'bb_home_dist', Float32, queue_size=1)
 
         # Estimated esc power difference, indicating possible RPM sensor issue
         self.power_sum_input = collections.deque(maxlen = 100)
@@ -158,7 +158,7 @@ class BB_input(object):
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():            
            
-            rospy.loginfo('[BT_IN] Travel: %dm, Home: %dm, Batt: %0.2f' % 
+            rospy.loginfo(f'{self.namespace} [BT_IN] Travel: %dm, Home: %dm, Batt: %0.2f' % 
                 (self.total_distance,
                 self.distance_to_home,
                 self.pixhawk_data.batt_charge_remaining ))
@@ -174,7 +174,7 @@ class BB_input(object):
                                     
             
             # Execute Autonomous task
-            rospy.loginfo('[BT_IN] Power: %0.2fA, pos: %s'%(self.pixhawk_data.thrusters_power, self.uuv_position ))
+            rospy.loginfo(f'{self.namespace} [BT_IN] Power: %0.2fA, pos: %s'%(self.pixhawk_data.thrusters_power, self.uuv_position ))
 
             rate.sleep()
     
@@ -325,12 +325,12 @@ class BB_input(object):
     def check_failsafes(self):
         # Check for sensor failure
         if self.sensor_failure_rpm == True:
-            rospy.loginfo('[BT_IN] RPM sensor failure')
+            rospy.loginfo(f'{self.namespace} [BT_IN] RPM sensor failure')
 
         # Check if battery is low, but safe to RTH if RTH enabled
         if self.pixhawk_data.batt_charge_remaining - self.get_safe_rth_cost(0.20) < 0.01:                    
             self.bb_rth_pub.publish(Bool(True))
-            rospy.loginfo('[BT_IN] RTH failsafe at %0.2f battery, RTH cost: %0.2f ' %(self.pixhawk_data.batt_charge_remaining, self.get_safe_rth_cost(0)))
+            rospy.loginfo(f'{self.namespace} [BT_IN] RTH failsafe at %0.2f battery, RTH cost: %0.2f ' %(self.pixhawk_data.batt_charge_remaining, self.get_safe_rth_cost(0)))
         else:
             self.bb_rth_pub.publish(Bool(False))
         
@@ -338,14 +338,14 @@ class BB_input(object):
         # Trigger Pipe lost if threshold elapsed
         if (rospy.Time.now() - self.pipeline_in_view_msg.stamp) > rospy.Duration(secs = self.failsafe_tracking_lost_threshold):
             self.bb_pipe_lost_pub.publish(Bool(True))
-            rospy.loginfo('[BT_IN] Lost the pipeline failsafe. Limit was %d s' %self.failsafe_tracking_lost_threshold)
+            rospy.loginfo(f'{self.namespace} [BT_IN] Lost the pipeline failsafe. Limit was %d s' %self.failsafe_tracking_lost_threshold)
         else:
             self.bb_pipe_lost_pub.publish(Bool(False))
         
         # Check geofence
         if self.failsafe_geofence_threshold <= self.distance_to_home:       
             self.bb_geofence_pub.publish(Bool(True))
-            rospy.loginfo('[BT_IN] Geofence failsafe. Limit was %d m' %self.failsafe_geofence_threshold)
+            rospy.loginfo(f'{self.namespace} [BT_IN] Geofence failsafe. Limit was %d m' %self.failsafe_geofence_threshold)
         else:
             self.bb_geofence_pub.publish(Bool(False))
 

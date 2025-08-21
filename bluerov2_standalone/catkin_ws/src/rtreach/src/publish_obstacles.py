@@ -35,13 +35,13 @@ class PublishObstacles:
             self.publisher = rospy.Publisher("local_obstacle_list", MarkerArray, queue_size="1")
 
         if(self.local):
-            rospy.Subscriber(f'/{self.namespace}/obstacle_map_local', OccupancyGrid, self.execute, queue_size=1)
+            rospy.Subscriber('obstacle_map_local', OccupancyGrid, self.execute, queue_size=1)
 
             # needed to convert from local to global frame
             self.tf_buffer = tf2_ros.Buffer()
             self.listener = tf2_ros.TransformListener(self.tf_buffer)
         else:
-            rospy.Subscriber(f'/{self.namespace}/obstacle_map', OccupancyGrid, self.execute, queue_size=1)
+            rospy.Subscriber('obstacle_map', OccupancyGrid, self.execute, queue_size=1)
 
         rospy.Timer(rospy.Duration(0.05), self.publish_reach_tube)
 

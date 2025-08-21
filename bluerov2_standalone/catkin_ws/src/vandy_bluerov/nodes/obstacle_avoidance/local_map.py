@@ -45,13 +45,13 @@ class LocalMap(object):
 
         # Setup the pubs and subs   
         self.odometry_sub = rospy.Subscriber(
-             'pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             'pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         self.uuv_position = [0,0,0]
         self.uuv_rpy = [0,0,0]
         self.uuv_yaw = 0
 
         self.pub = rospy.Publisher(
-            f"/{self.namespace}/" + map_name, OccupancyGrid, queue_size = 1)      
+            "" + map_name, OccupancyGrid, queue_size = 1)      
         self.obstacle_map_local = np.array([], dtype=np.int)
 
        

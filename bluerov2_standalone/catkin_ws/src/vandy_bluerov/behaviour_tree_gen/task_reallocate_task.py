@@ -49,7 +49,7 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.reallocations = np.ones(6)
 
         self.thruster_reallocation_pub = rospy.Publisher(
-            f'/{self.namespace}/thruster_reallocation', Float32MultiArray, queue_size=1)
+            'thruster_reallocation', Float32MultiArray, queue_size=1)
 ############<<USER INIT CODE ENDS>>################################
 
     def setup(self, timeout):
@@ -67,7 +67,7 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.logger.debug("%s.update()" % self.__class__.__name__)
         
 ############<<USER UPDATE CODE BEGINS>>##############################
-        rospy.loginfo_throttle(1, "\033[1;32m[BT] " + str(self.task)+" \033[0m")
+        rospy.loginfo_throttle(1, f"{self.namespace} [BT] " + str(self.task)+" \033[0m")
         if len(self.blackboard.dd_output.data) > 0:
             [degraded_id, efficiency, _, _, _, _, _, _, _, _] = np.array(self.blackboard.dd_output.data)
     
@@ -131,13 +131,13 @@ class TaskHandler(py_trees.behaviour.Behaviour):
 
     def get_TAM(self):
         try:
-            rospy.wait_for_service(f'/{self.namespace}/thruster_manager/get_thrusters_info', timeout=5)
+            rospy.wait_for_service('thruster_manager/get_thrusters_info', timeout=5)
         except rospy.ROSException:
-            raise rospy.ROSException(f'/{self.namespace}/thruster_manager/get_thrusters_info Service not available!')
+            raise rospy.ROSException('thruster_manager/get_thrusters_info Service not available!')
 
         try:
             ThrusterManagerInfo_srv = rospy.ServiceProxy(
-                f'/{self.namespace}/thruster_manager/get_thrusters_info',
+                'thruster_manager/get_thrusters_info',
                 ThrusterManagerInfo)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)
@@ -150,13 +150,13 @@ class TaskHandler(py_trees.behaviour.Behaviour):
 
     def set_TAM(self, tam):
         try:
-            rospy.wait_for_service(f'/{self.namespace}/thruster_manager/set_tam', timeout=5)
+            rospy.wait_for_service('thruster_manager/set_tam', timeout=5)
         except rospy.ROSException:
-            raise rospy.ROSException(f'/{self.namespace}/thruster_manager/set_tam Service not available!')
+            raise rospy.ROSException('thruster_manager/set_tam Service not available!')
 
         try:
             TAM_reallocation_srv = rospy.ServiceProxy(
-                f'/{self.namespace}/thruster_manager/set_tam',
+                'thruster_manager/set_tam',
                 TAM)
         except rospy.ServiceException(e):
             raise rospy.ROSException('Service call failed, error=' + e)

@@ -40,21 +40,21 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.blackboard.HSD_out = HSDCommand()
         self.blackboard.cm_hsd_input = String()
      
-        self.hsd_waypoint__sub = rospy.Subscriber( f'/{self.namespace}/hsd_to_waypoint',
+        self.hsd_waypoint__sub = rospy.Subscriber( 'hsd_to_waypoint',
                                             HSDCommand,
                                             self.hsd_waypoint__callback,
                                             queue_size =1)
         self.hsd_waypoint__msg =  HSDCommand()                   
-        self.hsd_waypoint_completed__sub = rospy.Subscriber( f'/{self.namespace}/waypoints_completed',
+        self.hsd_waypoint_completed__sub = rospy.Subscriber( 'waypoints_completed',
                                             Bool,
                                             self.hsd_waypoint_completed__callback,
                                             queue_size =1)
         self.hsd_waypoint_completed__msg =  Bool()                   
-        self.cm_hsd_input__pub = rospy.Publisher( f'/{self.namespace}/cm_hsd_input',
+        self.cm_hsd_input__pub = rospy.Publisher( 'cm_hsd_input',
                                             String,
                                             queue_size=1)
         self.cm_hsd_input__msg =  String()                   
-        self.next_wp__pub = rospy.Publisher( f'/{self.namespace}/next_wp',
+        self.next_wp__pub = rospy.Publisher( 'next_wp',
                                             Bool,
                                             queue_size=1)
         self.next_wp__msg =  Bool()                   
@@ -107,8 +107,8 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.blackboard.HSD_out.depth = self.hsd_waypoint__msg.depth
         # print('\t\t\t\t\t\tHSD 2BB:     ' + str(rospy.get_time()) + ' ' +  str(self.hsd_waypoint__msg.heading) + ' ' +  str(self.hsd_waypoint__msg.header.seq))
         self.cm_hsd_input__publish(self.blackboard.cm_hsd_input)
-        rospy.loginfo("\033[1;32m[BT] " + str(self.task)+" \033[0m")
-        #rospy.loginfo_throttle(1, "\033[1;32m[BT] " + str(self.task)+" \033[0m")
+        rospy.loginfo(f"{self.namespace} [BT] " + str(self.task)+" \033[0m")
+        #rospy.loginfo_throttle(1, f"{self.namespace} [BT] " + str(self.task)+" \033[0m")
 ############<<USER UPDATE CODE ENDS>>################################
 
          # Return always running                

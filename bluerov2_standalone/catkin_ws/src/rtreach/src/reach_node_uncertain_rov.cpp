@@ -487,7 +487,7 @@ int main(int argc, char **argv)
     message_filters::Subscriber<rtreach::reach_tube> obs8(n,"obstacles",10);
     message_filters::Subscriber<rtreach::reach_tube> obs9(n,"box9/reach_tube",10);
     message_filters::Subscriber<rtreach::reach_tube> obs10(n,"box10/reach_tube",10);
-    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_noisy_ned", 10);
+    message_filters::Subscriber<nav_msgs::Odometry> odom_sub(n, "uuv0/pose_gt_ned", 10);
     sub3 = n.subscribe("uuv0/thruster_reallocation",100, degredation_callback);
 
 

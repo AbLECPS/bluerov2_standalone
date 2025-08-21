@@ -34,7 +34,7 @@
 <arg name="fdir_path" default="jupyter/admin_BlueROV/FDIR/selclass"/> 
 <arg name="fdir_params" default="{'user_choice':'override_threshold','am_s_threshold':0.5, 'am_threshold':0.5}"/> 
 
-<group ns="$(arg uuv_name)">
+<group> <!-- ns="$(arg uuv_name)"> -->
       <node name="BlueROV_tree" 
             pkg="vandy_bluerov" 
             type="BlueROV_tree.py"

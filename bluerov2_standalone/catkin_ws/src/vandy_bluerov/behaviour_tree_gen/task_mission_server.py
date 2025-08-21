@@ -64,7 +64,7 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         
         self.uuv_max_speed=uuv_max_speed        
         self.mission_file=mission_file     
-        self.bb_mission_pub = rospy.Publisher( f'/{self.namespace}/bb_mission',
+        self.bb_mission_pub = rospy.Publisher( 'bb_mission',
                                             String,
                                             queue_size=1)
         self.bb_mission_msg =  String()                   
@@ -99,33 +99,33 @@ class TaskHandler(py_trees.behaviour.Behaviour):
 
         # HOME position msg
         self.home_position_pub = rospy.Publisher(
-            f'/{self.namespace}/home_position', LatLonDepth, queue_size=1) 
+            'home_position', LatLonDepth, queue_size=1) 
         self.home_position_msg = LatLonDepth()
 
         self.waypoint_pub = rospy.Publisher(
-            f'/{self.namespace}/waypoints', Float64MultiArray, queue_size=1)   
+            'waypoints', Float64MultiArray, queue_size=1)   
             
         self.waypoint_marker_pub = rospy.Publisher(
-            f'/{self.namespace}/waypoint_markers', MarkerArray, queue_size=1) 
+            'waypoint_markers', MarkerArray, queue_size=1) 
 
         self.fdr_location_sub = rospy.Subscriber(
-            f'/{self.namespace}/fdr_pos_est', Point, self.callback_fdr)
+            'fdr_pos_est', Point, self.callback_fdr)
         
         self.next_wp_pub = rospy.Publisher(
-            f'/{self.namespace}/next_wp', Bool, queue_size = 1)
+            'next_wp', Bool, queue_size = 1)
         
         self.new_wp_sub = rospy.Subscriber(
-            f'/{self.namespace}/new_waypoint', Point, self.callback_new_wp)  
+            'new_waypoint', Point, self.callback_new_wp)  
 
         self.obstacle_near_wp_sub = rospy.Subscriber(
-            f"/{self.namespace}/obstacle_near_wp", Int32, self.callback_obstacle_near_wp, queue_size = 1)
+            "obstacle_near_wp", Int32, self.callback_obstacle_near_wp, queue_size = 1)
 
         self.target_id_sub = rospy.Subscriber(
-            f'/{self.namespace}/target_waypoint_id', Int32, self.callback_target_wp_id, queue_size=1) 
+            'target_waypoint_id', Int32, self.callback_target_wp_id, queue_size=1) 
         self.target_wp_id = -1
 
         self.odometry_sub = rospy.Subscriber(
-             f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             'pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         self.uuv_position = [0,0,0]
 
         # Load mission file

@@ -18,7 +18,7 @@
 	<arg name="uuv_name" default="uuv0"/>
 
 	<arg name="use_am"  default = "false"/>
-    <group ns="$(arg uuv_name)">
+    <group> <!-- ns="$(arg uuv_name)"> -->
 		<node pkg="tf" type="static_transform_publisher" name="fixed_pipeline_map" args="0 0 0 0 0 0   /$(arg uuv_name)/pipeline_map /$(arg uuv_name)/obstacle_map 100" />
 		<node pkg="vandy_bluerov" type="pipe_mapping.py" name="pipeline_map_publisher" output="screen"/>
 		<arg name="laser_topic" value="$(arg uuv_name/vu_sss"/>
@@ -29,7 +29,7 @@
 		<arg name="y_scale" value="8"/>
 		
 		
-		<arg name="fis_laser_topic" value="/vu_fis"/>
+		<arg name="fis_laser_topic" value="vu_fis"/>
 
 		<node name="vu_sss" pkg="vandy_bluerov" type="side_scan_sonar_vu.py" output="screen">
                 <rosparam subst_value="true">

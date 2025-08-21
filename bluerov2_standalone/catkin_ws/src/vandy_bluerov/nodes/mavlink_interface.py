@@ -45,12 +45,12 @@ class MavlinkInterface(object):
         # Configure ATTITUDE message to be sent at 50Hz
         self.request_message_interval(mavutil.mavlink.MAVLINK_MSG_ID_ATTITUDE, 50)
 
-        self.thruster_0_sub = Subscriber(f'{self.namespace}/thrusters/0/input', FloatStamped)
-        self.thruster_1_sub = Subscriber(f'{self.namespace}/thrusters/1/input', FloatStamped)
-        self.thruster_2_sub = Subscriber(f'{self.namespace}/thrusters/2/input', FloatStamped)
-        self.thruster_3_sub = Subscriber(f'{self.namespace}/thrusters/3/input', FloatStamped)
-        self.thruster_4_sub = Subscriber(f'{self.namespace}/thrusters/4/input', FloatStamped)
-        self.thruster_5_sub = Subscriber(f'{self.namespace}/thrusters/5/input', FloatStamped)
+        self.thruster_0_sub = Subscriber('/thrusters/0/input', FloatStamped)
+        self.thruster_1_sub = Subscriber('/thrusters/1/input', FloatStamped)
+        self.thruster_2_sub = Subscriber('/thrusters/2/input', FloatStamped)
+        self.thruster_3_sub = Subscriber('/thrusters/3/input', FloatStamped)
+        self.thruster_4_sub = Subscriber('/thrusters/4/input', FloatStamped)
+        self.thruster_5_sub = Subscriber('/thrusters/5/input', FloatStamped)
         approxTimeSync=ApproximateTimeSynchronizer([self.thruster_0_sub,
                                                     self.thruster_1_sub,
                                                     self.thruster_2_sub,

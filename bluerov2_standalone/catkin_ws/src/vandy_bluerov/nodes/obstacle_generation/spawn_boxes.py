@@ -184,7 +184,7 @@ class SpawnBoxes():
         marker = Marker()
         
         marker.header.stamp = rospy.Time.now()
-        marker.ns = f"/{self.namespace}/collision_objects"
+        marker.ns = "collision_objects"
         marker.id = len(self.box_markers)
         #marker.type = Marker.MESH_RESOURCE #mesh resource not scalable - why?
         marker.type = Marker.CUBE

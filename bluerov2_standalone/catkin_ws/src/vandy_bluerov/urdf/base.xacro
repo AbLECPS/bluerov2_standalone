@@ -49,7 +49,7 @@
   <xacro:property name="collision_mesh_file" value="file://$(find bluerov2_description)/meshes/bluerov2_noprop.stl"/>
   <!-- Vehicle macro -->
   <!-- <xacro:macro name="bluerov2_base" params="namespace debug *gazebo"> -->
-  <xacro:macro name="bluerov2_base" params="namespace noisy *gazebo">
+  <xacro:macro name="bluerov2_base" params="namespace *gazebo">
 
       <!-- Rigid body description of the base link -->
       <link name="${namespace}/base_link">
@@ -102,14 +102,66 @@
 
     <!-- Include the sensor modules: 3D Pose, IMU, Pressure, Camera -->
     <xacro:include filename="$(find vandy_bluerov)/urdf/bluerov_sensors.xacro">
-      <xacro:arg name="noisy" value="${noisy}"/>
     </xacro:include>
         
     <!-- Mount a Pose 3D sensor. -->
-    <xacro:default_pose_3d_macro
+    <!-- <xacro:default_pose_3d_macro
             namespace="${namespace}"
             parent_link="${namespace}/base_link"
-            inertial_reference_frame="world"/>
+            inertial_reference_frame="world"/> -->
+    <!-- <xacro:pose_3d_macro
+      namespace="${namespace}"
+      parent_link="${namespace}/base_link"
+      topic="pose_gt"
+      update_rate="20"
+      noise_sigma="0.0"
+      noise_amplitude="0.0"
+      suffix="enu"
+      reference_frame="world"
+      publish_ned_odom="false">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:pose_3d_macro> -->
+
+    <joint name="pose_3d_joint" type="fixed">
+        <axis xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="${namespace}/base_link"/>
+        <child link="${namespace}/pose_link"/>
+    </joint>
+    <link name="${namespace}/pose_link">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0. 0 0"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0 0 0"/>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass value="1e-5" />
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <!-- Mount a ENU 3D pose sensor -->
+    <xacro:pose_3d_macro
+      namespace="${namespace}"
+      parent_link="${namespace}/pose_link"
+      topic="pose_gt"
+      update_rate="20"
+      noise_sigma="0.0"
+      noise_amplitude="0.0"
+      suffix=""
+      reference_frame="world"
+      publish_ned_odom="false">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:pose_3d_macro>
+
 
     <!-- TODO: Parametrize the battery unit -->
     <xacro:basic_linear_battery_macro

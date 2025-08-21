@@ -60,21 +60,21 @@ class ForwardImagingSonar(object):
 
         # Initialize subscribers/publishers
         self.fis_scan_pub = rospy.Publisher(
-            f'{self.namespace}/vu_fis/scan', Image, queue_size=1)
+            'vu_fis/scan', Image, queue_size=1)
         
         self.fis_scan_gt_pub = rospy.Publisher(
-            f'{self.namespace}/vu_fis/scan_gt', Image, queue_size=1)
+            'vu_fis/scan_gt', Image, queue_size=1)
 
         self.cvbridge = CvBridge()
         self.odometry_sub = rospy.Subscriber(
-             f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             'pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         
         if self.laser_topic == '/scan':
             self.sub = rospy.Subscriber(
-                f"{self.namespace}/scan", LaserScan, self.rplidar_callback, queue_size=1)     
+                "scan", LaserScan, self.rplidar_callback, queue_size=1)     
         else:
             self.sub = rospy.Subscriber(
-                f"{self.namespace}vu_fis", LaserScan, self.laser_callback, queue_size=1)
+                "vu_fis", LaserScan, self.laser_callback, queue_size=1)
         
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():

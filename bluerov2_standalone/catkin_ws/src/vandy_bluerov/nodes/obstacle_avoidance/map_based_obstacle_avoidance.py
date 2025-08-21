@@ -33,26 +33,26 @@ class ObstacleAvoidance(object):
 
         # FLS echosounder
         self.range_sub = rospy.Subscriber(
-            f"/{self.namespace}/fls_echosunder", Range, self.callback_range)
+            "fls_echosunder", Range, self.callback_range)
         
         self.obstacle_map_sub = rospy.Subscriber(
-            f"/{self.namespace}/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+            "obstacle_map", OccupancyGrid, self.callback_obstacle_map)
         
         self.obstacle_map = np.array([], dtype=np.int)
 
         # HSD Sub to pipe tracking
         self.hsd_pipeline_mapping_sub= rospy.Subscriber(
-            f"/{self.namespace}/hsd_pipeline_mapping", HSDCommand, self.callback_hsd_pipe_tracking)
+            "hsd_pipeline_mapping", HSDCommand, self.callback_hsd_pipe_tracking)
         # HSD sub to RTH 
         self.hsd_rth_sub= rospy.Subscriber(
-            f"/{self.namespace}/hsd_to_rth", HSDCommand, self.callback_hsd_rth)
+            "hsd_to_rth", HSDCommand, self.callback_hsd_rth)
         # HSD sub to waypoint 
         self.hsd_waypoint_sub= rospy.Subscriber(
-            f"/{self.namespace}/hsd_to_waypoint", HSDCommand, self.callback_hsd_waypoint)
+            "hsd_to_waypoint", HSDCommand, self.callback_hsd_waypoint)
 
         # CM hsd input msg
         self.cm_hsd_input_sub= rospy.Subscriber(
-            f"/{self.namespace}/cm_hsd_input", String, self.callback_cm_hsd_input)
+            "cm_hsd_input", String, self.callback_cm_hsd_input)
         self.cm_hsd_input =  String()
 
         self.hsd_input = HSDCommand()
@@ -60,17 +60,18 @@ class ObstacleAvoidance(object):
         self.map_size = 1000 #default, update it from msg
         self.map_origin = Pose()
 
+        # pose_gt_ned?
         self.odom_sub = rospy.Subscriber(
-            f"/{self.namespace}/pose_gt_noisy", Odometry, self.callback_pose)
+            "pose_gt", Odometry, self.callback_pose)
         self.uuv_yaw = 0 #rad
         self.uuv_position = Point()
 
         # Pipe distance    
         self.pipeline_distance_sub = rospy.Subscriber(
-            f"/{self.namespace}/pipeline_distance_from_mapping", FloatStamped, self.callback_distance)
+            "pipeline_distance_from_mapping", FloatStamped, self.callback_distance)
 
         self.obstacle_avoidance_direction_sub = rospy.Subscriber(
-            f'/{self.namespace}/obstacle_avoidance_direction', Float64, self.callback_obstacle_avoidance_direction)
+            'obstacle_avoidance_direction', Float64, self.callback_obstacle_avoidance_direction)
         self.obstacle_avoidance_direction = 1
 
 
@@ -80,7 +81,7 @@ class ObstacleAvoidance(object):
         self.obstacle_critical_distance_threshold = 5 # maximum HSD to avoid obstacles closer to this 
 
         self.hsd_pub = rospy.Publisher(
-            f'/{self.namespace}/hsd_obstacle_avoidance', HSDCommand, queue_size=1)   
+            'hsd_obstacle_avoidance', HSDCommand, queue_size=1)   
         self.init_speed = rospy.get_param('~init_speed', 2.0)
         self.init_depth = rospy.get_param('~init_depth', 45)
 
@@ -88,7 +89,7 @@ class ObstacleAvoidance(object):
         self.avoidance_angle_step_ais = rospy.get_param('~avoidance_angle_step_ais', 45)
 
         self.obstacle_state_pub = rospy.Publisher(
-            f'/{self.namespace}/fls_obstacle_avoidance_score', Float64, queue_size=1)   
+            'fls_obstacle_avoidance_score', Float64, queue_size=1)   
         
         self.hsd_obstacle_avoidance_msg = HSDCommand()
         self.fls_obstacle_avoidance_score_msg = Float64()

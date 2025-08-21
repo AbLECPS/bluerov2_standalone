@@ -13,7 +13,7 @@ Description:  Emulation pixhawk (BlueROV2) sensor data for ALC simulation
   <arg name="failed_rpm_sensor_enable" default="False"/>
   <arg name="failed_rpm_sensor_start" default="50"/>
  
-  <group ns="$(arg uuv_name)">
+  <group> <!-- ns="$(arg uuv_name)"> -->
     <node pkg="vandy_bluerov"
           type="pixhawk_hw_emulation.py"
           name="pixhawk_hw_emulation"

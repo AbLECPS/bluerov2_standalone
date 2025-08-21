@@ -69,19 +69,5 @@
      </xacro:if> 
   </xacro:macro>
 
-  <xacro:macro name="pose_3d_sensor_ned" params="namespace suffix parent_link
-    gaussian_noise_sigma gaussian_noise_amplitude topic">
-    <xacro:pose_3d_macro
-      namespace="${namespace}"
-      parent_link="${parent_link}"
-      topic="${topic}"
-      update_rate="20"
-      noise_sigma="${gaussian_noise_sigma}"
-      noise_amplitude="${gaussian_noise_amplitude}"
-      suffix="${suffix}"
-      reference_frame="world_ned"
-      publish_ned_odom="true">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:pose_3d_macro>
-  </xacro:macro>
+
 </robot>

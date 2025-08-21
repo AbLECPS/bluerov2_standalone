@@ -7,7 +7,7 @@ File:         degradation_tester.launch
   <arg name="uuv_name" default="uuv0"/>
   <arg name="random_seed" default="0"/>
 
-  <group ns="$(arg uuv_name)">
+  <group> <!-- ns="$(arg uuv_name)"> -->
     <node name="degradation_tester" 
           pkg="vandy_bluerov" 
           type="degradation_tester.py" 

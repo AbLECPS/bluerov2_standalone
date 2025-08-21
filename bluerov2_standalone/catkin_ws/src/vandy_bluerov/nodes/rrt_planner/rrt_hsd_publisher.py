@@ -80,21 +80,21 @@ class RRTHSDPublisher():
 
         # Subscriber to whether or not to publish an HSD and move the robot
         self.publish_rrt_hsd_subscriber = rospy.Subscriber(
-            f'/{self.namespace}/publish_rrt_hsd', Bool, self.publish_rrt_hsd_callback, queue_size=1) 
+            'publish_rrt_hsd', Bool, self.publish_rrt_hsd_callback, queue_size=1) 
         self.hsd_should_publish = False # Holds whether or not to publish a move command
 
         # Subscriber for the path that the RRTPlanner generates
-        self.rrt_path_subscriber = rospy.Subscriber(f'/{self.namespace}/rrt_path', Path, self.rrt_path_callback, queue_size = 1)
+        self.rrt_path_subscriber = rospy.Subscriber('rrt_path', Path, self.rrt_path_callback, queue_size = 1)
         self.path = Path() # Holds the Path from the RRTPlanner
         
         # Subscriber to the robot position in NED coordinates
         self.robot_position = rospy.Subscriber(
-            f'{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+            '/pose_gt_ned', Odometry, self.callback_robot_position, queue_size=1) 
         self.robot_position = None # Holds the most recent robot position in ENU coordinates
         
         # Publishes commands to the robot for movement
         #self.hsd_pub = rospy.Publisher( '/uuv0/hsd_to_waypoint_rrt', HSDCommand, queue_size=1)
-        self.hsd_pub = rospy.Publisher( f'/{self.namespace}/hsd_to_waypoint_rrt', HSDCommand, queue_size=1)
+        self.hsd_pub = rospy.Publisher( 'hsd_to_waypoint_rrt', HSDCommand, queue_size=1)
         self.hsd_msg =  HSDCommand() # Holds the HSD command to publish to the robot
         self.hsd_msg.header.seq = 1
 

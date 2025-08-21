@@ -27,10 +27,10 @@ class FDR(object):
         self.namespace = rospy.get_namespace().replace('/', '')
 
         self.fdr_pub = rospy.Publisher(
-            f'{self.namespace}/fdr0/ping', Point, queue_size=1)
+            '/fdr0/ping', Point, queue_size=1)
 
         self.waypoint_pub = rospy.Subscriber(
-            f'/{self.namespace}/waypoints', Float64MultiArray, self.callback_waypoint, queue_size=1)   
+            'waypoints', Float64MultiArray, self.callback_waypoint, queue_size=1)   
         self.waypoints = []  
         
         np.random.seed(rospy.get_param('~random_seed'))
@@ -41,7 +41,7 @@ class FDR(object):
         self.point = Point(x,y,z)
         
         self.fdr_marker_pub = rospy.Publisher(
-            f'{self.namespace}/fdr0/marker', Marker, queue_size=1)
+            '/fdr0/marker', Marker, queue_size=1)
 
         self.fdr_generated = False
 

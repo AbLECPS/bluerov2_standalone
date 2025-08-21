@@ -26,16 +26,16 @@ class LEC3Lite(object):
         self.namespace = rospy.get_namespace().replace('/', '')
 
         self.lec3lite_pub_bins = rospy.Publisher(
-            f'{self.namespace}/lec3lite/bins', Float32MultiArray, queue_size=1)    
+            'lec3lite/bins', Float32MultiArray, queue_size=1)    
         
         self.lec3lite_pub_ranges = rospy.Publisher(
-            f'/{self.namespace}/lec3lite/ranges', Float32MultiArray, queue_size=1)
+            'lec3lite/ranges', Float32MultiArray, queue_size=1)
         
         self.lec3lite_pub_waterfall = rospy.Publisher(
-            f'{self.namespace}/lec3lite/waterfall', Image, queue_size=1)    
+            'lec3lite/waterfall', Image, queue_size=1)    
         
         self.fls_bins_sub = rospy.Subscriber(
-            f'{self.namespace}/vu_fls/bins', Float32MultiArray, self.callback_fls, queue_size=1)
+            'vu_fls/bins', Float32MultiArray, self.callback_fls, queue_size=1)
         
                 # Load TFLite model and allocate tensors.
         rp = rospkg.RosPack()

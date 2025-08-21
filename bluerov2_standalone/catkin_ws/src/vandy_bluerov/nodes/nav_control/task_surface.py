@@ -33,7 +33,7 @@ class TaskRth(object):
         # self.home_position_sub = rospy.Subscriber(
         #     'home_position', LatLonDepth, self.surface_task_enable_callback, queue_size=1)    
 
-        self.hsd_pub = rospy.Publisher(f'/{self.namespace}/hsd_to_surface', HSDCommand, queue_size=1)   
+        self.hsd_pub = rospy.Publisher('hsd_to_surface', HSDCommand, queue_size=1)   
         self.hsd_cmd = HSDCommand()
         self.hsd_cmd.heading = rospy.get_param('~surface_helix_turnrate', 30) 
         self.hsd_cmd.speed = 0.4 

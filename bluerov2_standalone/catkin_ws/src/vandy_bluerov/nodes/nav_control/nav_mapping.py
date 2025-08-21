@@ -52,26 +52,26 @@ class NavOccupancyGrid(object):
         # Setup the pubs and subs
         # For normal use - CP3:
         self.hsd_pipeline_sub = rospy.Subscriber(
-            f"/{self.namespace}/hsd_to_waypoint", HSDCommand, self.callback_heading)
+            "hsd_to_waypoint", HSDCommand, self.callback_heading)
         self.waypoint_distance_pub = rospy.Subscriber(
-            f'/{self.namespace}/distance_to_waypoint', Float64, self.callback_wp_distance) 
+            'distance_to_waypoint', Float64, self.callback_wp_distance) 
         self.waypoint_distance = -1
 
         self.odometry_sub = rospy.Subscriber(
-             'pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             'pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         self.uuv_position = [0,0,0]
         self.uuv_rpy = [0,0,0]
 
         self.obstacle_map_pub = rospy.Subscriber(
-            f"/{self.namespace}/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+            "obstacle_map", OccupancyGrid, self.callback_obstacle_map)
 
         self.hsd_pub = rospy.Publisher(
-            f'/{self.namespace}/hsd_ais_avoidance', HSDCommand, queue_size=1)   
+            'hsd_ais_avoidance', HSDCommand, queue_size=1)   
         self.hsd_cmd = HSDCommand()
         self.hsd_cmd.heading = 0
 
         self.pub = rospy.Publisher(
-            f"/{self.namespace}/local_map", OccupancyGrid, queue_size = 1)
+            "local_map", OccupancyGrid, queue_size = 1)
         # self.pub_latlon = rospy.Publisher(
         #     "/map/latlon", LatLonDepth, queue_size = 1)
         # self.pub_transform = rospy.Publisher(

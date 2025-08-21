@@ -118,7 +118,6 @@ Description:  Creates bluerov vehicle.
 
     <!-- BlueROV2 PID controller launch params-->
     <arg name="teleop" default="false"/>
-    <arg name="mode" default="noisy"/>  <!--noisy/default-->
     <arg name="joy_id" default="0"/>
     
     <!-- Init params from world model -->
@@ -202,14 +201,13 @@ Description:  Creates bluerov vehicle.
         <!-- ############################### -->
     <!--          INCLUDES               -->
     <!-- ############################### -->
-
+    <group ns="$(arg uuv_name)"> 
     <!-- Add the bluerov2 vehicle to the world simulation -->
     <include file="$(find vandy_bluerov)/launch/upload_bluerov2.launch">
         <arg name="namespace" value="$(arg uuv_name)"/>
         <arg name="z" value="$(arg vehicle_altitude)"/>
         <arg name="yaw" value="$(arg vehicle_yaw)"/>
         <arg name="use_ned" value="$(arg use_ned)"/>
-        <arg name="mode" value="$(arg mode)"/>
         <arg name="thruster_blade_failure" value="$(arg thruster_blade_failure)"/>
         <arg name="use_geodetic" value="true"/>
         <arg name="latitude" value="$(arg vehicle_latitude)"/>
@@ -253,7 +251,7 @@ Description:  Creates bluerov vehicle.
     <!-- Start the PID controller with its default parameters for the RexROV vehicle  -->
     <!-- Remap messages so PID will use noisy sensors -->
     <group>
-        <!-- <remap from="odom" to="pose_gt_noisy_ned"/> -->
+        <!-- <remap from="odom" to="pose_gt_ned"/> -->
         <include file="$(find bluerov2_control)/launch/start_pid_controller.launch">
             <arg name="thruster_manager_config_file" default="$(find vandy_bluerov)/config/thruster_manager.yaml"/>
             <arg name="uuv_name" value="$(arg uuv_name)"/>
@@ -367,7 +365,7 @@ Description:  Creates bluerov vehicle.
         <arg name="min_heading" value="$(arg min_heading)"/>
         <arg name="max_heading" value="$(arg max_heading)"/>
         <arg name="x_track_error" value="$(arg x_track_error)"/>
-        <!-- <remap from="odom" to="pose_gt_noisy_ned"/> -->
+        <!-- <remap from="odom" to="pose_gt_ned"/> -->
     </include>
 
     <!-- FDR Tx/Rx -->
@@ -411,7 +409,7 @@ Description:  Creates bluerov vehicle.
     </include> -->
 
     
-    <include file="$(find vandy_bluerov)/launch/rtreach.launch">
+    <!-- <include file="$(find vandy_bluerov)/launch/rtreach.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
         <arg name="results_directory" value="$(arg results_directory)"/>
         <arg name="use_rtreach" value="$(arg use_rtreach)"/>
@@ -422,10 +420,10 @@ Description:  Creates bluerov vehicle.
         <arg name="box_display_max" value="$(arg box_display_max)"/>
         <arg name="box_size" value="$(arg box_size_x)"/>
         <arg name="output" value="$(arg rtreach_output)"/>
-        <arg name="debug" value="$(arg rtreach_debug)"/>
+        <arg name="debug" value="$(arg rtreach_debug)"/> -->
 
         <!--rtreach disturbance parameters-->
-        <arg name="xd_l" value="$(arg xd_l)" />
+        <!-- <arg name="xd_l" value="$(arg xd_l)" />
         <arg name="xd_u" value="$(arg xd_u)" />
         <arg name="yd_l" value="$(arg yd_l)" />
         <arg name="yd_u" value="$(arg yd_u)" />
@@ -439,12 +437,12 @@ Description:  Creates bluerov vehicle.
         <arg name="speed_unc" value="$(arg speed_unc)" />
         <arg name="theta_unc" value="$(arg theta_unc)" />
         
-    </include>
+    </include> -->
 
+    </group>
     <!-- <include file="$(find vandy_bluerov)/launch/unpause_timeout.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
         <arg name="timeout" value="$(arg unpause_timeout)"/>
         <arg name="results_directory" value="$(arg results_directory)"/>
     </include> -->
-
 </launch>

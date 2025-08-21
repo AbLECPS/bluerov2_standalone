@@ -26,10 +26,10 @@ class FDRLocator(object):
         self.log_filename = rospy.get_param('~log_filename', 'fdr_rx_map.csv')
         self.waypoints_completed =  False
         self.waypoints_completed_sub = rospy.Subscriber(
-            f'/{self.namespace}/v0/waypoints_completed', Bool, self.callback_waypoints_completed)
+            'v0/waypoints_completed', Bool, self.callback_waypoints_completed)
 
         self.fdr_location_pub = rospy.Publisher(
-            f'/{self.namespace}/fdr_pos_est', Point, queue_size=1)  
+            'fdr_pos_est', Point, queue_size=1)  
         self.fdr_located = False
 
 

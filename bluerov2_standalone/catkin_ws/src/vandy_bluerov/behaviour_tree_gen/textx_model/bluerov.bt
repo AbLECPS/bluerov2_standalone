@@ -105,7 +105,7 @@ topic String cm_hsd_input /uuv0/cm_hsd_input;
 topic Float32MultiArray degradation_detector_am /uuv0/degradation_detector_am/p_value;
 topic Float32MultiArray lec_input /uuv0/thruster_cmd_logging;
 topic Bool next_wp /uuv0/next_wp;
-topic Odometry odom /uuv0/pose_gt_noisy_ned;
+topic Odometry odom /uuv0/pose_gt_ned;
 topic Range fls_range /uuv0/fls_echosunder;
 
 topic Float32MultiArray  lec_dd_am               /lec_dd_am/p_value;

@@ -55,7 +55,7 @@ export PYTHONPATH='/aa/devel/lib/python2.7/dist-packages':$PYTHONPATH
 ```
 rostopic echo /uuv0/hsd_command
 rostopic echo /uuv0/target_waypoint
-rostopic echo /uuv0/pose_gt_noisy_ned
+rostopic echo /uuv0/pose_gt_ned
 rostopic echo /uuv0/obstacle_map
 rostopic echo /uuv0/rrt_path
 rostopic echo /uuv0/rrt_points

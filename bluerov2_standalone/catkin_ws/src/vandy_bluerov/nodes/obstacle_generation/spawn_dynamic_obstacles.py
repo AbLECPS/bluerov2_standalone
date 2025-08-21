@@ -110,9 +110,9 @@ class SpawnObstacles():
             self.r_lon = rospy.get_param('~longitude_ref',0)
             self.pipe_ends, self.pipe_lengths, self.num_segs = self.parse_pipe_txt(pipeline_text_file)
             self.pose = None
-            self.odom_sub = rospy.Subscriber(f'/{self.namespace}/pose_gt_ned', Odometry, self.odom_cb, queue_size=1)
+            self.odom_sub = rospy.Subscriber('pose_gt_ned', Odometry, self.odom_cb, queue_size=1)
             # Make sure we have some vehicle data before starting
-            rospy.wait_for_message(f'/{self.namespace}/pose_gt_ned', Odometry, timeout=100)
+            rospy.wait_for_message('pose_gt_ned', Odometry, timeout=100)
         
         # Wait for other nodes to init
         while rospy.Time.now() < rospy.Time(5):
@@ -312,7 +312,7 @@ class SpawnObstacles():
         tfBuffer = tf2_ros.Buffer(rospy.Duration(10))
         tfListener = tf2_ros.TransformListener(tfBuffer)
         trans = tfBuffer.lookup_transform(
-            "world", f"/{self.namespace}/base_link", rospy.Time(0), rospy.Duration(10)
+            "world", "base_link", rospy.Time(0), rospy.Duration(10)
         )
 
         vt = do_transform_vector3(vec, trans)
@@ -352,7 +352,7 @@ class SpawnObstacles():
         Reset the robot namespace to account for the box spawn number
         '''
         self.robot_namespace = "box{0}".format(self.counter)
-        self.reference_frame = f"{self.namespace}/base_link"
+        self.reference_frame = "base_link"
 
 if __name__ == "__main__":
     obstacle_manager = SpawnObstacles()

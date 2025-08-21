@@ -15,7 +15,7 @@ class ObstacleDistancePublisher(object):
 
         # Odom/Pose message
         self.odometry_sub = rospy.Subscriber(
-             f'{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             '/pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         self.uuv_position = None
 
         self.obstacle_sub = rospy.Subscriber(

@@ -626,29 +626,29 @@ class RRTPlanner():
         
         # Subscriber to the currently targeted waypoint
         self.target_point_subscriber = rospy.Subscriber(
-            f'/{self.namespace}/target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
+            'target_waypoint', Point, self.callback_target_waypoint, queue_size=1) 
 
         # Subscriber to the robots NED position
         self.robot_position_subscriber = rospy.Subscriber(
-            f'{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_robot_position, queue_size=1) 
+            '/pose_gt_ned', Odometry, self.callback_robot_position, queue_size=1) 
         
         # Subscriber to the obstacle map
         self.obstacle_map_subscriber = rospy.Subscriber(
-            f"/{self.namespace}/obstacle_map", OccupancyGrid, self.callback_obstacle_map, queue_size=1)
+            "obstacle_map", OccupancyGrid, self.callback_obstacle_map, queue_size=1)
         
         if self.debug:
             # Publisher for all points in our Tree
-            self.rrt_points_pub = rospy.Publisher( f'/{self.namespace}/rrt_points', PoseArray, queue_size=1)
+            self.rrt_points_pub = rospy.Publisher( 'rrt_points', PoseArray, queue_size=1)
             self.rrt_points_msg = PoseArray()
             self.rrt_points_msg.header.frame_id = 'world'
             
         # Path publisher for our planner
-        self.rrt_path_pub = rospy.Publisher( f'/{self.namespace}/rrt_path', Path, queue_size=1)
+        self.rrt_path_pub = rospy.Publisher( 'rrt_path', Path, queue_size=1)
         self.rrt_path_msg = Path()
         self.rrt_path_msg.header.frame_id = 'world'
 
         # Publisher stating whether or not to publish an hsd command (whether or not to move the robot)
-        self.publish_rrt_hsd_pub = rospy.Publisher( f'/{self.namespace}/publish_rrt_hsd', Bool, queue_size=1)
+        self.publish_rrt_hsd_pub = rospy.Publisher( 'publish_rrt_hsd', Bool, queue_size=1)
         
         self.path = None # Holds the path between our starting point and our goal
         self.path_start = None # Holds the starting position of our path (because it gets instantly cleared from the RRT when reached)

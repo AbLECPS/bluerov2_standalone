@@ -82,7 +82,7 @@ class ToBlackboard(subscribers.ToBlackboard):
         self.rtreach_window_threshold=rtreach_window_threshold        
 ############<<USER INIT CODE BEGINS>>##############################
         self.rtreach_window = deque(maxlen=rtreach_window_size)
-        self.rtreach_long_term_pub = rospy.Publisher( f'/{self.namespace}/rtreach_long_term',
+        self.rtreach_long_term_pub = rospy.Publisher( 'rtreach_long_term',
                                             Float32,
                                             queue_size=1)   
 ############<<USER INIT CODE ENDS>>################################

@@ -67,8 +67,8 @@ class GeoFencing:
         
         self.lines = [line1,line2,line3,line4]
 
-        self.vis_pub = rospy.Publisher(f'{self.namespace}/bounding_box', MarkerArray,queue_size=1)
-        self.reach_pub = rospy.Publisher(f'{self.namespace}/bounding_box_interval', reach_tube,queue_size=1)
+        self.vis_pub = rospy.Publisher('/bounding_box', MarkerArray,queue_size=1)
+        self.reach_pub = rospy.Publisher('/bounding_box_interval', reach_tube,queue_size=1)
 
     
     # generates an interval based on a line

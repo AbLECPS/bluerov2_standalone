@@ -48,7 +48,7 @@ Description:  Rosbag recording
         /uuv0/imu 
         /puppy/thruster_cmd_logging 
         /uuv0/hsd_command 
-        /uuv0/pose_gt_noisy_ned'
+        /uuv0/pose_gt_ned'
       if="$(arg record)"/> -->
 
   </group>

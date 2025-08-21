@@ -40,7 +40,7 @@ class ForwardLookingSonar(object):
         self.fls_waterfall = deque(maxlen=self.fls_lines)
         self.fls_waterfall_gt = deque(maxlen=self.fls_lines)
 
-        topic = rospy.get_param('~topic', f'/{self.namespace}/vu_fls/bins')
+        topic = rospy.get_param('~topic', 'vu_fls/bins')
 
         self.cvbridge = CvBridge()
 
@@ -65,30 +65,30 @@ class ForwardLookingSonar(object):
 
         # Initialize subscribers/publishers
         self.fls_waterfall_pub = rospy.Publisher(
-            f'/{self.namespace}/vu_fls/waterfall', Image, queue_size=1)
+            'vu_fls/waterfall', Image, queue_size=1)
 
         self.fls_bins_pub = rospy.Publisher(
             topic, Float32MultiArray, queue_size=1)
 
         if not self.use_hw_fls:
             self.fls_waterfall_gt_pub = rospy.Publisher(
-                f'/{self.namespace}/vu_fls/waterfall_gt', Image, queue_size=1)
+                'vu_fls/waterfall_gt', Image, queue_size=1)
         
             self.fls_bins_gt_pub = rospy.Publisher(
-                f'/{self.namespace}/vu_fls/bins_gt', Float32MultiArray, queue_size=1)
+                'vu_fls/bins_gt', Float32MultiArray, queue_size=1)
 
             self.fls_gt_pub = rospy.Publisher(
-                f'/{self.namespace}/vu_fls/gt', Float32MultiArray, queue_size=1)           
+                'vu_fls/gt', Float32MultiArray, queue_size=1)           
 
-            sonar_0_sub = Subscriber(f'/{self.namespace}/fls_sonar_0', Range)
-            sonar_1_sub = Subscriber(f'/{self.namespace}/fls_sonar_1', Range)
-            sonar_2_sub = Subscriber(f'/{self.namespace}/fls_sonar_2', Range)
-            sonar_3_sub = Subscriber(f'/{self.namespace}/fls_sonar_3', Range)
-            sonar_4_sub = Subscriber(f'/{self.namespace}/fls_sonar_4', Range)
-            sonar_5_sub = Subscriber(f'/{self.namespace}/fls_sonar_5', Range)
-            sonar_6_sub = Subscriber(f'/{self.namespace}/fls_sonar_6', Range)
-            sonar_7_sub = Subscriber(f'/{self.namespace}/fls_sonar_7', Range)
-            sonar_8_sub = Subscriber(f'/{self.namespace}/fls_sonar_8', Range)
+            sonar_0_sub = Subscriber('fls_sonar_0', Range)
+            sonar_1_sub = Subscriber('fls_sonar_1', Range)
+            sonar_2_sub = Subscriber('fls_sonar_2', Range)
+            sonar_3_sub = Subscriber('fls_sonar_3', Range)
+            sonar_4_sub = Subscriber('fls_sonar_4', Range)
+            sonar_5_sub = Subscriber('fls_sonar_5', Range)
+            sonar_6_sub = Subscriber('fls_sonar_6', Range)
+            sonar_7_sub = Subscriber('fls_sonar_7', Range)
+            sonar_8_sub = Subscriber('fls_sonar_8', Range)
             approxTimeSync=ApproximateTimeSynchronizer([sonar_0_sub,
                                                         sonar_1_sub,
                                                         sonar_2_sub,

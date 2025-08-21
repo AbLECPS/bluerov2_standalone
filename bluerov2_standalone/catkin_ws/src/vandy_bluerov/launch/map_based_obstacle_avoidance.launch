@@ -9,7 +9,7 @@ File:         map_based_obstacle_avoidance.launch
     <arg name="avoidance_angle_step" default="20"/>
     <arg name="use_obstacle_avoidance" default="true" />
 
-    <group ns="$(arg uuv_name)">
+    <group> <!-- ns="$(arg uuv_name)"> -->
          <node if="$(arg use_obstacle_avoidance)"
                name="map_based_obstacle_avoidance" 
                pkg="vandy_bluerov" 

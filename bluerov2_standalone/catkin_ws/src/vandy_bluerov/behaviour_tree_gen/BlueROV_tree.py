@@ -84,28 +84,28 @@ class BlueROV_BT(object):
         self.rtreach_window_size = rospy.get_param('~rtreach_window_size', 25)   
         self.rtreach_window_threshold = rospy.get_param('~rtreach_window_threshold', 0.75)
 
-        rospy.loginfo('[BT] Tree Params: ')          
-        rospy.loginfo('[BT] failsafe_battery_low_threshold: {0}'.format(self.failsafe_battery_low_threshold))          
-        rospy.loginfo('[BT] failsafe_rth_enable: {0}'.format(self.failsafe_rth_enable))          
-        rospy.loginfo('[BT] pipe_estimation_good_log_val: {0}'.format(self.pipe_estimation_good_log_val))          
-        rospy.loginfo('[BT] speed_good_log_val: {0}'.format(self.speed_good_log_val))          
-        rospy.loginfo('[BT] total_degradation_threshold: {0}'.format(self.total_degradation_threshold))          
-        rospy.loginfo('[BT] home_reached_threshold: {0}'.format(self.home_reached_threshold))          
-        rospy.loginfo('[BT] num_classes: {0}'.format(self.num_classes))          
-        rospy.loginfo('[BT] uuv_max_speed: {0}'.format(self.uuv_max_speed))          
-        rospy.loginfo('[BT] uuv_min_speed: {0}'.format(self.uuv_min_speed))          
-        rospy.loginfo('[BT] mission_file: {0}'.format(self.mission_file))          
-        rospy.loginfo('[BT] ann_input_len: {0}'.format(self.ann_input_len))          
-        rospy.loginfo('[BT] enable_fault_detection: {0}'.format(self.enable_fault_detection))          
-        rospy.loginfo('[BT] decision_source: {0}'.format(self.decision_source))          
-        rospy.loginfo('[BT] enable_obstacle_avoidance: {0}'.format(self.enable_obstacle_avoidance))          
-        rospy.loginfo('[BT] enable_emergency_stop: {0}'.format(self.enable_emergency_stop))          
-        rospy.loginfo('[BT] fls_in_view_window: {0}'.format(self.fls_in_view_window))          
-        rospy.loginfo('[BT] fls_in_view_limit: {0}'.format(self.fls_in_view_limit))          
-        #rospy.loginfo('[BT] fdir_path: {0}'.format(self.fdir_path))          
-        #rospy.loginfo('[BT] fdir_params: {0}'.format(self.fdir_params))          
-        rospy.loginfo('[BT] rtreach_window_size: {0}'.format(self.rtreach_window_size))          
-        rospy.loginfo('[BT] rtreach_window_threshold: {0}'.format(self.rtreach_window_threshold)) 
+        rospy.loginfo(f'{self.namespace} [BT] Tree Params: ')          
+        rospy.loginfo(f'{self.namespace} [BT] failsafe_battery_low_threshold: {0}'.format(self.failsafe_battery_low_threshold))          
+        rospy.loginfo(f'{self.namespace} [BT] failsafe_rth_enable: {0}'.format(self.failsafe_rth_enable))          
+        rospy.loginfo(f'{self.namespace} [BT] pipe_estimation_good_log_val: {0}'.format(self.pipe_estimation_good_log_val))          
+        rospy.loginfo(f'{self.namespace} [BT] speed_good_log_val: {0}'.format(self.speed_good_log_val))          
+        rospy.loginfo(f'{self.namespace} [BT] total_degradation_threshold: {0}'.format(self.total_degradation_threshold))          
+        rospy.loginfo(f'{self.namespace} [BT] home_reached_threshold: {0}'.format(self.home_reached_threshold))          
+        rospy.loginfo(f'{self.namespace} [BT] num_classes: {0}'.format(self.num_classes))          
+        rospy.loginfo(f'{self.namespace} [BT] uuv_max_speed: {0}'.format(self.uuv_max_speed))          
+        rospy.loginfo(f'{self.namespace} [BT] uuv_min_speed: {0}'.format(self.uuv_min_speed))          
+        rospy.loginfo(f'{self.namespace} [BT] mission_file: {0}'.format(self.mission_file))          
+        rospy.loginfo(f'{self.namespace} [BT] ann_input_len: {0}'.format(self.ann_input_len))          
+        rospy.loginfo(f'{self.namespace} [BT] enable_fault_detection: {0}'.format(self.enable_fault_detection))          
+        rospy.loginfo(f'{self.namespace} [BT] decision_source: {0}'.format(self.decision_source))          
+        rospy.loginfo(f'{self.namespace} [BT] enable_obstacle_avoidance: {0}'.format(self.enable_obstacle_avoidance))          
+        rospy.loginfo(f'{self.namespace} [BT] enable_emergency_stop: {0}'.format(self.enable_emergency_stop))          
+        rospy.loginfo(f'{self.namespace} [BT] fls_in_view_window: {0}'.format(self.fls_in_view_window))          
+        rospy.loginfo(f'{self.namespace} [BT] fls_in_view_limit: {0}'.format(self.fls_in_view_limit))          
+        #rospy.loginfo(f'{self.namespace} [BT] fdir_path: {0}'.format(self.fdir_path))          
+        #rospy.loginfo(f'{self.namespace} [BT] fdir_params: {0}'.format(self.fdir_params))          
+        rospy.loginfo(f'{self.namespace} [BT] rtreach_window_size: {0}'.format(self.rtreach_window_size))          
+        rospy.loginfo(f'{self.namespace} [BT] rtreach_window_threshold: {0}'.format(self.rtreach_window_threshold)) 
 
         root = self.create_root()
         behaviour_tree = py_trees_ros.trees.BehaviourTree(root)
@@ -150,88 +150,88 @@ class BlueROV_BT(object):
 
         hsd_pipe2bb = bb_hsd_pipe2bb.ToBlackboard(
             name="hsd_pipe2bb",
-            topic_name=f"/{self.namespace}/hsd_pipeline_mapping" 
+            topic_name="hsd_pipeline_mapping" 
         )
         hsd_surface2bb = bb_hsd_surface2bb.ToBlackboard(
             name="hsd_surface2bb",
-            topic_name=f"/{self.namespace}/hsd_to_surface" 
+            topic_name="hsd_to_surface" 
         )
         hsd_rth2bb = bb_hsd_rth2bb.ToBlackboard(
             name="hsd_rth2bb",
-            topic_name=f"/{self.namespace}/hsd_to_rth" 
+            topic_name="hsd_to_rth" 
         )
         hsd_wp2bb = bb_hsd_wp2bb.ToBlackboard(
             name="hsd_wp2bb",
-            topic_name=f"/{self.namespace}/hsd_to_waypoint" 
+            topic_name="hsd_to_waypoint" 
         )
         hsd_wp_rrt2bb = bb_hsd_wp_rrt2bb.ToBlackboard(
             name="hsd_wp_rrt2bb",
-            topic_name=f"/{self.namespace}/hsd_to_waypoint_rrt" 
+            topic_name="hsd_to_waypoint_rrt" 
         )
         fls2bb = bb_fls2bb.ToBlackboard(
             name="fls2bb",
-            topic_name=f"/{self.namespace}/fls_echosunder" 
+            topic_name="fls_echosunder" 
         )
         fls_warning2bb = bb_fls_warning2bb.ToBlackboard(
             name="fls_warning2bb",
-            topic_name=f"/{self.namespace}/obstacle_in_view", 
+            topic_name="obstacle_in_view", 
             fls_in_view_window = self.fls_in_view_window,  
             fls_in_view_limit = self.fls_in_view_limit 
         )
         battery2bb = bb_battery2bb.ToBlackboard(
             name="battery2bb",
-            topic_name=f"/{self.namespace}/pixhawk_hw", 
+            topic_name="pixhawk_hw", 
             failsafe_battery_low_threshold = self.failsafe_battery_low_threshold 
         )
         ddlecam2bb = bb_ddlecam2bb.ToBlackboard(
             name="ddlecam2bb",
-            topic_name=f"/{self.namespace}/p_value" 
+            topic_name="p_value" 
         )
         rth2bb = bb_rth2bb.ToBlackboard(
             name="rth2bb",
-            topic_name=f"/{self.namespace}/bb_rth", 
+            topic_name="bb_rth", 
             failsafe_rth_enable = self.failsafe_rth_enable 
         )
         geofence2bb = bb_geofence2bb.ToBlackboard(
             name="geofence2bb",
-            topic_name=f"/{self.namespace}/bb_geofence" 
+            topic_name="bb_geofence" 
         )
         lec2_am_l_2bb = bb_lec2_am_l_2bb.ToBlackboard(
             name="lec2_am_l_2bb",
-            topic_name=f"/{self.namespace}/vu_sss/am_vae_lec2lite_l", 
+            topic_name="vu_sss/am_vae_lec2lite_l", 
             pipe_estimation_good_log_val = self.pipe_estimation_good_log_val,  
             speed_good_log_val = self.speed_good_log_val 
         )
         lec2_am_r_2bb = bb_lec2_am_r_2bb.ToBlackboard(
             name="lec2_am_r_2bb",
-            topic_name=f"/{self.namespace}/vu_sss/am_vae_lec2lite_r", 
+            topic_name="vu_sss/am_vae_lec2lite_r", 
             pipe_estimation_good_log_val = self.pipe_estimation_good_log_val,  
             speed_good_log_val = self.speed_good_log_val 
         )
         pipe_lost2bb = bb_pipe_lost2bb.ToBlackboard(
             name="pipe_lost2bb",
-            topic_name=f"/{self.namespace}/bb_pipe_lost" 
+            topic_name="bb_pipe_lost" 
         )
         sensor_failure2bb = bb_sensor_failure2bb.ToBlackboard(
             name="sensor_failure2bb",
-            topic_name=f"/{self.namespace}/sensor_failure_rpm" 
+            topic_name="sensor_failure_rpm" 
         )
         waypoints_completed2bb = bb_waypoints_completed2bb.ToBlackboard(
             name="waypoints_completed2bb",
-            topic_name=f"/{self.namespace}/waypoints_completed" 
+            topic_name="waypoints_completed" 
         )
         home2bb = bb_home2bb.ToBlackboard(
             name="home2bb",
-            topic_name=f"/{self.namespace}/bb_home_dist", 
+            topic_name="bb_home_dist", 
             home_reached_threshold = self.home_reached_threshold 
         )
         mission2bb = bb_mission2bb.ToBlackboard(
             name="mission2bb",
-            topic_name=f"/{self.namespace}/bb_mission" 
+            topic_name="bb_mission" 
         )
         ddlec2bb = bb_ddlec2bb.ToBlackboard(
             name="ddlec2bb",
-            topic_name=f"/{self.namespace}/degradation_detector", 
+            topic_name="degradation_detector", 
             total_degradation_threshold = self.total_degradation_threshold,  
             num_classes = self.num_classes,  
             enable_fault_detection = self.enable_fault_detection,  

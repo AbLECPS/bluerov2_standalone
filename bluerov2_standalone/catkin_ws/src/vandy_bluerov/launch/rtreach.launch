@@ -42,13 +42,14 @@ Description:  RT Reachability
     <arg name="timeout" default = "-1"/>
 
 
-    <group if="$(arg use_rtreach)" ns="$(arg uuv_name)">
+    <!-- <group if="$(arg use_rtreach)" ns="$(arg uuv_name)"> -->
+    <group if="$(arg use_rtreach)">
     <!--reach node and visualize node-->
             <!--Vandy SysID Data-->
-        <node name="vandy_sys_id" type="vandy_sys_id.py" pkg="vandy_bluerov" args="$(arg results_directory)" required="true"/>
+        <node name="vandy_sys_id" type="vandy_sys_id.py" pkg="vandy_bluerov" args="$(arg results_directory) $(arg uuv_name)" required="true"/>
         <node name="publish_obstacles" type="publish_obstacles.py" pkg="rtreach" output="screen" required="true"/>
         <node name="geo_fencing_publisher" pkg="rtreach" type="geofencing_bounding_box.py" args="$(arg origin_latitude) $(arg origin_longitude) $(arg origin_altitude)" output="$(arg output)"/>
-        <node name="reach_node" pkg="rtreach" type="reach_node_uncertain_rov" args="$(arg uuv_wall_time) $(arg uuv_sim_time) $(arg debug) $(arg parameter_uncertainty) $( arg xd_l) $( arg xd_u) $( arg yd_l) $( arg yd_u) $( arg vd_l) 
+        <node name="reach_node" pkg="rtreach" type="reach_node_uncertain_rov" args="$(arg uuv_name) $(arg uuv_wall_time) $(arg uuv_sim_time) $(arg debug) $(arg parameter_uncertainty) $( arg xd_l) $( arg xd_u) $( arg yd_l) $( arg yd_u) $( arg vd_l) 
                                                                                                                                                                  $( arg vd_u) $( arg thd_l) $( arg thd_u) $(arg results_directory)
                                                                                                                                                                  $( arg x_unc) $( arg y_unc) $( arg speed_unc) $( arg theta_unc)" output="$(arg output)"/>
         <!--rtreach obstacle nodes-->

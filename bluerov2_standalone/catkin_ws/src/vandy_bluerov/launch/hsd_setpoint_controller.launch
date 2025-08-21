@@ -16,14 +16,14 @@
 
   <arg name="uuv_degradation_mode" default="x"/>
 
-  <group ns="$(arg uuv_name)">
+  <group> <!-- ns="$(arg uuv_name)"> -->
     <node pkg="vandy_bluerov"
           type="hsd_setpoint_controller.py"
           name="hsd_setpoint_controller"
           output="screen"
           required="true"
           if="$(arg use_ned_frame)">
-      <remap from="odom" to="pose_gt_noisy_ned"/>
+      <remap from="odom" to="pose_gt_ned"/>
       <rosparam subst_value="true">
           base_link: base_link
           debug_mode: $(arg hsd_debug_mode)

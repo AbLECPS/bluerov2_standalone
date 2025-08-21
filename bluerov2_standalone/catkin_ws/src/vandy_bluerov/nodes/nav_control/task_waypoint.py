@@ -28,20 +28,20 @@ class TaskWaypoint(object):
         
         # CM hsd input msg
         self.cm_hsd_input_sub= rospy.Subscriber(
-            f"/{self.namespace}/cm_hsd_input", String, self.callback_cm_hsd_input)
+            "cm_hsd_input", String, self.callback_cm_hsd_input)
         self.cm_hsd_input =  String()
 
         # Subscribe to odometry
         self.odometry_sub = rospy.Subscriber(
-            f'/{self.namespace}/pose_gt_noisy_ned', Odometry, self.callback_pose, queue_size=1)    
+            'pose_gt_ned', Odometry, self.callback_pose, queue_size=1)    
 
         self.waypoint_pub = rospy.Subscriber(
-            f'/{self.namespace}/waypoints', Float64MultiArray, self.callback_waypoint, queue_size=1)   
+            'waypoints', Float64MultiArray, self.callback_waypoint, queue_size=1)   
         self.waypoints = []
         self.target_waypoint_id = 0
 
         # self.obstacle_map_sub = rospy.Subscriber(
-        #     f"/{self.namespace}/obstacle_map", OccupancyGrid, self.callback_obstacle_map)
+        #     "obstacle_map", OccupancyGrid, self.callback_obstacle_map)
         
         # self.obstacle_map = np.array([], dtype=np.int)
         # self.map_size = 1000 #default, update it from msg
@@ -49,34 +49,34 @@ class TaskWaypoint(object):
 
         # Subscribe to collision avoidance
         self.hsd_obstacle_avoidance_sub = rospy.Subscriber(
-            f'/{self.namespace}/hsd_obstacle_avoidance', HSDCommand, self.obstacle_avoidance_callback)
+            'hsd_obstacle_avoidance', HSDCommand, self.obstacle_avoidance_callback)
         self.hsd_obstacle_avoidance_msg = HSDCommand()
 
         # self.obstacle_near_wp_sub = rospy.Subscriber(
-        #     f"/{self.namespace}/obstacle_near_wp", Bool, self.callback_next_wp, queue_size = 1)
+        #     "obstacle_near_wp", Bool, self.callback_next_wp, queue_size = 1)
 
         self.next_wp_sub = rospy.Subscriber(
-            f"/{self.namespace}/next_wp", Bool, self.callback_next_wp, queue_size = 1)
+            "next_wp", Bool, self.callback_next_wp, queue_size = 1)
 
         self.waypoints_completed_pub = rospy.Publisher(
-            f'/{self.namespace}/waypoints_completed', Bool, queue_size=1)
+            'waypoints_completed', Bool, queue_size=1)
 
         self.new_wp_pub = rospy.Publisher(
-            f'/{self.namespace}/new_waypoint', Point, queue_size=1)    
+            'new_waypoint', Point, queue_size=1)    
 
         self.target_pub = rospy.Publisher(
-            f'/{self.namespace}/target_waypoint', Point, queue_size=1)   
+            'target_waypoint', Point, queue_size=1)   
         self.target_id_pub = rospy.Publisher(
-            f'/{self.namespace}/target_waypoint_id', Int32, queue_size=1)   
+            'target_waypoint_id', Int32, queue_size=1)   
         self.hsd_pub = rospy.Publisher(
-            f'/{self.namespace}/hsd_to_waypoint', HSDCommand, queue_size=1)   
+            'hsd_to_waypoint', HSDCommand, queue_size=1)   
         self.waypoint_distance_pub = rospy.Publisher(
-            f'/{self.namespace}/distance_to_waypoint', Float64, queue_size=1)   
+            'distance_to_waypoint', Float64, queue_size=1)   
         self.obstacle_avoidance_direction_pub = rospy.Publisher(
-            f'/{self.namespace}/obstacle_avoidance_direction', Float64, queue_size=1)    
+            'obstacle_avoidance_direction', Float64, queue_size=1)    
                        
         self.xtrack_error_pub = rospy.Publisher(
-            f'/{self.namespace}/xtrack_error', Float64, queue_size=1)   
+            'xtrack_error', Float64, queue_size=1)   
         self.xtrack_error_pub.publish(Float64(float('nan')))
         
         self.wa = waypoint_actions.WaypointAction

@@ -28,31 +28,31 @@ class MapBasedPipeTracking(object):
         # Subscriber
         # Altimeter
         self.range_sub = rospy.Subscriber(
-            f"/{self.namespace}/altimeter_echosunder", Range, self.callback_range)
+            "altimeter_echosunder", Range, self.callback_range)
   
         # Pipe heading    
         self.pipeline_heading_sub = rospy.Subscriber(
-            f"/{self.namespace}/pipeline_heading_from_mapping", FloatStamped, self.callback_heading)
+            "pipeline_heading_from_mapping", FloatStamped, self.callback_heading)
         
         # Pipe distance    
         self.pipeline_distance_sub = rospy.Subscriber(
-            f"/{self.namespace}/pipeline_distance_from_mapping", FloatStamped, self.callback_distance)
+            "pipeline_distance_from_mapping", FloatStamped, self.callback_distance)
         
         self.sub = rospy.Subscriber(
-            f"/{self.namespace}/pose_gt_noisy_ned", Odometry, self.callback_pose)
+            "pose_gt_ned", Odometry, self.callback_pose)
         self.uuv_yaw = 0 #rad
         self.uuv_position = Point()
 
         # Pipe pos in SLS    
         self.pipeline_in_sls_sub = rospy.Subscriber(
-            f"/{self.namespace}/pipeline_in_sls", FloatStamped, self.callback_pipeline_in_sls)
+            "pipeline_in_sls", FloatStamped, self.callback_pipeline_in_sls)
         self.pipeline_in_sls = 0.0
         self.K_p_pipe_in_sls = 50
         self.pipe_sls_stamp = rospy.Time.now()
 
         # HSD publisher
         self.hsd_pipeline_mapping_pub = rospy.Publisher(
-            f"/{self.namespace}/hsd_pipeline_mapping", HSDCommand, queue_size = 1)
+            "hsd_pipeline_mapping", HSDCommand, queue_size = 1)
         self.init_speed = rospy.get_param('~init_speed', 2.0)
         self.init_depth = rospy.get_param('~init_depth', 45)
         
@@ -68,7 +68,7 @@ class MapBasedPipeTracking(object):
         while not rospy.is_shutdown():
             # Get TF transformation between world and UUV
             try:
-                (trans,rot)  = tf_transform.lookupTransform("/world", f"/{self.namespace}/base_link", rospy.Time(secs=0))			
+                (trans,rot)  = tf_transform.lookupTransform("/world", "base_link", rospy.Time(secs=0))			
             except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
                 continue       
 

@@ -30,11 +30,11 @@ class TaskRth(object):
 
         # Subscribe to HOME position msg
         self.home_position_sub = rospy.Subscriber(
-            f'/{self.namespace}/home_position', LatLonDepth, self.callback_home_position, queue_size=1)    
+            'home_position', LatLonDepth, self.callback_home_position, queue_size=1)    
         self.home_position_msg = LatLonDepth() 
 
         self.hsd_pub = rospy.Publisher(
-            f'/{self.namespace}/hsd_to_rth', HSDCommand, queue_size=1)   
+            'hsd_to_rth', HSDCommand, queue_size=1)   
         self.hsd_cmd = HSDCommand()
         self.hsd_cmd.heading = 0
         self.hsd_cmd.speed = rospy.get_param('~rth_speed', 0.4) 

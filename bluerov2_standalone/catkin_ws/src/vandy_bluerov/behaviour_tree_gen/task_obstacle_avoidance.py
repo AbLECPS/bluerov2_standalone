@@ -43,27 +43,27 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.blackboard.cm_hsd_input = String()
         
         self.enable_obstacle_avoidance=enable_obstacle_avoidance     
-        self.hsd_obstacle_avoidance__sub = rospy.Subscriber( f'/{self.namespace}/hsd_obstacle_avoidance',
+        self.hsd_obstacle_avoidance__sub = rospy.Subscriber( 'hsd_obstacle_avoidance',
                                             HSDCommand,
                                             self.hsd_obstacle_avoidance__callback,
                                             queue_size =1)
         self.hsd_obstacle_avoidance__msg =  HSDCommand()                   
-        self.hsd_pipeline_mapping__sub = rospy.Subscriber( f'/{self.namespace}/hsd_pipeline_mapping',
+        self.hsd_pipeline_mapping__sub = rospy.Subscriber( 'hsd_pipeline_mapping',
                                             HSDCommand,
                                             self.hsd_pipeline_mapping__callback,
                                             queue_size =1)
         self.hsd_pipeline_mapping__msg =  HSDCommand()                   
-        self.hsd_waypoint__sub = rospy.Subscriber( f'/{self.namespace}/hsd_to_waypoint',
+        self.hsd_waypoint__sub = rospy.Subscriber( 'hsd_to_waypoint',
                                             HSDCommand,
                                             self.hsd_waypoint__callback,
                                             queue_size =1)
         self.hsd_waypoint__msg =  HSDCommand()                   
-        self.hsd_waypoint_rrt__sub = rospy.Subscriber( f'/{self.namespace}/hsd_to_waypoint_rrt',
+        self.hsd_waypoint_rrt__sub = rospy.Subscriber( 'hsd_to_waypoint_rrt',
                                             HSDCommand,
                                             self.hsd_waypoint_rrt__callback,
                                             queue_size =1)
         self.hsd_waypoint_rrt__msg =  HSDCommand()                   
-        self.hsd_pub_pub = rospy.Publisher( f'/{self.namespace}/hsd_command',
+        self.hsd_pub_pub = rospy.Publisher( 'hsd_command',
                                             HSDCommand,
                                             queue_size=1)
         self.hsd_pub_msg =  HSDCommand()                   

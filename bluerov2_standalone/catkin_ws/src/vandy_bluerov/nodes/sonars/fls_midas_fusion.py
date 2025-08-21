@@ -55,13 +55,13 @@ class FLSMiDaSFusion(object):
         #     '/uuv0/camera/camera_info', CameraInfo, self.callback_camera_info, queue_size=1)    
         self.rgb_image = []
         self.camera_info_sub = rospy.Subscriber(
-             f'/{self.namespace}/camera/image_raw', Image, self.callback_camera, queue_size=1)    
+             'camera/image_raw', Image, self.callback_camera, queue_size=1)    
 
         self.range_sub = rospy.Subscriber(
-            f"/{self.namespace}/fls_echosunder", Range, self.callback_range)       
+            "fls_echosunder", Range, self.callback_range)       
         
         self.midas_absolute_pub = rospy.Publisher(
-            f'/{self.namespace}/midas_absolute', Image, queue_size=1)   
+            'midas_absolute', Image, queue_size=1)   
         
         range_limit=50 #m
         rate = rospy.Rate(1)
@@ -136,7 +136,7 @@ class FLSMiDaSFusion(object):
                 pc = PointCloud()            
                 header = Header()
                 header.stamp = rospy.Time.now()
-                header.frame_id = f'{self.namespace}/camera_link_depth'
+                header.frame_id = '/camera_link_depth'
                 pc.header = header
                 # scale is not right at loading
                 pcd = np.asarray(pcd.points)*250000

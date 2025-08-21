@@ -33,10 +33,10 @@ class LEC2Lite(object):
         print("LEC2Lite {} side model: {}".format(self.side, tflite_filename))
         
         self.lec2lite_pub = rospy.Publisher(
-            f'{self.namespace}/vu_sss/lec2lite_' + self.side, Image, queue_size=1)    
+            'vu_sss/lec2lite_' + self.side, Image, queue_size=1)    
         
         self.sss_waterfall_sub = rospy.Subscriber(
-            f'{self.namespace}/vu_sss/waterfall_' + self.side, Image, self.callback_sss, queue_size=1)
+            'vu_sss/waterfall_' + self.side, Image, self.callback_sss, queue_size=1)
         
         # Load TFLite model and allocate tensors.
             

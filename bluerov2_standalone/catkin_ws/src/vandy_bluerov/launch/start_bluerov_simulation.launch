@@ -129,7 +129,6 @@ Description:  Includes Bluerov UUV and SIM top level launch file
 
         <!-- BlueROV2 PID controller launch params-->
         <arg name="teleop" default="false"/>
-        <arg name="mode" default="noisy"/>  <!--noisy/default-->
         <arg name="joy_id" default="0"/>
         
         <!-- Init params from world model -->
@@ -380,13 +379,12 @@ Description:  Includes Bluerov UUV and SIM top level launch file
 
         <!-- BlueROV2 PID controller launch params-->
         <arg name="teleop_2" default="false"/>
-        <arg name="mode_2" default="noisy"/>  <!--noisy/default-->
         <arg name="joy_id_2" default="0"/>
         
         <!-- Init params from world model -->
         <arg name="vehicle_latitude_2" default="38.971203"/>
         <arg name="vehicle_longitude_2" default="-76.398464"/>
-        <arg name="vehicle_altitude_2" default="45"/>
+        <arg name="vehicle_altitude_2" default="35"/>
 
         <arg name="vehicle_yaw_2" default="1.5708"/>
 
@@ -509,9 +507,6 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <!--Thruster blade failure for IMU noise-->
         <arg name="thruster_blade_failure" value="$(arg thruster_blade_failure)"/>
 
-        <!-- BlueROV2 launch params-->
-        <arg name="mode" value="$(arg mode)"/>
-
         <!-- Use NED -->
         <arg name="use_ned" value="$(arg use_ned)"/>
 
@@ -530,8 +525,8 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="vehicle_yaw" value="$(arg vehicle_yaw)"/>
 
         <!-- World Origin in lat long -->
-        <arg name="origin_latitude" value="$(arg origin_latitude)"/> 38.971203
-        <arg name="origin_longitude" value="$(arg origin_longitude)"/> <!-- -76.398464 -->
+        <arg name="origin_latitude" value="$(arg origin_latitude)"/>
+        <arg name="origin_longitude" value="$(arg origin_longitude)"/>
         <arg name="origin_altitude" value="$(arg origin_altitude)"/>
     </include>
 
@@ -582,9 +577,6 @@ Description:  Includes Bluerov UUV and SIM top level launch file
 
         <!--Thruster blade failure for IMU noise-->
         <arg name="thruster_blade_failure" value="$(arg thruster_blade_failure_2)"/>
-
-        <!-- BlueROV2 launch params-->
-        <arg name="mode" value="$(arg mode_2)"/>
 
         <!-- Use NED -->
         <arg name="use_ned" value="$(arg use_ned_2)"/>

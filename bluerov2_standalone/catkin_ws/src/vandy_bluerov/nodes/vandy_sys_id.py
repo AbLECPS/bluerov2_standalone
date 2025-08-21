@@ -30,8 +30,8 @@ class genSysIDData:
         # The data will be stored in a csv file in the csv directory
         self.namespace = rospy.get_namespace().replace('/', '')
         self.save_path_root=path
-        self.odometry_sub=rospy.Subscriber(f"{self.namespace}/pose_gt", Odometry,self.odom_callback,queue_size = 20)
-        self.hsd =rospy.Subscriber(f"{self.namespace}/hsd_command",HSDCommand,self.master_callback,queue_size = 20)
+        self.odometry_sub=rospy.Subscriber("pose_gt", Odometry,self.odom_callback,queue_size = 20)
+        self.hsd =rospy.Subscriber("hsd_command",HSDCommand,self.master_callback,queue_size = 20)
         #self.sub = ApproximateTimeSynchronizer([self.odometry_sub,self.hsd], queue_size = 20, slop = 0.049)
         self.odom_msg = None
         #self.campaign = 0

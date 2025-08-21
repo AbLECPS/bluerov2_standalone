@@ -26,7 +26,7 @@ class PublishObstacles:
         self.debug = debug
         self.generate_freespace = generate_freespace
         self.pose_msg = None
-        self.odom_sub = rospy.Subscriber(f"{self.namespace}/pose_gt", Odometry, self.pose_callback, queue_size=1)
+        self.odom_sub = rospy.Subscriber("pose_gt", Odometry, self.pose_callback, queue_size=1)
         self.pub = rospy.Publisher('obstacles',reach_tube,queue_size=20)
         if(self.debug):
             self.vis_pub =rospy.Publisher('sanity_pub', MarkerArray, queue_size=20)

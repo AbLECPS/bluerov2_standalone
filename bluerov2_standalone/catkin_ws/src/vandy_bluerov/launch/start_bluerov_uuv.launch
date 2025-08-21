@@ -207,7 +207,7 @@ Description:  Uploads the Bluerov UUV nodes.
     <!-- Start the PID controller with its default parameters for the RexROV vehicle  -->
     <!-- Remap messages so PID will use noisy sensors -->
     <group>
-        <!-- <remap from="odom" to="pose_gt_noisy_ned"/> -->
+        <!-- <remap from="odom" to="pose_gt_ned"/> -->
         <include file="$(find bluerov2_control)/launch/start_pid_controller.launch">
             <arg name="thruster_manager_config_file" default="$(find vandy_bluerov)/config/thruster_manager.yaml"/>
             <arg name="uuv_name" value="$(arg uuv_name)"/>
@@ -370,7 +370,7 @@ Description:  Uploads the Bluerov UUV nodes.
         <arg name="min_heading" value="$(arg min_heading)"/>
         <arg name="max_heading" value="$(arg max_heading)"/>
         <arg name="x_track_error" value="$(arg x_track_error)"/>
-        <!-- <remap from="odom" to="pose_gt_noisy_ned"/> -->
+        <!-- <remap from="odom" to="pose_gt_ned"/> -->
     </include>
 
     <!-- FDR Tx/Rx -->

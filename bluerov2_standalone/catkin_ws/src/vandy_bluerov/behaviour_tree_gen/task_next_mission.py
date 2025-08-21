@@ -38,12 +38,12 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.blackboard = py_trees.blackboard.Blackboard()
         self.blackboard.next_mission = False
      
-        self.bb_mission_sub = rospy.Subscriber( f'/{self.namespace}/bb_mission',
+        self.bb_mission_sub = rospy.Subscriber( 'bb_mission',
                                             String,
                                             self.bb_mission_callback,
                                             queue_size =1)
         self.bb_mission_msg =  String()                   
-        self.next_wp__pub = rospy.Publisher( f'/{self.namespace}/next_wp',
+        self.next_wp__pub = rospy.Publisher( 'next_wp',
                                             Bool,
                                             queue_size=1)
         self.next_wp__msg =  Bool()                   

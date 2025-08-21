@@ -8,7 +8,7 @@ Description:  Send initial HSD command
   <arg name="speed" default="2.0"/>
   <arg name="depth" default="45"/>
 
-  <group ns="$(arg uuv_name)">
+  <group> <!-- ns="$(arg uuv_name)"> -->
          <node name="send_hsd" pkg="vandy_bluerov" type="send_hsd.py" output="screen"
                 args="$(arg heading) $(arg speed) $(arg depth)"/>
   </group>

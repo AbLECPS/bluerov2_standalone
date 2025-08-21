@@ -20,7 +20,7 @@
 
 	<!-- <include file="$(find depthimage_to_laserscan)/launch/depth_to_laser.launch">
 	</include> -->
-    <group ns="$(arg uuv_name)">
+    <group> <!-- ns="$(arg uuv_name)"> -->
 		<node pkg="vandy_bluerov" type="forward_looking_sonar.py" name="forward_looking_sonar" output="screen" >
            <rosparam subst_value="true">
                 use_hw_fls: $(arg use_hw_fls)

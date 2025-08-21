@@ -2,7 +2,8 @@
     <arg name="uuv_name" default="uuv0"/>
     <arg name="filename" default="lec2.tflite"/>
 
-    <group ns="$(arg uuv_name)">
+    <!-- <group ns="$(arg uuv_name)"> -->
+    <group>
         <node name="vu_lec2_lite_l" pkg="lec2lite" type="lec2_lite_node.py" output="screen" >
             <param name="~side" type="str" value="l" />
             <param name="~filename" type="str" value="$(arg filename)" />        

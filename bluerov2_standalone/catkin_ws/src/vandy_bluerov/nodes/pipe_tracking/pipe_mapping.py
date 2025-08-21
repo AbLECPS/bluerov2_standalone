@@ -60,7 +60,7 @@ class PipeMapping(object):
         # Subscriber
         # Odom/Pose message
         self.odometry_sub = rospy.Subscriber(
-             '/' + self.namespace + '/pose_gt_noisy_ned', Odometry, self.callback_odometry, queue_size=1) 
+             'pose_gt_ned', Odometry, self.callback_odometry, queue_size=1) 
         # self.uuv_position = [0,0,0]
         self.uuv_position = collections.deque(maxlen = 50)
         self.position_lag = -1 #-50
@@ -69,19 +69,19 @@ class PipeMapping(object):
 
         # Altimeter
         self.range_sub = rospy.Subscriber(
-            f"/{self.namespace}/altimeter_echosunder", Range, self.callback_range)
+            "altimeter_echosunder", Range, self.callback_range)
 
         # Subscribe to Left/Right VU SSS data 
         self.right_lec2_semseg_sub = rospy.Subscriber(
-             f'{self.namespace}/vu_sss/lec2lite_r', Image, self.get_right_semseg)
+             'vu_sss/lec2lite_r', Image, self.get_right_semseg)
         self.left_lec2_semseg_sub = rospy.Subscriber(
-             f'{self.namespace}/vu_sss/lec2lite_l', Image, self.get_left_semseg)
+             'vu_sss/lec2lite_l', Image, self.get_left_semseg)
 
         # Subscribe to Left/Right VU SSS data 
         self.right_gt_sub = rospy.Subscriber(
-             f'{self.namespace}/vu_sss/waterfall_gt_r', Image, self.get_right_gt)
+             'vu_sss/waterfall_gt_r', Image, self.get_right_gt)
         self.left_gt_sub = rospy.Subscriber(
-             f'{self.namespace}/vu_sss/waterfall_gt_l', Image, self.get_left_gt)
+             'vu_sss/waterfall_gt_l', Image, self.get_left_gt)
 
 
         # Evaluation
@@ -96,9 +96,9 @@ class PipeMapping(object):
         # self.cm_use_lec2 = True
 
         self.bt_use_lec2_left_sub = rospy.Subscriber(
-            "/bt/use_lec2/left", Bool, self.callback_bt_use_lec2_left) 
+            "bt/use_lec2/left", Bool, self.callback_bt_use_lec2_left) 
         self.bt_use_lec2_right_sub = rospy.Subscriber(
-            "/bt/use_lec2/right", Bool, self.callback_bt_use_lec2_right) 
+            "bt/use_lec2/right", Bool, self.callback_bt_use_lec2_right) 
         self.bt_use_lec2 = {
             "left": True,
             "right": True
@@ -106,42 +106,42 @@ class PipeMapping(object):
 
         # Publisher
         self.lec2_accuracy_left_pub = rospy.Publisher(
-             f"{self.namespace}/vu_sss/lec2_accuracy/left", Float32MultiArray, queue_size = 1)
+             "vu_sss/lec2_accuracy/left", Float32MultiArray, queue_size = 1)
         self.lec2_accuracy_right_pub = rospy.Publisher(
-             f"{self.namespace}/vu_sss/lec2_accuracy/right", Float32MultiArray, queue_size = 1)
+             "vu_sss/lec2_accuracy/right", Float32MultiArray, queue_size = 1)
 
         # Pipe map
         self.pipeline_map_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_map", OccupancyGrid, queue_size = 1)
+            "pipeline_map", OccupancyGrid, queue_size = 1)
         
         # Pipe heading    
         self.pipeline_heading_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_heading_from_mapping", FloatStamped, queue_size = 1)
+            "pipeline_heading_from_mapping", FloatStamped, queue_size = 1)
         pipeline_map_heading_msg = FloatStamped()
         
         # Pipe distance    
         self.pipeline_distance_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_distance_from_mapping", FloatStamped, queue_size = 1)
+            "pipeline_distance_from_mapping", FloatStamped, queue_size = 1)
         pipeline_distance_msg = FloatStamped()
 
         # Pipe in view    
         self.pipeline_in_view_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_in_view", Header, queue_size = 1)
+            "pipeline_in_view", Header, queue_size = 1)
         self.pipeline_in_view_msg = Header()
 
         # Pipe in view GT
         self.pipeline_in_view_gt_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_in_view_gt", Header, queue_size = 1)
+            "pipeline_in_view_gt", Header, queue_size = 1)
         
 
         # Pipe pos in SLS    
         self.pipeline_in_sls_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_in_sls", FloatStamped, queue_size = 1)
+            "pipeline_in_sls", FloatStamped, queue_size = 1)
         self.pipeline_in_sls_msg = FloatStamped()
         
         # Pipe pos in SLS    
         self.pipeline_in_gt_pub = rospy.Publisher(
-            f"/{self.namespace}/pipeline_in_gt", FloatStamped, queue_size = 1)        
+            "pipeline_in_gt", FloatStamped, queue_size = 1)        
         self.pipeline_in_gt_msg = FloatStamped()
       
         self.uuv_heading = 0

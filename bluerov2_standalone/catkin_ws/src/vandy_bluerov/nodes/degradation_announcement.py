@@ -22,7 +22,7 @@ class DegradationAnnouncement(object):
         rospy.loginfo('Initialize Task: Degradation announcement for <%s>' % self.namespace)
 
         self.uuv_degradation_mode = rospy.get_param('~uuv_degradation_mode', 'x')
-        self.pub = rospy.Publisher(f'/{self.namespace}/uuv_degradation_mode', String, queue_size=1)   
+        self.pub = rospy.Publisher('uuv_degradation_mode', String, queue_size=1)   
        
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():               

@@ -39,12 +39,12 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.blackboard.HSD_out = HSDCommand()
         self.blackboard.cm_hsd_input = String()
      
-        self.hsd_pipeline_mapping__sub = rospy.Subscriber( f'/{self.namespace}/hsd_pipeline_mapping',
+        self.hsd_pipeline_mapping__sub = rospy.Subscriber( 'hsd_pipeline_mapping',
                                             HSDCommand,
                                             self.hsd_pipeline_mapping__callback,
                                             queue_size =1)
         self.hsd_pipeline_mapping__msg =  HSDCommand()                   
-        self.cm_hsd_input__pub = rospy.Publisher( f'/{self.namespace}/cm_hsd_input',
+        self.cm_hsd_input__pub = rospy.Publisher( 'cm_hsd_input',
                                             String,
                                             queue_size=1)
         self.cm_hsd_input__msg =  String()                   
@@ -85,7 +85,7 @@ class TaskHandler(py_trees.behaviour.Behaviour):
         self.blackboard.HSD_out.heading = self.hsd_pipeline_mapping__msg.heading
         self.blackboard.HSD_out.depth = self.hsd_pipeline_mapping__msg.depth
         self.cm_hsd_input__publish(self.blackboard.cm_hsd_input)
-        rospy.loginfo_throttle(1, "\033[1;32m[BT] " + str(self.task)+" \033[0m")
+        rospy.loginfo_throttle(1, f"{self.namespace} [BT] " + str(self.task)+" \033[0m")
 ############<<USER UPDATE CODE ENDS>>################################
 
          # Return always running                
