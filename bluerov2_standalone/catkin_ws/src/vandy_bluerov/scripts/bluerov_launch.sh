@@ -24,7 +24,7 @@ roslaunch vandy_bluerov start_bluerov_simulation.launch \
     unpause_timeout:=15 \
     timeout:=800 \
     geofence_threshold:=450 \
-    batt_charge:=9999 \
+    batt_charge:=0.99 \
     failsafe_battery_low_threshold:=0.15 \
     random_seed:=27168 \
     results_directory:="/mnt/results/$task_folder/" \
