@@ -5,6 +5,8 @@ from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Pose, Quaternion
 import tf
 import numpy as np
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
+import math
 
 class OdometryConverter:
     def __init__(self):
@@ -43,15 +45,16 @@ class OdometryConverter:
                  msg.pose.pose.orientation.y,
                  msg.pose.pose.orientation.z,
                  msg.pose.pose.orientation.w]
-
-        # Define the rotation from ENU to NED as a quaternion
-        # This is a rotation of 90 degrees around Z (ENU) then 180 around X (new frame)
-        # Equivalent to rotating ENU's X to NED's Y, ENU's Y to NED's X, ENU's Z to NED's -Z
         
-        q_tf_enu_to_ned = tf.transformations.quaternion_from_euler(0, 0, -np.pi/2)
-        q_ned = tf.transformations.quaternion_multiply(q_enu, q_tf_enu_to_ned)
+        (roll_enu, pitch_enu, yaw_enu) = euler_from_quaternion(q_enu)
 
-        odom_ned.pose.pose.orientation = Quaternion(*q_ned)
+        roll_ned = pitch_enu
+        pitch_ned = roll_enu
+        yaw_ned = -yaw_enu + math.radians(90)
+
+        q_ned_list = quaternion_from_euler(roll_ned, pitch_ned, yaw_ned)
+        
+        odom_ned.pose.pose.orientation = Quaternion(x=q_ned_list[0], y=q_ned_list[1], z=q_ned_list[2], w=q_ned_list[3])
 
         # Copy covariance (assuming it's valid across frame transformations, or re-calculate if needed)
         odom_ned.pose.covariance = msg.pose.covariance
