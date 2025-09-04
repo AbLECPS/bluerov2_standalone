@@ -51,20 +51,20 @@ class SideScanSonar(object):
 
         # Initialize subscribers/publishers
         self.sss_waterfall_pub = rospy.Publisher(
-             '/vu_sss/waterfall', Image, queue_size=1)
+             'vu_sss/waterfall', Image, queue_size=1)
         
         self.sss_waterfall_gt_pub = rospy.Publisher(
-             '/vu_sss/waterfall_gt', Image, queue_size=1)
+             'vu_sss/waterfall_gt', Image, queue_size=1)
 
         self.sss_waterfall_l_pub = rospy.Publisher(
-             '/vu_sss/waterfall_l', Image, queue_size=1)
+             'vu_sss/waterfall_l', Image, queue_size=1)
         self.sss_waterfall_r_pub = rospy.Publisher(
-             '/vu_sss/waterfall_r', Image, queue_size=1)
+             'vu_sss/waterfall_r', Image, queue_size=1)
         
         self.sss_waterfall_gt_l_pub = rospy.Publisher(
-             '/vu_sss/waterfall_gt_l', Image, queue_size=1)    
+             'vu_sss/waterfall_gt_l', Image, queue_size=1)    
         self.sss_waterfall_gt_r_pub = rospy.Publisher(
-             '/vu_sss/waterfall_gt_r', Image, queue_size=1)    
+             'vu_sss/waterfall_gt_r', Image, queue_size=1)    
 
         self.cvbridge = CvBridge()
         self.odometry_sub = rospy.Subscriber(

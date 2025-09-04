@@ -55,7 +55,6 @@
 
 	<include file="$(find lec2lite)/launch/lec2lite_docker.launch">
        <arg name="filename" value="$(arg filename)"/>
-	   <arg name="uuv_name" value="$(arg uuv_name)"/>
 	</include>
 
 	<!-- AM for LEC2LITE input (SSS Scan) -->

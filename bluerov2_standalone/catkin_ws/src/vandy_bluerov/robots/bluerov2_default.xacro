@@ -8,9 +8,9 @@
     <xacro:arg name="thruster_blade_failure" default="false"/>
 
     <!-- Include the ROV macro file xacro:bluerov2_base -->
+    <xacro:include filename="$(find vandy_bluerov)/urdf/gazebo.xacro"/>
     <xacro:include filename="$(find vandy_bluerov)/urdf/base.xacro"/>
     <!-- Hydrodynamic and hydrostatic parameters for the vehicle xacro:macro bluerov2_hydro_model -->
-    <xacro:include filename="$(find vandy_bluerov)/urdf/gazebo.xacro"/>
     <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
     <xacro:include filename="$(find vandy_bluerov)/urdf/sensor_snippets.xacro"/>
     <xacro:arg name="noise" default="0.02"/>
@@ -36,6 +36,160 @@
             </plugin>
         </gazebo>
     </xacro:bluerov2_base>
+
+
+      <!-- FLS echosounder and Altimeter echosounder (rangefinder sonar) joints -->
+    <gazebo reference="$(arg namespace)/base_sonar_front">
+      <xacro:blueorv2_base_sonar_front namespace="$(arg namespace)"/>
+    </gazebo>
+
+    <joint name="sonar_front_joint" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin rpy="0 0 0" xyz="0.5 0 0" />
+        <parent link="$(arg namespace)/base_link"/>
+        <child link="$(arg namespace)/base_sonar_front"/>
+    </joint>
+
+    <link name="$(arg namespace)/base_sonar_front">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.01 0.01 0.01"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.01 0.01 0.01"/>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass value="1e-5" />
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <gazebo reference="$(arg namespace)/base_sonar_bottom">
+      <xacro:bluerov2_base_sonar_bottom namespace="$(arg namespace)"/>
+    </gazebo>
+
+
+    <joint name="sonar_bottom_joint" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin rpy="0 1.5708 0" xyz="0 0 -0.5" />
+        <parent link="$(arg namespace)/base_link"/>
+        <child link="$(arg namespace)/base_sonar_bottom"/>
+    </joint>
+
+    <link name="$(arg namespace)/base_sonar_bottom">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.01 0.01 0.01"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.01 0.01 0.01"/>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass value="1e-5" />
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+
+    <joint name="camera_joint" type="fixed">
+        <axis xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0.2 0 0.1" />
+        <parent link="$(arg namespace)/base_link"/>
+        <child link="$(arg namespace)/camera_link"/>
+      </joint>
+
+      <!-- Camera -->
+      <link name="$(arg namespace)/camera_link">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.02 0.02 0.02"/>
+          </geometry>
+        </collision>
+
+        <visual>
+          <geometry>
+            <box size="0.02 0.02 0.02"/>
+          </geometry>
+        </visual>
+      </link>
+
+      <!-- generate an optical frame http://www.ros.org/reps/rep-0103.html#suffix-frames
+          so that ros and opencv can operate on the camera frame correctly -->
+
+      <!-- <gazebo reference="$(arg namespace)/camera_link_optical">
+        <xacro:bluerov2_camera_link_optical namespace="$(arg namespace)"/>
+      </gazebo>
+
+
+      <joint name="camera_optical_joint" type="fixed"> -->
+      <!--   these values have to be these values otherwise the gazebo camera image
+            won't be aligned properly with the frame it is supposedly originating from -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="$(arg namespace)/camera_link"/>
+        <child link="$(arg namespace)/camera_link_optical"/>
+      </joint>
+      <link name="$(arg namespace)/camera_link_optical">
+      </link> -->
+
+      <!-- <gazebo reference="$(arg namespace)/camera_link_depth">
+        <xacro:bluerov2_camera_link_depth namespace="$(arg namespace)"/>
+      </gazebo>
+
+
+      <joint name="camera_depth_joint" type="fixed"> -->
+      <!--   these values have to be these values otherwise the gazebo camera image
+            won't be aligned properly with the frame it is supposedly originating from -->
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="$(arg namespace)/camera_link"/>
+        <child link="$(arg namespace)/camera_link_depth"/>
+      </joint>
+      <link name="$(arg namespace)/camera_link_depth">
+      </link> -->
+
+
+    <!-- VU SSS -->
+    <!-- Both side, splitted from SW -->
+    <gazebo reference="$(arg namespace)/base_sss">
+    <xacro:blueorv2_sss namespace="$(arg namespace)"/>
+    </gazebo>
+
+    <joint name="sss_joint" type="fixed">
+        <axis xyz="0 0 0" />
+        <origin rpy="1.5708 1.5708 1.5708" xyz="1.0 0.0 0" />
+        <parent link="$(arg namespace)/base_link"/>
+        <child link="$(arg namespace)/base_sss"/>
+    </joint>
+
+    <link name="$(arg namespace)/base_sss">
+    </link>
+
+    <!-- VU FLS -->
+    <gazebo reference="$(arg namespace)/base_fis">
+      <xacro:blueorv2_fis namespace="$(arg namespace)"/>
+    </gazebo>
+
+    <joint name="fis_joint" type="fixed">
+        <axis xyz="0 0 0" />
+        <origin rpy="0 0.7854 0" xyz="1 0 1" />
+        <parent link="$(arg namespace)/base_link"/>
+        <child link="$(arg namespace)/base_fis"/>
+    </joint>
+
+    <link name="$(arg namespace)/base_fis">
+    </link>
 
     <!-- Joint state publisher plugin >
     <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="10"/-->
