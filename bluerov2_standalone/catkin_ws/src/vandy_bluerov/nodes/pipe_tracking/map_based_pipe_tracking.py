@@ -67,16 +67,16 @@ class MapBasedPipeTracking(object):
         rate = rospy.Rate(1)
         while not rospy.is_shutdown():
             # Get TF transformation between world and UUV
-            try:
-                (trans,rot)  = tf_transform.lookupTransform("/world", "base_link", rospy.Time(secs=0))			
-            except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
-                continue       
-
-            rpy = tf.transformations.euler_from_quaternion(rot)
-            self.uuv_heading = math.degrees(rpy[2])
+            # try:
+            #     (trans,rot)  = tf_transform.lookupTransform("/world", "base_link", rospy.Time(secs=0))			
+            # except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+            #     continue       
+            # rpy = tf.transformations.euler_from_quaternion(rot)
+            # self.uuv_heading = math.degrees(rpy[2])
+            
 
             # Get UUV and pipe heading difference as desired heading
-            hsd_pipeline_mapping_msg.heading = self.uuv_heading-(90-self.pipe_heading)
+            hsd_pipeline_mapping_msg.heading = self.pipe_heading - self.uuv_yaw
             
             # Slight modification of heading (when close to parallel) to bring pipe back to center of scan
             if abs(hsd_pipeline_mapping_msg.heading) < 10 and ((rospy.Time.now() - self.pipe_sls_stamp) < rospy.Duration(secs = 1.5)):               
@@ -113,7 +113,7 @@ class MapBasedPipeTracking(object):
                                      odom.pose.pose.orientation.z,
                                      odom.pose.pose.orientation.w])        
         self.uuv_position = odom.pose.pose.position
-        self.uuv_yaw = rpy[2]
+        self.uuv_yaw = math.degrees(rpy[2])
         # rospy.loginfo('UUV: %0.2f, %0.2f, %0.2f' %(self.uuv_position.x,self.uuv_position.y, math.degrees(self.uuv_yaw)))
     def callback_pipeline_in_sls(self, msg):
         self.pipeline_in_sls = msg.data
