@@ -261,7 +261,7 @@ Description:  Creates bluerov vehicle.
             <arg name="tam_file" value="$(arg tam_file)"/>
             <arg name="gui_on" value="false"/>
             <!--fwd, yaw, alt, roll -->
-            <arg name="Kp" value="200,50,100,100,0,0"/>
+            <arg name="Kp" value="200,50,100,0,0,0"/>
             <arg name="Kd" value="150,0,10,0,0,0"/>
             <arg name="Ki" value="60,0,1000,0,0,0"/>
             <arg name="axis_x" value="2"/>
