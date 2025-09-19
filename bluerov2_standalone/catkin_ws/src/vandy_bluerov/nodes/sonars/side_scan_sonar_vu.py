@@ -21,6 +21,7 @@ from collections import deque
 from cv_bridge import CvBridge
 from scipy import interpolate
 from std_msgs.msg import Header
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
 
 class GT():
     SEAFLOOR =  [0,   255, 0]
@@ -299,7 +300,8 @@ class SideScanSonar(object):
         self.uuv_position = p
 
         q = self.quaternion_to_np(msg.pose.pose.orientation)
-        self.uuv_rpy = trans.euler_from_quaternion(q, axes='sxyz')
+        pry=euler_from_quaternion(q)
+        self.uuv_rpy = [pry[1], pry[0], pry[2]]
         
     def vector_to_np(self, v):
         return np.array([v.x, v.y, v.z])
