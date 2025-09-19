@@ -1,5 +1,28 @@
 home: [ 0, 0 ]
 missions:
+  - type: path_following
+    segments:
+      #- [ heading (in degrees), range (in meters), depth (in meters), speed (in knots) ]
+      - [ 000, 5, 10, 1.5 ]
+    waypoint_reached_distance: 5.1
+    avoidance_operating_depth: 10.1
+    avoidance_learning: false
+    loiter_box_size: 9.1
+    termination_conditions:
+      - type: final_waypoint_reached
+        distance: 5.1
+        actions:
+          - next_mission
+      - type: min_obstacle_standoff
+        distance: 4.1
+        actions::
+          - surface
+          - go_home
+    assurance_technologies:
+      - topic: "/assurance/degradation"
+        contingency_action:
+          - surface
+          - go_home
   - type: pipe_following
     waypoint_reached_distance: 5.1
     avoidance_operating_depth: 10.1
