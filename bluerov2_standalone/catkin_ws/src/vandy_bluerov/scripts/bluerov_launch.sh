@@ -29,6 +29,7 @@ roslaunch vandy_bluerov start_bluerov_simulation.launch \
     random_seed:=27168 \
     results_directory:="/mnt/results/$task_folder/" \
     mission_file:="mission_04.yaml" \
+    mission_file_:="mission_04.yaml" \
     enable_fault_detection:=true \
     thruster_motor_failure:=false \
     thruster_thrust_force_efficiency:=0.46 \

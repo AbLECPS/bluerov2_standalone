@@ -461,6 +461,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     <include file="$(find vandy_bluerov)/launch/bluerov_vehicle.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
         <!-- <arg name="unpause_timeout" value="$(arg unpause_timeout)"/> -->
+        <arg name="mission_file" value="$(arg mission_file)"/>
 
 
         <!-- Logging -->
@@ -533,6 +534,8 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     <include file="$(find vandy_bluerov)/launch/bluerov_vehicle.launch">
         <arg name="uuv_name" value="$(arg uuv_name_2)"/>
         <!-- <arg name="unpause_timeout" value="$(arg unpause_timeout)"/> -->
+        <arg name="mission_file" value="$(arg mission_file_2)"/>
+
 
         <!-- Logging -->
         <arg name="results_directory" value="$(arg results_directory_2)"/>
