@@ -163,27 +163,9 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="lec3_vae_path" default="/jupyter/admin_BlueROV/LEC3Lite_AM/vae"/>
         <arg name="lec3_filename" default="best_model/lec3_quant.tflite"/>
 
-
         <!-- ############################### -->
         <!--           SIM ARGS              -->
         <!-- ############################### -->
-
-        <!-- Fishing net generation -->
-        <arg name="enable_fishnet" default="false"/>
-
-        <!-- Pipeline generator -->
-        <!-- Pipe Starting Position Relative to Vehicle -->
-        <arg name="pipe_posx" default="10"/> <!--30-->
-        <arg name="pipe_posy" default="2"/> <!--2--><!-- puts vehicle at start of pipe -->
-        <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
-        <arg name="num_segments" default="5"/>
-        <arg name="length_min" default="50.0"/>
-        <arg name="length_max" default="100.0"/>
-        <arg name="angle_min" default="-0.7854"/>
-        <arg name="angle_max" default="0.7854"/>
-        <arg name="bury_len_min" default="0.3048"/> 
-        <arg name="bury_len_max" default="6.096"/> 
-        <arg name="pipe_scale" default="3"/>
 
         <!-- Thruster motor failure for thrust loss and amper drop in thruster power -->
         <arg name="thruster_motor_failure" default="false"/>
@@ -204,64 +186,6 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="failed_rpm_sensor" default="2"/>
         <arg name="failed_rpm_sensor_enable" default="False"/>
         <arg name="failed_rpm_sensor_start" default="50"/>
-        
-        <!--Argument for number of obstacles-->
-        <!-- <arg name="num_obstacles" default="100"/>
-        <arg name="obs_distance" default="60"/> -->
-
-        <!-- static and dynamic obstacles-->
-        <arg name="enable_obstacles" default="false" />
-        <arg name="enable_debris" default="false" />
-        <arg name="enable_dynamic_obstacles" default="false" />
-        <arg name="lambda_low" default="30" />
-        <arg name="lambda_high" default="60" />
-        <arg name="lambda_low_static" default="30" />
-        <arg name="lambda_high_static" default="60" />
-        <arg name="avg_uuv_speed" default="0.9" />
-        <arg name="box_distance_variance" default="0" />
-        <arg name="box_distance_static" default="65" />
-        <arg name="box_distance_x" default="40" />
-        <arg name="box_distance_y" default="25" />
-        <arg name="box_velocity_x" default="0.0" />
-        <arg name="box_velocity_y" default="-2.5" />
-        <arg name="box_max_cnt" default="10" />
-        <arg name="box_size_x" default="10" />
-        <arg name="box_size_y" default="10" />
-        <arg name="box_size_z" default="10" />
-        <arg name="enable_wall" default="False" />
-        <arg name="enable_random" default="False" />
-        <arg name="obstacle_filename_static" default="''" />
-        <arg name="obstacle_filename_dynamic" default="''" />
-        <arg name="random_box_density" default="1" />
-
-        <!-- Less often modified params: -->    
-
-        <!--Thruster blade failure for IMU noise-->
-        <arg name="thruster_blade_failure" default="false"/> <!--true of false for the entire simulation-->
-
-        <!-- Use NED -->
-        <arg name="use_ned" default="true"/>
-
-        <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
-        <arg name="random_seed" default="0"/>
-
-        <!-- Gazebo World Parameters-->
-        <arg name="ocean_depth" default="60"/>
-        <arg name="paused" default="true"/>
-        <!-- <arg name="headless" default="true"/> -->
-        <arg name="use_sim_time" default="true"/>
-        <arg name="gui" default="false"/>
-        <arg name="timeout" default="600"/>
-        <arg name="unpause_timeout" default="120"/>
-        <arg name="gz_debug" default="false"/>
-
-        <!-- World Origin in lat long -->
-        <arg name="origin_latitude" default="38.971203"/> <!-- 38.971203 -->
-        <arg name="origin_longitude" default="-76.398464"/> <!-- -76.398464 -->
-        <arg name="origin_altitude" default="0"/>
-    
-        <arg name="upenn_sysid" default="false"/>
-        <arg name="rviz" default="$(arg gui)"/>
     <!-- ############################### -->
 
 
@@ -382,7 +306,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="joy_id_2" default="0"/>
         
         <!-- Init params from world model -->
-        <arg name="vehicle_latitude_2" default="38.971203"/>
+        <arg name="vehicle_latitude_2" default="38.971"/>
         <arg name="vehicle_longitude_2" default="-76.398464"/>
         <arg name="vehicle_altitude_2" default="35"/>
 
@@ -408,7 +332,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="lec3_filename_2" default="best_model/lec3_quant.tflite"/>
 
         <!-- ############################### -->
-        <!--           SIM_2 ARGS              -->
+        <!--           SIM_2 ARGS            -->
         <!-- ############################### -->
 
         <!-- Thruster motor failure for thrust loss and amper drop in thruster power -->
@@ -431,32 +355,95 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="failed_rpm_sensor_enable_2" default="False"/>
         <arg name="failed_rpm_sensor_start_2" default="50"/>
         
+
+    <!-- ############################### -->
+
+    <!-- ############################### -->
+    <!--        GLOBAL SIM ARGS          -->
+    <!-- ############################### -->
+
+        <!-- Fishing net generation -->
+        <arg name="enable_fishnet" default="false"/>
+
+        <!-- Pipeline generator -->
+        <!-- Pipe Starting Position Relative to Vehicle -->
+        <arg name="pipe_posx" default="10"/> <!--30-->
+        <arg name="pipe_posy" default="2"/> <!--2--><!-- puts vehicle at start of pipe -->
+        <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
+        <arg name="num_segments" default="5"/>
+        <arg name="length_min" default="50.0"/>
+        <arg name="length_max" default="100.0"/>
+        <arg name="angle_min" default="-0.7854"/>
+        <arg name="angle_max" default="0.7854"/>
+        <arg name="bury_len_min" default="0.3048"/> 
+        <arg name="bury_len_max" default="6.096"/> 
+        <arg name="pipe_scale" default="3"/>
+
+
+        
         <!--Argument for number of obstacles-->
         <!-- <arg name="num_obstacles" default="100"/>
         <arg name="obs_distance" default="60"/> -->
 
         <!-- static and dynamic obstacles-->
-        <arg name="box_size_x_2" default="10" />
+        <arg name="enable_obstacles" default="false" />
+        <arg name="enable_debris" default="false" />
+        <arg name="enable_dynamic_obstacles" default="false" />
+        <arg name="lambda_low" default="30" />
+        <arg name="lambda_high" default="60" />
+        <arg name="lambda_low_static" default="30" />
+        <arg name="lambda_high_static" default="60" />
+        <arg name="avg_uuv_speed" default="0.9" />
+        <arg name="box_distance_variance" default="0" />
+        <arg name="box_distance_static" default="65" />
+        <arg name="box_distance_x" default="40" />
+        <arg name="box_distance_y" default="25" />
+        <arg name="box_velocity_x" default="0.0" />
+        <arg name="box_velocity_y" default="-2.5" />
+        <arg name="box_max_cnt" default="10" />
+        <arg name="box_size_x" default="10" />
+        <arg name="box_size_y" default="10" />
+        <arg name="box_size_z" default="10" />
+        <arg name="enable_wall" default="False" />
+        <arg name="enable_random" default="False" />
+        <arg name="obstacle_filename_static" default="''" />
+        <arg name="obstacle_filename_dynamic" default="''" />
+        <arg name="random_box_density" default="1" />
 
         <!-- Less often modified params: -->    
 
         <!--Thruster blade failure for IMU noise-->
-        <arg name="thruster_blade_failure_2" default="false"/> <!--true of false for the entire simulation-->
+        <arg name="thruster_blade_failure" default="false"/> <!--true of false for the entire simulation-->
 
         <!-- Use NED -->
-        <arg name="use_ned_2" default="true"/>
+        <arg name="use_ned" default="true"/>
 
         <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
-        <arg name="random_seed_2" default="0"/>
+        <arg name="random_seed" default="0"/>
 
- 
+        <!-- Gazebo World Parameters-->
+        <arg name="ocean_depth" default="60"/>
+        <arg name="paused" default="true"/>
+        <!-- <arg name="headless" default="true"/> -->
+        <arg name="use_sim_time" default="true"/>
+        <arg name="gui" default="false"/>
+        <arg name="timeout" default="600"/>
+        <arg name="unpause_timeout" default="120"/>
+        <arg name="gz_debug" default="false"/>
+
+        <!-- World Origin in lat long -->
+        <arg name="origin_latitude" default="38.971203"/> <!-- 38.971203 -->
+        <arg name="origin_longitude" default="-76.398464"/> <!-- -76.398464 -->
+        <arg name="origin_altitude" default="0"/>
+    
+        <arg name="upenn_sysid" default="false"/>
+        <arg name="rviz" default="$(arg gui)"/>
     <!-- ############################### -->
 
 
     <!-- ############################### -->
     <!--          INCLUDES               -->
     <!-- ############################### -->
-
 
     <include file="$(find vandy_bluerov)/launch/bluerov_vehicle.launch">
         <arg name="uuv_name" value="$(arg uuv_name)"/>
@@ -500,8 +487,6 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <!-- <arg name="num_obstacles" value="$(arg )"/>"100"/>
         <arg name="obs_distance" value="$(arg )"/> -->
 
-        <!-- static and dynamic obstacles-->
-        <arg name="box_size_x" value="$(arg box_size_x)"/>
 
         <!-- Less often modified params: -->    
 
@@ -529,6 +514,34 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="origin_latitude" value="$(arg origin_latitude)"/>
         <arg name="origin_longitude" value="$(arg origin_longitude)"/>
         <arg name="origin_altitude" value="$(arg origin_altitude)"/>
+
+        <!-- static and dynamic obstacles-->
+        <!-- Fishing net generation -->
+        <arg name="enable_fishnet" value="$(arg enable_fishnet)"/>
+        <arg name="enable_obstacles" value="$(arg enable_obstacles)" />
+        <arg name="enable_debris" value="$(arg enable_debris)" />
+        <arg name="enable_dynamic_obstacles" value="$(arg enable_dynamic_obstacles)" />
+        <arg name="lambda_low" value="$(arg lambda_low)" />
+        <arg name="lambda_high" value="$(arg lambda_high)" />
+        <arg name="lambda_low_static" value="$(arg lambda_low_static)" />
+        <arg name="lambda_high_static" value="$(arg lambda_high_static)" />
+        <arg name="avg_uuv_speed" value="$(arg avg_uuv_speed)" />
+        <arg name="box_distance_variance" value="$(arg box_distance_variance)" />
+        <arg name="box_distance_static" value="$(arg box_distance_static)" />
+        <arg name="box_distance_x" value="$(arg box_distance_x)" />
+        <arg name="box_distance_y" value="$(arg box_distance_y)" />
+        <arg name="box_velocity_x" value="$(arg box_velocity_x)" />
+        <arg name="box_velocity_y" value="$(arg box_velocity_y)" />
+        <arg name="box_max_cnt" value="$(arg box_max_cnt)" />
+        <arg name="box_size_x" value="$(arg box_size_x)" />
+        <arg name="box_size_y" value="$(arg box_size_y)" />
+        <arg name="box_size_z" value="$(arg box_size_z)" />
+        <arg name="enable_wall" value="$(arg enable_wall)" />
+        <arg name="enable_random" value="$(arg enable_random)" />
+        <arg name="obstacle_filename_static" value="$(arg obstacle_filename_static)" />
+        <arg name="obstacle_filename_dynamic" value="$(arg obstacle_filename_dynamic)" />
+        <arg name="random_box_density" value="$(arg random_box_density)" />
+
     </include>
 
     <include file="$(find vandy_bluerov)/launch/bluerov_vehicle.launch">
@@ -573,19 +586,16 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <!-- <arg name="num_obstacles" value="$(arg )"/>"100"/>
         <arg name="obs_distance" value="$(arg )"/> -->
 
-        <!-- static and dynamic obstacles-->
-        <arg name="box_size_x" value="$(arg box_size_x_2)"/>
-
         <!-- Less often modified params: -->    
 
         <!--Thruster blade failure for IMU noise-->
-        <arg name="thruster_blade_failure" value="$(arg thruster_blade_failure_2)"/>
+        <arg name="thruster_blade_failure" value="$(arg thruster_blade_failure)"/>
 
         <!-- Use NED -->
-        <arg name="use_ned" value="$(arg use_ned_2)"/>
+        <arg name="use_ned" value="$(arg use_ned)"/>
 
         <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
-        <arg name="random_seed" value="$(arg random_seed_2)"/>
+        <arg name="random_seed" value="$(arg random_seed)"/>
 
         <!-- Vehicle's initial position -->
         <!-- appx 2km south of world origin-->
@@ -602,6 +612,34 @@ Description:  Includes Bluerov UUV and SIM top level launch file
         <arg name="origin_latitude" value="$(arg origin_latitude)"/> <!-- 38.971203 -->
         <arg name="origin_longitude" value="$(arg origin_longitude)"/> <!-- -76.398464 -->
         <arg name="origin_altitude" value="$(arg origin_altitude)"/>
+
+        <!-- static and dynamic obstacles-->
+        <!-- Fishing net generation -->
+        <arg name="enable_fishnet" value="$(arg enable_fishnet)"/>
+        <arg name="enable_obstacles" value="$(arg enable_obstacles)" />
+        <arg name="enable_debris" value="$(arg enable_debris)" />
+        <arg name="enable_dynamic_obstacles" value="$(arg enable_dynamic_obstacles)" />
+        <arg name="lambda_low" value="$(arg lambda_low)" />
+        <arg name="lambda_high" value="$(arg lambda_high)" />
+        <arg name="lambda_low_static" value="$(arg lambda_low_static)" />
+        <arg name="lambda_high_static" value="$(arg lambda_high_static)" />
+        <arg name="avg_uuv_speed" value="$(arg avg_uuv_speed)" />
+        <arg name="box_distance_variance" value="$(arg box_distance_variance)" />
+        <arg name="box_distance_static" value="$(arg box_distance_static)" />
+        <arg name="box_distance_x" value="$(arg box_distance_x)" />
+        <arg name="box_distance_y" value="$(arg box_distance_y)" />
+        <arg name="box_velocity_x" value="$(arg box_velocity_x)" />
+        <arg name="box_velocity_y" value="$(arg box_velocity_y)" />
+        <arg name="box_max_cnt" value="$(arg box_max_cnt)" />
+        <arg name="box_size_x" value="$(arg box_size_x)" />
+        <arg name="box_size_y" value="$(arg box_size_y)" />
+        <arg name="box_size_z" value="$(arg box_size_z)" />
+        <arg name="enable_wall" value="$(arg enable_wall)" />
+        <arg name="enable_random" value="$(arg enable_random)" />
+        <arg name="obstacle_filename_static" value="$(arg obstacle_filename_static)" />
+        <arg name="obstacle_filename_dynamic" value="$(arg obstacle_filename_dynamic)" />
+        <arg name="random_box_density" value="$(arg random_box_density)" />
+
     
     </include>
 
@@ -611,13 +649,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     </include>
  
     <include file="$(find vandy_bluerov)/launch/bluerov_world.launch">
-        <arg name="timeout" value="$(arg timeout)"/>
-        <arg name="unpause_timeout" value="$(arg unpause_timeout)"/>        
-
-
-        <arg name="box_size_x" value="$(arg box_size_x)"/>
-        <!--rtreach disturbance parameters-->
-
+        <arg name="unpause_timeout" value="$(arg unpause_timeout)"/>
         <!-- Rosbag -->
         <arg name="results_directory" value="$(arg results_directory)"/>
 
@@ -626,13 +658,66 @@ Description:  Includes Bluerov UUV and SIM top level launch file
 
         <!-- FDR Log -->
         <arg name="generate_fdr" value="$(arg generate_fdr)"/>
-        
-        <!-- Runtime evaluation -->
-        <arg name="bluerov_eval" value="$(arg bluerov_eval)"/>
 
+        <!-- Fishing net generation
+        <arg name="enable_fishnet" value="$(arg enable_fishnet)"/> -->
+
+        <!-- Pipeline generator -->
+        <!-- Pipe Starting Position Relative to Vehicle -->
+        <arg name="pipe_posx" value="$(arg pipe_posx)"/> <!--30-->
+        <arg name="pipe_posy" value="$(arg pipe_posy)"/> <!--2--><!-- puts vehicle at start of pipe -->
+        <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
+        <arg name="num_segments" value="$(arg num_segments)"/>
+        <arg name="length_min" value="$(arg length_min)"/>
+        <arg name="length_max" value="$(arg length_max)"/>
+        <arg name="angle_min" value="$(arg angle_min)"/>
+        <arg name="angle_max" value="$(arg angle_max)"/>
+        <arg name="bury_len_min" value="$(arg bury_len_min)"/> 
+        <arg name="bury_len_max" value="$(arg bury_len_max)"/> 
+        <arg name="pipe_scale" value="$(arg pipe_scale)"/>
+
+        <!--Argument for number of obstacles-->
+        <!-- <arg name="num_obstacles" default="100"/>
+        <arg name="obs_distance" default="60"/> -->
+
+        <!-- static and dynamic obstacles-->
+        <arg name="enable_obstacles" value="$(arg enable_obstacles)" />
+        <arg name="enable_debris" value="$(arg enable_debris)" />
+        <arg name="enable_dynamic_obstacles" value="$(arg enable_dynamic_obstacles)" />
+        <arg name="lambda_low" value="$(arg lambda_low)" />
+        <arg name="lambda_high" value="$(arg lambda_high)" />
+        <arg name="lambda_low_static" value="$(arg lambda_low_static)" />
+        <arg name="lambda_high_static" value="$(arg lambda_high_static)" />
+        <arg name="avg_uuv_speed" value="$(arg avg_uuv_speed)" />
+        <arg name="box_distance_variance" value="$(arg box_distance_variance)" />
+        <arg name="box_distance_static" value="$(arg box_distance_static)" />
+        <arg name="box_distance_x" value="$(arg box_distance_x)" />
+        <arg name="box_distance_y" value="$(arg box_distance_y)" />
+        <arg name="box_velocity_x" value="$(arg box_velocity_x)" />
+        <arg name="box_velocity_y" value="$(arg box_velocity_y)" />
+        <arg name="box_max_cnt" value="$(arg box_max_cnt)" />
+        <arg name="box_size_x" value="$(arg box_size_x)" />
+        <arg name="box_size_y" value="$(arg box_size_y)" />
+        <arg name="box_size_z" value="$(arg box_size_z)" />
+        <arg name="enable_wall" value="$(arg enable_wall)" />
+        <arg name="enable_random" value="$(arg enable_random)" />
+        <arg name="obstacle_filename_static" value="$(arg obstacle_filename_static)" />
+        <arg name="obstacle_filename_dynamic" value="$(arg obstacle_filename_dynamic)" />
+        <arg name="random_box_density" value="$(arg random_box_density)" />
+
+        <!-- Less often modified params: -->    
 
         <!-- Random Seed for ROS Nodes and Gazebo Plugins -->
         <arg name="random_seed" value="$(arg random_seed)"/>
+
+        <!-- Gazebo World Parameters-->
+        <arg name="ocean_depth" value="$(arg ocean_depth)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <!-- <arg name="headless" default="true"/> -->
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="timeout" value="$(arg timeout)"/>
+        <arg name="gz_debug" value="$(arg gz_debug)"/>
     </include>
    
 </launch>

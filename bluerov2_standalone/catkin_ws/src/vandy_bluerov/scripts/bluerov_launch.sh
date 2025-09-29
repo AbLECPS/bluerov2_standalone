@@ -36,7 +36,8 @@ roslaunch vandy_bluerov start_bluerov_simulation.launch \
     thruster_motor_fail_starting_time:=45 \
     thruster_id:=2 \
     decision_source:="combination_am" \
-    enable_obstacles:=true \
+    enable_dynamic_obstacles:=false \
+    enable_obstacles:=false \
     box_max_cnt:=2 \
     box_distance_static:=25 \
     lambda_low_static:=20 \

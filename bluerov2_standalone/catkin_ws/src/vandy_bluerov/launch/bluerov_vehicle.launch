@@ -176,8 +176,7 @@ Description:  Creates bluerov vehicle.
     <!-- <arg name="num_obstacles" default="100"/>
     <arg name="obs_distance" default="60"/> -->
 
-    <!-- static and dynamic obstacles-->
-    <arg name="box_size_x" default="10" />
+
 
     <!-- Less often modified params: -->    
 
@@ -195,6 +194,33 @@ Description:  Creates bluerov vehicle.
     <arg name="origin_longitude" default="-76.398464"/> <!-- -76.398464 -->
     <arg name="origin_altitude" default="0"/>
 
+
+    <!-- Fishing net generation -->
+    <arg name="enable_fishnet" default="false"/>
+    <!-- static and dynamic obstacles-->
+    <arg name="enable_obstacles" default="false" />
+    <arg name="enable_debris" default="false" />
+    <arg name="enable_dynamic_obstacles" default="false" />
+    <arg name="lambda_low" default="30" />
+    <arg name="lambda_high" default="60" />
+    <arg name="lambda_low_static" default="30" />
+    <arg name="lambda_high_static" default="60" />
+    <arg name="avg_uuv_speed" default="0.9" />
+    <arg name="box_distance_variance" default="0" />
+    <arg name="box_distance_static" default="65" />
+    <arg name="box_distance_x" default="40" />
+    <arg name="box_distance_y" default="25" />
+    <arg name="box_velocity_x" default="0.0" />
+    <arg name="box_velocity_y" default="-2.5" />
+    <arg name="box_max_cnt" default="10" />
+    <arg name="box_size_x" default="10" />
+    <arg name="box_size_y" default="10" />
+    <arg name="box_size_z" default="10" />
+    <arg name="enable_wall" default="False" />
+    <arg name="enable_random" default="False" />
+    <arg name="obstacle_filename_static" default="''" />
+    <arg name="obstacle_filename_dynamic" default="''" />
+    <arg name="random_box_density" default="1" />
 
  
 
@@ -406,6 +432,35 @@ Description:  Creates bluerov vehicle.
         <arg name="small_bagfile" value="$(arg small_bagfile)"/>
         <arg name="bag_filename" value="$(arg bag_filename)"/>
     </include>
+
+
+    <include file="$(find vandy_bluerov)/launch/generate_obstacles.launch">
+        <arg name="enable_obstacles" value="$(arg enable_obstacles)"/>
+        <arg name="enable_dynamic_obstacles" value="$(arg enable_dynamic_obstacles)"/>
+        <arg name="enable_debris" value="$(arg enable_debris)" />
+        <arg name="enable_fishnet" value="$(arg enable_fishnet)" />
+        <arg name="random_seed" value="$(arg random_seed)"/>
+        <arg name="lambda_low" value="$(arg lambda_low)" />
+        <arg name="lambda_high" value="$(arg lambda_high)" />
+        <arg name="lambda_low_static" value="$(arg lambda_low_static)" />
+        <arg name="lambda_high_static" value="$(arg lambda_high_static)" />
+        <arg name="avg_uuv_speed" value="$(arg avg_uuv_speed)" />
+        <arg name="box_distance_variance" value="$(arg box_distance_variance)" />
+        <arg name="box_distance_static" value="$(arg box_distance_static)" />
+        <arg name="box_distance_x" value="$(arg box_distance_x)" />
+        <arg name="box_distance_y" value="$(arg box_distance_y)" />
+        <arg name="box_velocity_x" value="$(arg box_velocity_x)" />
+        <arg name="box_velocity_y" value="$(arg box_velocity_y)" />
+        <arg name="box_max_cnt" value="$(arg box_max_cnt)" />
+        <arg name="box_size_x" value="$(arg box_size_x)" />
+        <arg name="box_size_y" value="$(arg box_size_y)" />
+        <arg name="box_size_z" value="$(arg box_size_z)" />
+        <arg name="enable_wall" value="$(arg enable_wall)" />
+        <arg name="enable_random" value="$(arg enable_random)" />
+        <arg name="obstacle_filename_static" value="$(arg obstacle_filename_static)" />
+        <arg name="obstacle_filename_dynamic" value="$(arg obstacle_filename_dynamic)" />
+        <arg name="random_box_density" value="$(arg random_box_density)"/>
+    </include>  
 
     <!-- Evaluation -->
 <!--     <include file="$(find vandy_bluerov)/launch/bluerov_evaluation.launch">

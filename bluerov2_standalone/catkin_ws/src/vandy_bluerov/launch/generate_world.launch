@@ -124,7 +124,7 @@ Description:  Creates simulated world.
         <arg name="num_segments" value="$(arg num_segments)"/>
     </include>
 
-    <include file="$(find vandy_bluerov)/launch/generate_obstacles.launch">
+    <!-- <include file="$(find vandy_bluerov)/launch/generate_obstacles.launch">
         <arg name="enable_obstacles" value="$(arg enable_obstacles)"/>
         <arg name="enable_dynamic_obstacles" value="$(arg enable_dynamic_obstacles)"/>
         <arg name="enable_debris" value="$(arg enable_debris)" />
@@ -149,9 +149,9 @@ Description:  Creates simulated world.
         <arg name="enable_random" value="$(arg enable_random)" />
         <arg name="obstacle_filename_static" value="$(arg obstacle_filename_static)" />
         <arg name="obstacle_filename_dynamic" value="$(arg obstacle_filename_dynamic)" />
-        <arg name="random_box_density" value="$(arg random_box_density)"/>
+        <arg name="random_box_density" value="$(arg random_box_density)"/> -->
 
-    </include>  
-
+    <!-- </include>  
+ -->
 </launch>
 
