@@ -8,7 +8,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     <!--            UUV ARGS             -->
     <!-- ############################### -->
 
-        <arg name="uuv_name" default="catdog"/>
+        <arg name="uuv_name" default="uuv0"/>
 
         <arg name="standard_output" default="screen"/>
 
@@ -193,7 +193,7 @@ Description:  Includes Bluerov UUV and SIM top level launch file
     <!--            UUV2 ARGS             -->
     <!-- ############################### -->
 
-        <arg name="uuv_name_2" default="birdman"/>
+        <arg name="uuv_name_2" default="uuv1"/>
 
         <!--rtreach parameters-->
         <arg name="use_rtreach_2" default="true"/>

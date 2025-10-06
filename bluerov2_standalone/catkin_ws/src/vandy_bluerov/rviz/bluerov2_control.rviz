@@ -5,8 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /TF1/Tree1
-        - /Odometry birdman1/Shape1
-        - /Odometry birdman1/Covariance1/Orientation1
+        - /Odometry uuv11/Shape1
+        - /Odometry uuv11/Covariance1/Orientation1
         - /Odometry noisy 1/Shape1
         - /Pipeline Map1/Status1
       Splitter Ratio: 0.5
@@ -73,110 +73,110 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        birdman/base_fis:
+        uuv1/base_fis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/base_link:
+        uuv1/base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/base_sonar_bottom:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        birdman/base_sonar_front:
+        uuv1/base_sonar_bottom:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/base_sss:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        birdman/battery_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        birdman/camera_link:
+        uuv1/base_sonar_front:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/dvl_link:
+        uuv1/base_sss:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv1/battery_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv1/camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/dvl_sonar0_link:
+        uuv1/dvl_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/dvl_sonar1_link:
+        uuv1/dvl_sonar0_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/dvl_sonar2_link:
+        uuv1/dvl_sonar1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/dvl_sonar3_link:
+        uuv1/dvl_sonar2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/gps_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        birdman/imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        birdman/pose_link:
+        uuv1/dvl_sonar3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/pose_sensor_link_:
+        uuv1/gps_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/pressure_link:
+        uuv1/imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv1/pose_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        birdman/thruster_0:
+        uuv1/pose_sensor_link_:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/thruster_1:
+        uuv1/pressure_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/thruster_2:
+          Value: true
+        uuv1/thruster_0:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/thruster_3:
+        uuv1/thruster_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/thruster_4:
+        uuv1/thruster_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        birdman/thruster_5:
+        uuv1/thruster_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-      Name: RobotModel-birdman
-      Robot Description: birdman/robot_description
+        uuv1/thruster_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv1/thruster_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: RobotModel-uuv1
+      Robot Description: uuv1/robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
@@ -222,7 +222,7 @@ Visualization Manager:
         Value: false
       Enabled: true
       Keep: 500
-      Name: Odometry birdman
+      Name: Odometry uuv1
       Position Tolerance: 1
       Shape:
         Alpha: 1
@@ -234,7 +234,7 @@ Visualization Manager:
         Shaft Length: 0
         Shaft Radius: 0
         Value: Arrow
-      Topic: /birdman/pose_gt
+      Topic: /uuv1/pose_gt
       Unreliable: false
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -268,7 +268,7 @@ Visualization Manager:
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /birdman/pose_gt
+      Topic: /uuv1/pose_gt
       Unreliable: false
       Value: false
     - Alpha: 1
@@ -280,7 +280,7 @@ Visualization Manager:
       Hide Small Values: true
       History Length: 1
       Name: Thrust Wrench 0
-      Topic: /birdman/thrusters/0/thrust_wrench
+      Topic: /uuv1/thrusters/0/thrust_wrench
       Torque Arrow Scale: 2
       Torque Color: 204; 204; 51
       Unreliable: false
@@ -294,7 +294,7 @@ Visualization Manager:
       Hide Small Values: true
       History Length: 1
       Name: Thrust Wrench 1
-      Topic: /birdman/thrusters/1/thrust_wrench
+      Topic: /uuv1/thrusters/1/thrust_wrench
       Torque Arrow Scale: 2
       Torque Color: 204; 204; 51
       Unreliable: false
@@ -308,7 +308,7 @@ Visualization Manager:
       Hide Small Values: true
       History Length: 1
       Name: Thrust Wrench 2
-      Topic: /birdman/thrusters/2/thrust_wrench
+      Topic: /uuv1/thrusters/2/thrust_wrench
       Torque Arrow Scale: 2
       Torque Color: 204; 204; 51
       Unreliable: false
@@ -322,7 +322,7 @@ Visualization Manager:
       Hide Small Values: true
       History Length: 1
       Name: Thrust Wrench 3
-      Topic: /birdman/thrusters/3/thrust_wrench
+      Topic: /uuv1/thrusters/3/thrust_wrench
       Torque Arrow Scale: 2
       Torque Color: 204; 204; 51
       Unreliable: false
@@ -336,7 +336,7 @@ Visualization Manager:
       Hide Small Values: true
       History Length: 1
       Name: Thrust Wrench 4
-      Topic: /birdman/thrusters/4/thrust_wrench
+      Topic: /uuv1/thrusters/4/thrust_wrench
       Torque Arrow Scale: 2
       Torque Color: 204; 204; 51
       Unreliable: false
@@ -350,14 +350,14 @@ Visualization Manager:
       Hide Small Values: true
       History Length: 1
       Name: Thrust Wrench 5
-      Topic: /birdman/thrusters/5/thrust_wrench
+      Topic: /uuv1/thrusters/5/thrust_wrench
       Torque Arrow Scale: 2
       Torque Color: 204; 204; 51
       Unreliable: false
       Value: false
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /birdman/waypoint_markers
+      Marker Topic: /uuv1/waypoint_markers
       Name: Wayppoints
       Namespaces:
         "": true
@@ -377,7 +377,7 @@ Visualization Manager:
       Draw Behind: true
       Enabled: true
       Name: Obstacle Map
-      Topic: /birdman/obstacle_map_local
+      Topic: /uuv1/obstacle_map_local
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -387,7 +387,7 @@ Visualization Manager:
       Draw Behind: true
       Enabled: true
       Name: Pipeline Map
-      Topic: /birdman/pipeline_map
+      Topic: /uuv1/pipeline_map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -397,7 +397,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: AIS Map
-      Topic: /birdman/ais_map
+      Topic: /uuv1/ais_map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -407,7 +407,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Local Map
-      Topic: /birdman/local_map
+      Topic: /uuv1/local_map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -418,7 +418,7 @@ Visualization Manager:
       Enabled: true
       Name: Range FLS
       Queue Size: 100
-      Topic: /birdman/fls_echosunder
+      Topic: /uuv1/fls_echosunder
       Unreliable: false
       Value: true
     - Alpha: 0.5
@@ -428,7 +428,7 @@ Visualization Manager:
       Enabled: false
       Name: Range Altimeter
       Queue Size: 100
-      Topic: /catdog/altimeter_echosunder
+      Topic: /uuv0/altimeter_echosunder
       Unreliable: false
       Value: false
     - Alpha: 1
@@ -1015,7 +1015,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Local Obstacle Map
-      Topic: /birdman/obstacle_map_local
+      Topic: /uuv1/obstacle_map_local
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -1037,7 +1037,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: false
-      Image Topic: /catdog/camera/image_raw
+      Image Topic: /uuv0/camera/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1061,7 +1061,7 @@ Visualization Manager:
       Value: false
     - Class: rviz/Image
       Enabled: false
-      Image Topic: /catdog/midas_absolute
+      Image Topic: /uuv0/midas_absolute
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1122,7 +1122,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.10000000149011612
       Style: Flat Squares
-      Topic: /birdman/vu_sss
+      Topic: /uuv1/vu_sss
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -1150,14 +1150,14 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.10000000149011612
       Style: Flat Squares
-      Topic: /birdman/vu_fis
+      Topic: /uuv1/vu_fis
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /birdman/vu_sss/waterfall_r
+      Image Topic: /uuv1/vu_sss/waterfall_r
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1169,7 +1169,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /birdman/vu_sss/waterfall_l
+      Image Topic: /uuv1/vu_sss/waterfall_l
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1189,7 +1189,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /birdman/vu_sss/lec2lite_l
+      Image Topic: /uuv1/vu_sss/lec2lite_l
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1201,7 +1201,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /birdman/vu_sss/lec2lite_r
+      Image Topic: /uuv1/vu_sss/lec2lite_r
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1213,7 +1213,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /birdman/lec3lite/waterfall
+      Image Topic: /uuv1/lec3lite/waterfall
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1233,110 +1233,110 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        catdog/base_fis:
+        uuv0/base_fis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/base_link:
+        uuv0/base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/base_sonar_bottom:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        catdog/base_sonar_front:
+        uuv0/base_sonar_bottom:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/base_sss:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        catdog/battery_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        catdog/camera_link:
+        uuv0/base_sonar_front:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/dvl_link:
+        uuv0/base_sss:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv0/battery_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv0/camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/dvl_sonar0_link:
+        uuv0/dvl_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/dvl_sonar1_link:
+        uuv0/dvl_sonar0_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/dvl_sonar2_link:
+        uuv0/dvl_sonar1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/dvl_sonar3_link:
+        uuv0/dvl_sonar2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/gps_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        catdog/imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        catdog/pose_link:
+        uuv0/dvl_sonar3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/pose_sensor_link_:
+        uuv0/gps_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/pressure_link:
+        uuv0/imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv0/pose_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        catdog/thruster_0:
+        uuv0/pose_sensor_link_:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/thruster_1:
+        uuv0/pressure_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/thruster_2:
+          Value: true
+        uuv0/thruster_0:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/thruster_3:
+        uuv0/thruster_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/thruster_4:
+        uuv0/thruster_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        catdog/thruster_5:
+        uuv0/thruster_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-      Name: RobotModel catdog
-      Robot Description: catdog/robot_description
+        uuv0/thruster_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        uuv0/thruster_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: RobotModel uuv0
+      Robot Description: uuv0/robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
@@ -1360,7 +1360,7 @@ Visualization Manager:
         Value: false
       Enabled: true
       Keep: 500
-      Name: Odometry catdog
+      Name: Odometry uuv0
       Position Tolerance: 1
       Shape:
         Alpha: 1
@@ -1372,12 +1372,12 @@ Visualization Manager:
         Shaft Length: 0
         Shaft Radius: 0
         Value: Arrow
-      Topic: /catdog/pose_gt
+      Topic: /uuv0/pose_gt
       Unreliable: false
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /birdman/lec3lite/waterfall
+      Image Topic: /uuv1/lec3lite/waterfall
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -1425,7 +1425,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Scale: 27.939912796020508
-      Target Frame: birdman/base_link
+      Target Frame: uuv1/base_link
       Value: TopDownOrtho (rviz)
       X: 0
       Y: 0
@@ -1441,7 +1441,7 @@ Visualization Manager:
         Name: TopDownOrtho
         Near Clip Distance: 0.009999999776482582
         Scale: 2.348705291748047
-        Target Frame: catdog/base_link
+        Target Frame: uuv0/base_link
         Value: TopDownOrtho (rviz)
         X: -4.257664680480957
         Y: 52.7950439453125
@@ -1456,7 +1456,7 @@ Visualization Manager:
         Name: TopDownOrtho
         Near Clip Distance: 0.009999999776482582
         Scale: 2.348705291748047
-        Target Frame: catdog/base_link
+        Target Frame: uuv0/base_link
         Value: TopDownOrtho (rviz)
         X: -4.257664680480957
         Y: 52.7950439453125
